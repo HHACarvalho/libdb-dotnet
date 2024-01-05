@@ -11,7 +11,7 @@ namespace libdb_dotnet.Domain
         [MaxLength(96)]
         public string Title { get; set; } = title;
 
-        [MaxLength(96)]
+        [MaxLength(48)]
         public string Author { get; set; } = author;
     }
 }

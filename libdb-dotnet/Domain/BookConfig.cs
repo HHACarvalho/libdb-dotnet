@@ -7,7 +7,7 @@ namespace libdb_dotnet.Domain
     {
         public void Configure(EntityTypeBuilder<Book> builder)
         {
-            builder.HasKey(x => x.Id);
+            builder.HasKey(x => x.ID);
         }
     }
 }
