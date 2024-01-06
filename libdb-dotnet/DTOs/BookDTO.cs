@@ -18,4 +18,19 @@ namespace libdb_dotnet.DTOs
             };
         }
     }
+
+    public class BookDTOPartial
+    {
+        public required string Isbn { get; set; }
+        public required string Title { get; set; }
+
+        public static BookDTOPartial ToDTO(Book book)
+        {
+            return new BookDTOPartial
+            {
+                Isbn = book.Isbn,
+                Title = book.Title
+            };
+        }
+    }
 }

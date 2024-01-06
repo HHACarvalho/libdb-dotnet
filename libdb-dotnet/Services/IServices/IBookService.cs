@@ -5,11 +5,11 @@ namespace libdb_dotnet.Services.IServices
 {
     public interface IBookService
     {
-        Task<Operation<BookDTOFull>> CreateBook(BookRequestBody dto);
-        Task<Operation<List<BookDTOFull>>> FindAllBooks(int pageNumber, int pageSize);
-        Task<Operation<List<BookDTOFull>>> FindBooks(string bookTitle);
-        Task<Operation<BookDTOFull>> FindOneBook(string bookID);
-        Task<Operation<BookDTOFull>> UpdateBook(string bookID, BookRequestBody dto);
-        Task<Operation<BookDTOFull>> DeleteBook(string bookID);
+        Task<Result<BookDTOFull>> CreateBook(BookRequestBody dto);
+        Task<Result<List<BookDTOFull>>> FindAllBooks(int pageNumber, int pageSize);
+        Task<Result<List<BookDTOFull>>> FindBooks(string bookTitle);
+        Task<Result<BookDTOFull>> FindOneBook(string bookIsbn);
+        Task<Result<BookDTOFull>> UpdateBook(string bookIsbn, BookRequestBody dto);
+        Task<Result<BookDTOFull>> DeleteBook(string bookIsbn);
     }
 }

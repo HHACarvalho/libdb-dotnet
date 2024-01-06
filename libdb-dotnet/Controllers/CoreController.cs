@@ -5,7 +5,7 @@ namespace libdb_dotnet.Controllers
 {
     public class CoreController : Controller
     {
-        protected async Task<IActionResult> HandleServiceCall<T>(Func<Task<Operation<T>>> serviceMethod) where T : class
+        protected async Task<IActionResult> HandleServiceCall<T>(Func<Task<Result<T>>> serviceMethod) where T : class
         {
             try
             {
