@@ -4,17 +4,15 @@ namespace libdb_dotnet.DTOs
 {
     public class BookDTOFull
     {
-        public required string ID;
-        public required string ISBN;
-        public required string Title;
-        public required string Author;
+        public required string Isbn { get; set; }
+        public required string Title { get; set; }
+        public required string Author { get; set; }
 
         public static BookDTOFull ToDTO(Book book)
         {
             return new BookDTOFull
             {
-                ID = book.ID.ToString(),
-                ISBN = book.ISBN,
+                Isbn = book.Isbn,
                 Title = book.Title,
                 Author = book.Author
             };

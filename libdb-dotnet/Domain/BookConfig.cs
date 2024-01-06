@@ -5,9 +5,6 @@ namespace libdb_dotnet.Domain
 {
     public class BookConfig : IEntityTypeConfiguration<Book>
     {
-        public void Configure(EntityTypeBuilder<Book> builder)
-        {
-            builder.HasKey(x => x.ID);
-        }
+        public void Configure(EntityTypeBuilder<Book> builder) { }
     }
 }

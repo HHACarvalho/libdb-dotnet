@@ -5,5 +5,6 @@ namespace libdb_dotnet.Repos.IRepos
     public interface IBookRepo : ICoreRepo<Book>
     {
         Task<List<Book>> Find(string bookTitle);
+        Task<Book?> FindOne(string isbn);
     }
 }
