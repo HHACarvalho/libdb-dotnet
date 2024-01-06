@@ -17,6 +17,12 @@ namespace libdb_dotnet.Services
 
         public async Task<Result<BookDTOFull>> CreateBook(BookRequestBody dto)
         {
+            var book = await _repo.FindOne(dto.ISBN);
+            if (book != null)
+            {
+                return Result<BookDTOFull>.Fail("A book with the ISBN '" + dto.ISBN + "' already exists");
+            }
+
             var newBook = new Book(dto.ISBN, dto.Title, dto.Author);
 
             await _repo.Create(newBook);
