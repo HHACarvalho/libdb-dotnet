@@ -2,18 +2,15 @@
 
 namespace libdb_dotnet.DTOs
 {
-    public class BookRequestBody
+    public struct BookRequestBody
     {
-        [Required]
-        [MaxLength(13)]
-        public required string ISBN { get; set; }
+        [RegularExpression(@"^\d{10,13}$")]
+        public string Isbn { get; set; }
 
-        [Required]
-        [MaxLength(96)]
-        public required string Title { get; set; }
+        [RegularExpression(@"^[a-zA-Z0-9\-]{0,96}$")]
+        public string Title { get; set; }
 
-        [Required]
-        [MaxLength(48)]
-        public required string Author { get; set; }
+        [RegularExpression(@"^[a-zA-Z0-9\-]{0,48}$")]
+        public string Author { get; set; }
     }
 }
