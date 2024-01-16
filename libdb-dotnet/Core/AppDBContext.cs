@@ -11,7 +11,7 @@ namespace libdb_dotnet.Core
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new BookConfig());
+            // Add custom configurations for entities
         }
     }
 }
