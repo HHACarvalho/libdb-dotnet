@@ -7,10 +7,9 @@ namespace libdb_dotnet.DTOs
         [RegularExpression(@"^\d{10,13}$")]
         public string Isbn { get; set; }
 
-        [RegularExpression(@"^[a-zA-Z0-9\-]{0,96}$")]
+        [RegularExpression(@"^[a-zA-Z0-9\-:'. ]{0,96}$")]
         public string Title { get; set; }
 
-        [RegularExpression(@"^[a-zA-Z0-9\-]{0,48}$")]
-        public string Author { get; set; }
+        public int AuthorId { get; set; }
     }
 }
