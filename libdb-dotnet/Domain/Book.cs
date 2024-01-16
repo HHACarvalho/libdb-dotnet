@@ -2,7 +2,7 @@
 
 namespace libdb_dotnet.Domain
 {
-    public class Book(string isbn, string title, string author)
+    public class Book(string isbn, string title)
     {
         [Key]
         [MaxLength(13)]
@@ -11,7 +11,6 @@ namespace libdb_dotnet.Domain
         [MaxLength(96)]
         public string Title { get; set; } = title;
 
-        [MaxLength(48)]
-        public string Author { get; set; } = author;
+        public virtual Author Author { get; set; }
     }
 }

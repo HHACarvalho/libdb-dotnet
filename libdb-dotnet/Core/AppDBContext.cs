@@ -3,11 +3,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace libdb_dotnet.Core
 {
-    public class AppDBContext : DbContext
+    public class AppDBContext(DbContextOptions options) : DbContext(options)
     {
-        public DbSet<Book> Books { get; set; }
+        public DbSet<Author> Authors { get; set; }
 
-        public AppDBContext(DbContextOptions options) : base(options) { }
+        public DbSet<Book> Books { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
