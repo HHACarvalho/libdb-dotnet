@@ -2,7 +2,7 @@
 {
     public interface ICoreRepo<TEntity>
     {
-        Task Create(TEntity obj);
+        Task<TEntity> Create(TEntity obj);
         Task<List<TEntity>> FindAll(int pageNumber = 1, int pageSize = 20);
         Task Delete(TEntity obj);
         Task CommitChanges();

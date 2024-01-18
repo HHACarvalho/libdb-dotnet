@@ -6,14 +6,9 @@ using libdb_dotnet.Services.IServices;
 
 namespace libdb_dotnet.Services
 {
-    public class BookService : IBookService
+    public class BookService(IBookRepo repo) : IBookService
     {
-        private readonly IBookRepo _repo;
-
-        public BookService(IBookRepo repo)
-        {
-            _repo = repo;
-        }
+        private readonly IBookRepo _repo = repo;
 
         public async Task<Result<BookDTOFull>> CreateBook(BookRequestBody dto)
         {
@@ -32,7 +27,7 @@ namespace libdb_dotnet.Services
 
         public async Task<Result<List<BookDTOFull>>> FindAllBooks(int pageNumber, int pageSize)
         {
-            var bookList = await _repo.FindAll(pageNumber != 0 ? pageNumber : 1, pageSize != 0 ? pageSize : 20);
+            var bookList = pageNumber > 0 && pageSize > 0 ? await _repo.FindAll(pageNumber, pageSize) : await _repo.FindAll();
             if (bookList.Count == 0)
             {
                 return Result<List<BookDTOFull>>.Fail("There are no books");
@@ -46,7 +41,7 @@ namespace libdb_dotnet.Services
             var bookList = await _repo.Find(bookTitle);
             if (bookList.Count == 0)
             {
-                return Result<List<BookDTOFull>>.Fail("No books with '" + bookTitle + "' in the title were found");
+                return Result<List<BookDTOFull>>.Fail("No books with a title containing '" + bookTitle + "' were found");
             }
 
             return Result<List<BookDTOFull>>.Success(bookList.ConvertAll(BookDTOFull.ToDTO));
