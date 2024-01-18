@@ -22,13 +22,14 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddDbContext<AppDBContext>(options =>
 {
-    //options.UseSqlServer(builder.Configuration.GetConnectionString("dbConnection"));
-    options.UseInMemoryDatabase(databaseName: "libDB");
+    options.UseSqlServer(builder.Configuration.GetConnectionString("dbConnection"));
 });
 
 // Add services to the container.
 
+builder.Services.AddTransient<IAuthorRepo, AuthorRepo>();
 builder.Services.AddTransient<IBookRepo, BookRepo>();
+builder.Services.AddTransient<IAuthorService, AuthorService>();
 builder.Services.AddTransient<IBookService, BookService>();
 
 builder.Services.AddControllers();
