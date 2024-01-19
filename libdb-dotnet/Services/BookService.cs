@@ -8,19 +8,37 @@ namespace libdb_dotnet.Services
 {
     public class BookService(IBookRepo repo) : IBookService
     {
-        private readonly IBookRepo _repo = repo;
+        private readonly IAuthorRepo _authorRepo;
+        private readonly IBookRepo _bookRepo;
+
+        public BookService(IAuthorRepo authorRepo, IBookRepo repo)
+        {
+            _authorRepo = authorRepo;
+            _bookRepo = repo;
+        }
 
         public async Task<Result<BookDTOFull>> CreateBook(BookRequestBody dto)
         {
-            var book = await _repo.FindOne(dto.Isbn);
+            var book = await _bookRepo.FindOne(dto.Isbn);
             if (book != null)
             {
                 return Result<BookDTOFull>.Fail("A book with the ISBN '" + dto.Isbn + "' already exists");
             }
 
-            var newBook = new Book(dto.Isbn, dto.Title, dto.Author);
+            var author = await _authorRepo.FindOne(dto.AuthorId);
+            if (author == null)
+            {
+                return Result<BookDTOFull>.Fail("No author with the ID '" + dto.AuthorId + "' was found");
+            }
 
-            await _repo.Create(newBook);
+            var newBook = new Book
+            {
+                Isbn = dto.Isbn,
+                Title = dto.Title,
+                Author = author
+            };
+
+            newBook = await _bookRepo.Create(newBook);
 
             return Result<BookDTOFull>.Success(BookDTOFull.ToDTO(newBook));
         }
