@@ -9,6 +9,11 @@ namespace libdb_dotnet.Repos
     {
         public BookRepo(AppDBContext dbc) : base(dbc, dbc.Books) { }
 
+        public new async Task<List<Book>> FindAll(int pageNumber = 1, int pageSize = 20)
+        {
+            return await _dbs.Skip((pageNumber - 1) * pageSize).Take(pageSize).Include(e => e.Author).ToListAsync();
+        }
+
         public async Task<List<Book>> Find(string bookTitle)
         {
             return await _dbs.Where(x => x.Title.Contains(bookTitle)).ToListAsync();
