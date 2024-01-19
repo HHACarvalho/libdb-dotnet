@@ -14,7 +14,7 @@ namespace libdb_dotnet.DTOs
             {
                 Isbn = book.Isbn,
                 Title = book.Title,
-                Author = book.Author
+                Author = book.Author.Name
             };
         }
     }

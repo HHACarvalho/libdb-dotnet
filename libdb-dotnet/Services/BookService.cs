@@ -6,7 +6,7 @@ using libdb_dotnet.Services.IServices;
 
 namespace libdb_dotnet.Services
 {
-    public class BookService(IBookRepo repo) : IBookService
+    public class BookService : IBookService
     {
         private readonly IAuthorRepo _authorRepo;
         private readonly IBookRepo _bookRepo;
@@ -45,7 +45,7 @@ namespace libdb_dotnet.Services
 
         public async Task<Result<List<BookDTOFull>>> FindAllBooks(int pageNumber, int pageSize)
         {
-            var bookList = pageNumber > 0 && pageSize > 0 ? await _repo.FindAll(pageNumber, pageSize) : await _repo.FindAll();
+            var bookList = pageNumber > 0 && pageSize > 0 ? await _bookRepo.FindAll(pageNumber, pageSize) : await _bookRepo.FindAll();
             if (bookList.Count == 0)
             {
                 return Result<List<BookDTOFull>>.Fail("There are no books");
@@ -56,7 +56,7 @@ namespace libdb_dotnet.Services
 
         public async Task<Result<List<BookDTOFull>>> FindBooks(string bookTitle)
         {
-            var bookList = await _repo.Find(bookTitle);
+            var bookList = await _bookRepo.Find(bookTitle);
             if (bookList.Count == 0)
             {
                 return Result<List<BookDTOFull>>.Fail("No books with a title containing '" + bookTitle + "' were found");
@@ -67,7 +67,7 @@ namespace libdb_dotnet.Services
 
         public async Task<Result<BookDTOFull>> FindOneBook(string bookIsbn)
         {
-            var book = await _repo.FindOne(bookIsbn);
+            var book = await _bookRepo.FindOne(bookIsbn);
             if (book == null)
             {
                 return Result<BookDTOFull>.Fail("No book with the ISBN '" + bookIsbn + "' was found");
@@ -78,30 +78,28 @@ namespace libdb_dotnet.Services
 
         public async Task<Result<BookDTOFull>> UpdateBook(string bookIsbn, BookRequestBody dto)
         {
-            var book = await _repo.FindOne(bookIsbn);
+            var book = await _bookRepo.FindOne(bookIsbn);
             if (book == null)
             {
                 return Result<BookDTOFull>.Fail("No book with the ISBN '" + bookIsbn + "' was found");
             }
 
-            book.Isbn = dto.Isbn;
             book.Title = dto.Title;
-            book.Author = dto.Author;
 
-            await _repo.CommitChanges();
+            await _bookRepo.CommitChanges();
 
             return Result<BookDTOFull>.Success(BookDTOFull.ToDTO(book));
         }
 
         public async Task<Result<BookDTOFull>> DeleteBook(string bookIsbn)
         {
-            var book = await _repo.FindOne(bookIsbn);
+            var book = await _bookRepo.FindOne(bookIsbn);
             if (book == null)
             {
                 return Result<BookDTOFull>.Fail("No book with the ISBN '" + bookIsbn + "' was found");
             }
 
-            await _repo.Delete(book);
+            await _bookRepo.Delete(book);
 
             return Result<BookDTOFull>.Success(BookDTOFull.ToDTO(book));
         }

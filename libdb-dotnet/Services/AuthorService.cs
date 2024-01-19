@@ -12,7 +12,10 @@ namespace libdb_dotnet.Services
 
         public async Task<Result<AuthorDTOFull>> CreateAuthor(AuthorRequestBody dto)
         {
-            var newAuthor = new Author(dto.Name);
+            var newAuthor = new Author
+            {
+                Name = dto.Name,
+            };
 
             newAuthor = await _repo.Create(newAuthor);
 
@@ -41,7 +44,7 @@ namespace libdb_dotnet.Services
             return Result<List<AuthorDTOFull>>.Success(authorList.ConvertAll(AuthorDTOFull.ToDTO));
         }
 
-        public async Task<Result<AuthorDTOFull>> FindOneAuthor(string authorId)
+        public async Task<Result<AuthorDTOFull>> FindOneAuthor(int authorId)
         {
             var author = await _repo.FindOne(authorId);
             if (author == null)
@@ -52,7 +55,7 @@ namespace libdb_dotnet.Services
             return Result<AuthorDTOFull>.Success(AuthorDTOFull.ToDTO(author));
         }
 
-        public async Task<Result<AuthorDTOFull>> UpdateAuthor(string authorId, AuthorRequestBody dto)
+        public async Task<Result<AuthorDTOFull>> UpdateAuthor(int authorId, AuthorRequestBody dto)
         {
             var author = await _repo.FindOne(authorId);
             if (author == null)
@@ -67,7 +70,7 @@ namespace libdb_dotnet.Services
             return Result<AuthorDTOFull>.Success(AuthorDTOFull.ToDTO(author));
         }
 
-        public async Task<Result<AuthorDTOFull>> DeleteAuthor(string authorId)
+        public async Task<Result<AuthorDTOFull>> DeleteAuthor(int authorId)
         {
             var author = await _repo.FindOne(authorId);
             if (author == null)

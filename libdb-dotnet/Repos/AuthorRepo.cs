@@ -14,7 +14,7 @@ namespace libdb_dotnet.Repos
             return await _dbs.Where(x => x.Name.Contains(authorName)).ToListAsync();
         }
 
-        public virtual async Task<Author?> FindOne(string authorId)
+        public virtual async Task<Author?> FindOne(int authorId)
         {
             return await _dbs.Where(x => x.Id.Equals(authorId)).FirstOrDefaultAsync();
         }

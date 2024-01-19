@@ -8,8 +8,8 @@ namespace libdb_dotnet.Services.IServices
         Task<Result<AuthorDTOFull>> CreateAuthor(AuthorRequestBody dto);
         Task<Result<List<AuthorDTOFull>>> FindAllAuthors(int pageNumber, int pageSize);
         Task<Result<List<AuthorDTOFull>>> FindAuthors(string authorName);
-        Task<Result<AuthorDTOFull>> FindOneAuthor(string authorId);
-        Task<Result<AuthorDTOFull>> UpdateAuthor(string authorId, AuthorRequestBody dto);
-        Task<Result<AuthorDTOFull>> DeleteAuthor(string authorId);
+        Task<Result<AuthorDTOFull>> FindOneAuthor(int authorId);
+        Task<Result<AuthorDTOFull>> UpdateAuthor(int authorId, AuthorRequestBody dto);
+        Task<Result<AuthorDTOFull>> DeleteAuthor(int authorId);
     }
 }

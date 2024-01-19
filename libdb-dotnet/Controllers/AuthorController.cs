@@ -23,27 +23,27 @@ namespace libdb_dotnet.Controllers
         }
 
         [HttpGet("search")]
-        public async Task<IActionResult> FindAuthors(string authorName)
+        public async Task<IActionResult> FindAuthors(string name)
         {
-            return await HandleServiceCall(async () => await _service.FindAuthors(authorName));
+            return await HandleServiceCall(async () => await _service.FindAuthors(name));
         }
 
         [HttpGet]
-        public async Task<IActionResult> FindOneAuthor(string authorID)
+        public async Task<IActionResult> FindOneAuthor(int id)
         {
-            return await HandleServiceCall(async () => await _service.FindOneAuthor(authorID));
+            return await HandleServiceCall(async () => await _service.FindOneAuthor(id));
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateAuthor(string authorID, AuthorRequestBody dto)
+        public async Task<IActionResult> UpdateAuthor(int id, AuthorRequestBody dto)
         {
-            return await HandleServiceCall(async () => await _service.UpdateAuthor(authorID, dto));
+            return await HandleServiceCall(async () => await _service.UpdateAuthor(id, dto));
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteAuthor(string authorID)
+        public async Task<IActionResult> DeleteAuthor(int id)
         {
-            return await HandleServiceCall(async () => await _service.DeleteAuthor(authorID));
+            return await HandleServiceCall(async () => await _service.DeleteAuthor(id));
         }
     }
 }
