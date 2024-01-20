@@ -9,19 +9,19 @@ namespace libdb_dotnet.Repos
     {
         public BookRepo(AppDBContext dbc) : base(dbc, dbc.Books) { }
 
-        public new async Task<List<Book>> FindAll(int pageNumber = 1, int pageSize = 20)
+        public override async Task<List<Book>> FindAll(int pageNumber = 1, int pageSize = 20)
         {
-            return await _dbs.Skip((pageNumber - 1) * pageSize).Take(pageSize).Include(e => e.Author).ToListAsync();
+            return await _dbs.Skip((pageNumber - 1) * pageSize).Take(pageSize).Include(x => x.Author).ToListAsync();
         }
 
-        public async Task<List<Book>> Find(string bookTitle)
+        public async Task<List<Book>> Find(string title)
         {
-            return await _dbs.Where(x => x.Title.Contains(bookTitle)).ToListAsync();
+            return await _dbs.Where(x => x.Title.Contains(title)).ToListAsync();
         }
 
-        public async Task<Book?> FindOne(string bookIsbn)
+        public async Task<Book?> FindOne(string isbn)
         {
-            return await _dbs.Where(x => x.Isbn.Equals(bookIsbn)).FirstOrDefaultAsync();
+            return await _dbs.Where(x => x.Isbn.Equals(isbn)).FirstOrDefaultAsync();
         }
     }
 }

@@ -1,10 +1,10 @@
 ﻿namespace libdb_dotnet.Repos.IRepos
 {
-    public interface ICoreRepo<TEntity>
+    public interface ICoreRepo<T>
     {
-        Task<TEntity> Create(TEntity obj);
-        Task<List<TEntity>> FindAll(int pageNumber = 1, int pageSize = 20);
-        Task Delete(TEntity obj);
+        Task<T> Create(T entity);
+        Task<List<T>> FindAll(int pageNumber = 1, int pageSize = 20);
+        Task Delete(T entity);
         Task CommitChanges();
     }
 }

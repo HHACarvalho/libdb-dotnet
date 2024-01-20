@@ -4,32 +4,32 @@ using Microsoft.EntityFrameworkCore;
 
 namespace libdb_dotnet.Repos
 {
-    public class CoreRepo<TEntity> : ICoreRepo<TEntity> where TEntity : class
+    public class CoreRepo<T> : ICoreRepo<T> where T : class
     {
         private readonly AppDBContext _dbc;
-        protected readonly DbSet<TEntity> _dbs;
+        protected readonly DbSet<T> _dbs;
 
-        public CoreRepo(AppDBContext dbc, DbSet<TEntity> dbs)
+        public CoreRepo(AppDBContext dbc, DbSet<T> dbs)
         {
             _dbc = dbc;
             _dbs = dbs;
         }
 
-        public async Task<TEntity> Create(TEntity obj)
+        public virtual async Task<T> Create(T entity)
         {
-            var newEntity = await _dbs.AddAsync(obj);
+            var newEntity = await _dbs.AddAsync(entity);
             await CommitChanges();
             return newEntity.Entity;
         }
 
-        public async Task<List<TEntity>> FindAll(int pageNumber = 1, int pageSize = 20)
+        public virtual async Task<List<T>> FindAll(int pageNumber = 1, int pageSize = 20)
         {
             return await _dbs.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
         }
 
-        public async Task Delete(TEntity obj)
+        public virtual async Task Delete(T entity)
         {
-            _dbs.Remove(obj);
+            _dbs.Remove(entity);
             await CommitChanges();
         }
 

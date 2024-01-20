@@ -10,6 +10,7 @@ namespace libdb_dotnet.DTOs
         [RegularExpression(@"^[a-zA-Z0-9\-:'. ]{0,96}$")]
         public string Title { get; set; }
 
+        [Range(1, int.MaxValue)]
         public int AuthorId { get; set; }
     }
 }
