@@ -9,6 +9,12 @@ namespace libdb_dotnet.Core
 
         public DbSet<Book> Books { get; set; }
 
+        public DbSet<BookEntry> BookEntries { get; set; }
+
+        public DbSet<Member> Members { get; set; }
+
+        public DbSet<Borrow> Borrows { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Add custom configurations for entities
