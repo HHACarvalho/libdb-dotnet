@@ -19,12 +19,6 @@ namespace libdb_dotnet.Services
 
         public async Task<Result<BookDTOFull>> CreateBook(BookRequestBody requestBody)
         {
-            var book = await _bookRepo.FindOne(requestBody.Isbn);
-            if (book != null)
-            {
-                return Result<BookDTOFull>.Fail("A book with the ISBN '" + requestBody.Isbn + "' already exists");
-            }
-
             var author = await _authorRepo.FindOne(requestBody.AuthorId);
             if (author == null)
             {
@@ -33,7 +27,6 @@ namespace libdb_dotnet.Services
 
             var newBook = new Book
             {
-                Isbn = requestBody.Isbn,
                 Title = requestBody.Title,
                 Author = author
             };
@@ -65,23 +58,23 @@ namespace libdb_dotnet.Services
             return Result<List<BookDTOFull>>.Success(bookList.ConvertAll(BookDTOFull.ToDTO));
         }
 
-        public async Task<Result<BookDTOFull>> FindOneBook(string isbn)
+        public async Task<Result<BookDTOFull>> FindOneBook(string id)
         {
-            var book = await _bookRepo.FindOne(isbn);
+            var book = await _bookRepo.FindOne(id);
             if (book == null)
             {
-                return Result<BookDTOFull>.Fail("No book with the ISBN '" + isbn + "' was found");
+                return Result<BookDTOFull>.Fail("No book with the Id '" + id + "' was found");
             }
 
             return Result<BookDTOFull>.Success(BookDTOFull.ToDTO(book));
         }
 
-        public async Task<Result<BookDTOFull>> UpdateBook(string isbn, BookRequestBody requestBody)
+        public async Task<Result<BookDTOFull>> UpdateBook(string id, BookRequestBody requestBody)
         {
-            var book = await _bookRepo.FindOne(isbn);
+            var book = await _bookRepo.FindOne(id);
             if (book == null)
             {
-                return Result<BookDTOFull>.Fail("No book with the ISBN '" + isbn + "' was found");
+                return Result<BookDTOFull>.Fail("No book with the Id '" + id + "' was found");
             }
 
             book.Title = requestBody.Title;
@@ -91,12 +84,12 @@ namespace libdb_dotnet.Services
             return Result<BookDTOFull>.Success(BookDTOFull.ToDTO(book));
         }
 
-        public async Task<Result<BookDTOFull>> DeleteBook(string isbn)
+        public async Task<Result<BookDTOFull>> DeleteBook(string id)
         {
-            var book = await _bookRepo.FindOne(isbn);
+            var book = await _bookRepo.FindOne(id);
             if (book == null)
             {
-                return Result<BookDTOFull>.Fail("No book with the ISBN '" + isbn + "' was found");
+                return Result<BookDTOFull>.Fail("No book with the Id '" + id + "' was found");
             }
 
             await _bookRepo.Delete(book);

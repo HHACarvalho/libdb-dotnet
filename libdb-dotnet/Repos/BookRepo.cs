@@ -19,9 +19,9 @@ namespace libdb_dotnet.Repos
             return await _dbs.Where(x => x.Title.Contains(title)).ToListAsync();
         }
 
-        public async Task<Book?> FindOne(string isbn)
+        public async Task<Book?> FindOne(string id)
         {
-            return await _dbs.Where(x => x.Isbn.Equals(isbn)).FirstOrDefaultAsync();
+            return await _dbs.Where(x => x.Id.Equals(id)).FirstOrDefaultAsync();
         }
     }
 }
