@@ -5,7 +5,7 @@ namespace libdb_dotnet.DTOs
 {
     public struct BookRequestBody
     {
-        [RegularExpression(@"^[a-zA-Z0-9\-:'. ]{0,96}$")]
+        [MaxLength(96)]
         public string Title { get; set; }
 
         [Range(1, int.MaxValue)]
