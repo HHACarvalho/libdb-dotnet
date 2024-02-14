@@ -54,7 +54,7 @@ namespace libdb_dotnet.Services
             var author = await _repo.FindOne(id);
             if (author == null)
             {
-                return Result<AuthorDTOFull>.Fail("No author with the ID '" + id + "' was found");
+                return Result<AuthorDTOFull>.Fail("No author with the Id '" + id + "' was found");
             }
 
             return Result<AuthorDTOFull>.Success(AuthorDTOFull.ToDTO(author));
@@ -65,7 +65,7 @@ namespace libdb_dotnet.Services
             var author = await _repo.FindOne(id);
             if (author == null)
             {
-                return Result<AuthorDTOFull>.Fail("No author with the ID '" + id + "' was found");
+                return Result<AuthorDTOFull>.Fail("No author with the Id '" + id + "' was found");
             }
 
             author.Name = requestBody.Name;
@@ -80,7 +80,7 @@ namespace libdb_dotnet.Services
             var author = await _repo.FindOne(id);
             if (author == null)
             {
-                return Result<AuthorDTOFull>.Fail("No author with the ID '" + id + "' was found");
+                return Result<AuthorDTOFull>.Fail("No author with the Id '" + id + "' was found");
             }
 
             await _repo.Delete(author);
