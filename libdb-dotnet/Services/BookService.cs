@@ -22,7 +22,7 @@ namespace libdb_dotnet.Services
             var author = await _authorRepo.FindOne(requestBody.AuthorId);
             if (author == null)
             {
-                return Result<BookDTOFull>.Fail("No author with the ID '" + requestBody.AuthorId + "' was found");
+                return Result<BookDTOFull>.Fail("Author not found");
             }
 
             var newBook = new Book
@@ -58,7 +58,7 @@ namespace libdb_dotnet.Services
             return Result<List<BookDTOFull>>.Success(bookList.ConvertAll(BookDTOFull.ToDTO));
         }
 
-        public async Task<Result<BookDTOFull>> FindOneBook(string id)
+        public async Task<Result<BookDTOFull>> FindOneBook(int id)
         {
             var book = await _bookRepo.FindOne(id);
             if (book == null)
@@ -69,7 +69,7 @@ namespace libdb_dotnet.Services
             return Result<BookDTOFull>.Success(BookDTOFull.ToDTO(book));
         }
 
-        public async Task<Result<BookDTOFull>> UpdateBook(string id, BookRequestBody requestBody)
+        public async Task<Result<BookDTOFull>> UpdateBook(int id, BookRequestBody requestBody)
         {
             var book = await _bookRepo.FindOne(id);
             if (book == null)
@@ -84,7 +84,7 @@ namespace libdb_dotnet.Services
             return Result<BookDTOFull>.Success(BookDTOFull.ToDTO(book));
         }
 
-        public async Task<Result<BookDTOFull>> DeleteBook(string id)
+        public async Task<Result<BookDTOFull>> DeleteBook(int id)
         {
             var book = await _bookRepo.FindOne(id);
             if (book == null)
