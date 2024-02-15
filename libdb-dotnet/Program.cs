@@ -5,9 +5,11 @@ using libdb_dotnet.Services;
 using libdb_dotnet.Services.IServices;
 using Microsoft.EntityFrameworkCore;
 
-var corsPolicyName = "AllowAllOrigins";
-
 var builder = WebApplication.CreateBuilder(args);
+
+// Cross-Origin Resource Sharing (CORS)
+
+var corsPolicyName = "AllowAllOrigins";
 
 builder.Services.AddCors(options =>
 {
@@ -20,28 +22,38 @@ builder.Services.AddCors(options =>
     });
 });
 
+// Database type
+
 builder.Services.AddDbContext<AppDBContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("dbConnection"));
 });
 
-// Add services to the container.
+// Add repositories to the container
 
 builder.Services.AddTransient<IAuthorRepo, AuthorRepo>();
 builder.Services.AddTransient<IBookRepo, BookRepo>();
+builder.Services.AddTransient<IMemberRepo, MemberRepo>();
+builder.Services.AddTransient<IBookEntryRepo, BookEntryRepo>();
+builder.Services.AddTransient<IBorrowRepo, BorrowRepo>();
+
+// Add services to the container.
+
 builder.Services.AddTransient<IAuthorService, AuthorService>();
 builder.Services.AddTransient<IBookService, BookService>();
+builder.Services.AddTransient<IMemberService, MemberService>();
+builder.Services.AddTransient<IBookEntryService, BookEntryService>();
+builder.Services.AddTransient<IBorrowService, BorrowService>();
+
+// Add controllers to the container
 
 builder.Services.AddControllers();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline
 
 app.UseCors(corsPolicyName);
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();
