@@ -22,7 +22,12 @@ namespace libdb_dotnet.Repos
             return newEntity.Entity;
         }
 
-        public virtual async Task<List<T>> FindAll(int pageNumber = 1, int pageSize = 20)
+        public virtual async Task<List<T>> FindAll()
+        {
+            return await _dbs.ToListAsync();
+        }
+
+        public virtual async Task<List<T>> FindAll(int pageNumber, int pageSize)
         {
             return await _dbs.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
         }

@@ -29,21 +29,21 @@ namespace libdb_dotnet.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> FindOneBook(int isbn)
+        public async Task<IActionResult> FindOneBook(int id)
         {
-            return await HandleServiceCall(async () => await _service.FindOneBook(isbn));
+            return await HandleServiceCall(async () => await _service.FindOneBook(id));
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateBook(int isbn, BookRequestBody requestBody)
+        public async Task<IActionResult> UpdateBook(int id, BookRequestBody requestBody)
         {
-            return await HandleServiceCall(async () => await _service.UpdateBook(isbn, requestBody));
+            return await HandleServiceCall(async () => await _service.UpdateBook(id, requestBody));
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteBook(int isbn)
+        public async Task<IActionResult> DeleteBook(int id)
         {
-            return await HandleServiceCall(async () => await _service.DeleteBook(isbn));
+            return await HandleServiceCall(async () => await _service.DeleteBook(id));
         }
     }
 }
