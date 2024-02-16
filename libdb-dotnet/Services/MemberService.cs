@@ -15,7 +15,7 @@ namespace libdb_dotnet.Services
             _memberRepo = memberRepo;
         }
 
-        public async Task<Result<MemberDTOFull>> CreateMember(MemberRequestBody requestBody)
+        public async Task<Result> CreateMember(MemberRequestBody requestBody)
         {
             var newMember = new Member
             {
@@ -27,48 +27,48 @@ namespace libdb_dotnet.Services
 
             newMember = await _memberRepo.Create(newMember);
 
-            return Result<MemberDTOFull>.Success(MemberDTOFull.ToDTO(newMember));
+            return Result.Success(MemberDTOFull.ToDTO(newMember));
         }
 
-        public async Task<Result<List<MemberDTOFull>>> FindAllMembers(int pageNumber, int pageSize)
+        public async Task<Result> FindAllMembers(int pageNumber, int pageSize)
         {
             var memberList = pageNumber > 0 && pageSize > 0 ? await _memberRepo.FindAll(pageNumber, pageSize) : await _memberRepo.FindAll();
             if (memberList.Count == 0)
             {
-                return Result<List<MemberDTOFull>>.Fail("There are no members");
+                return Result.Fail("There are no members");
             }
 
-            return Result<List<MemberDTOFull>>.Success(memberList.ConvertAll(MemberDTOFull.ToDTO));
+            return Result.Success(memberList.ConvertAll(MemberDTOFull.ToDTO));
         }
 
-        public async Task<Result<List<MemberDTOFull>>> FindMembers(string name)
+        public async Task<Result> FindMembers(string name)
         {
             var memberList = await _memberRepo.Find(name);
             if (memberList.Count == 0)
             {
-                return Result<List<MemberDTOFull>>.Fail("No members with a name containing '" + name + "' were found");
+                return Result.Fail("No members with a name containing '" + name + "' were found");
             }
 
-            return Result<List<MemberDTOFull>>.Success(memberList.ConvertAll(MemberDTOFull.ToDTO));
+            return Result.Success(memberList.ConvertAll(MemberDTOFull.ToDTO));
         }
 
-        public async Task<Result<MemberDTOFull>> FindOneMember(int id)
+        public async Task<Result> FindOneMember(int id)
         {
             var member = await _memberRepo.FindOne(id);
             if (member == null)
             {
-                return Result<MemberDTOFull>.Fail("No member with the Id '" + id + "' was found");
+                return Result.Fail("No member with the Id '" + id + "' was found");
             }
 
-            return Result<MemberDTOFull>.Success(MemberDTOFull.ToDTO(member));
+            return Result.Success(MemberDTOFull.ToDTO(member));
         }
 
-        public async Task<Result<MemberDTOFull>> UpdateMember(int id, MemberRequestBody requestBody)
+        public async Task<Result> UpdateMember(int id, MemberRequestBody requestBody)
         {
             var member = await _memberRepo.FindOne(id);
             if (member == null)
             {
-                return Result<MemberDTOFull>.Fail("No member with the Id '" + id + "' was found");
+                return Result.Fail("No member with the Id '" + id + "' was found");
             }
 
             member.Name = requestBody.Name;
@@ -78,20 +78,20 @@ namespace libdb_dotnet.Services
 
             await _memberRepo.CommitChanges();
 
-            return Result<MemberDTOFull>.Success(MemberDTOFull.ToDTO(member));
+            return Result.Success(MemberDTOFull.ToDTO(member));
         }
 
-        public async Task<Result<MemberDTOFull>> DeleteMember(int id)
+        public async Task<Result> DeleteMember(int id)
         {
             var member = await _memberRepo.FindOne(id);
             if (member == null)
             {
-                return Result<MemberDTOFull>.Fail("No member with the Id '" + id + "' was found");
+                return Result.Fail("No member with the Id '" + id + "' was found");
             }
 
             await _memberRepo.Delete(member);
 
-            return Result<MemberDTOFull>.Success(MemberDTOFull.ToDTO(member));
+            return Result.Success(MemberDTOFull.ToDTO(member));
         }
     }
 }

@@ -5,11 +5,11 @@ namespace libdb_dotnet.Services.IServices
 {
     public interface IAuthorService
     {
-        Task<Result<AuthorDTOFull>> CreateAuthor(AuthorRequestBody requestBody);
-        Task<Result<List<AuthorDTOFull>>> FindAllAuthors(int pageNumber, int pageSize);
-        Task<Result<List<AuthorDTOFull>>> FindAuthors(string name);
-        Task<Result<AuthorDTOFull>> FindOneAuthor(int id);
-        Task<Result<AuthorDTOFull>> UpdateAuthor(int id, AuthorRequestBody requestBody);
-        Task<Result<AuthorDTOFull>> DeleteAuthor(int id);
+        Task<Result> CreateAuthor(AuthorCreateRequestBody requestBody);
+        Task<Result> FindAllAuthors(int pageNumber, int pageSize);
+        Task<Result> FindAuthors(string name);
+        Task<Result> FindOneAuthor(int id);
+        Task<Result> UpdateAuthor(int id, AuthorCreateRequestBody requestBody);
+        Task<Result> DeleteAuthor(int id);
     }
 }

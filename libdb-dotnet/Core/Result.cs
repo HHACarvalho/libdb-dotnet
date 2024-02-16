@@ -1,26 +1,26 @@
 ﻿namespace libdb_dotnet.Core
 {
-    public readonly struct Result<T> where T : class
+    public readonly struct Result
     {
         public bool IsSuccess { get; }
         public string? Error { get; }
-        public T? Value { get; }
+        public object? Value { get; }
 
-        private Result(bool isSuccess, string? error, T? value)
+        private Result(bool isSuccess, string? error, object? value)
         {
             IsSuccess = isSuccess;
             Error = error;
             Value = value;
         }
 
-        public static Result<T> Success(T value)
+        public static Result Success(object value)
         {
-            return new Result<T>(true, null, value);
+            return new Result(true, null, value);
         }
 
-        public static Result<T> Fail(string error)
+        public static Result Fail(string error)
         {
-            return new Result<T>(false, error, null);
+            return new Result(false, error, null);
         }
     }
 }

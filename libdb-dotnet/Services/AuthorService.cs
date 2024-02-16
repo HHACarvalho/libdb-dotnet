@@ -15,7 +15,7 @@ namespace libdb_dotnet.Services
             _repo = repo;
         }
 
-        public async Task<Result<AuthorDTOFull>> CreateAuthor(AuthorRequestBody requestBody)
+        public async Task<Result> CreateAuthor(AuthorCreateRequestBody requestBody)
         {
             var newAuthor = new Author
             {
@@ -24,68 +24,68 @@ namespace libdb_dotnet.Services
 
             newAuthor = await _repo.Create(newAuthor);
 
-            return Result<AuthorDTOFull>.Success(AuthorDTOFull.ToDTO(newAuthor));
+            return Result.Success(AuthorDTO.Simple(newAuthor));
         }
 
-        public async Task<Result<List<AuthorDTOFull>>> FindAllAuthors(int pageNumber, int pageSize)
+        public async Task<Result> FindAllAuthors(int pageNumber, int pageSize)
         {
             var authorList = pageNumber > 0 && pageSize > 0 ? await _repo.FindAll(pageNumber, pageSize) : await _repo.FindAll();
             if (authorList.Count == 0)
             {
-                return Result<List<AuthorDTOFull>>.Fail("There are no authors");
+                return Result.Fail("There are no authors");
             }
 
-            return Result<List<AuthorDTOFull>>.Success(authorList.ConvertAll(AuthorDTOFull.ToDTO));
+            return Result.Success(authorList.ConvertAll(AuthorDTO.Simple));
         }
 
-        public async Task<Result<List<AuthorDTOFull>>> FindAuthors(string name)
+        public async Task<Result> FindAuthors(string name)
         {
             var authorList = await _repo.Find(name);
             if (authorList.Count == 0)
             {
-                return Result<List<AuthorDTOFull>>.Fail("No authors with a name containing '" + name + "' were found");
+                return Result.Fail("No authors with a name containing '" + name + "' were found");
             }
 
-            return Result<List<AuthorDTOFull>>.Success(authorList.ConvertAll(AuthorDTOFull.ToDTO));
+            return Result.Success(authorList.ConvertAll(AuthorDTO.Simple));
         }
 
-        public async Task<Result<AuthorDTOFull>> FindOneAuthor(int id)
+        public async Task<Result> FindOneAuthor(int id)
         {
             var author = await _repo.FindOne(id);
             if (author == null)
             {
-                return Result<AuthorDTOFull>.Fail("No author with the Id '" + id + "' was found");
+                return Result.Fail("No author with the Id '" + id + "' was found");
             }
 
-            return Result<AuthorDTOFull>.Success(AuthorDTOFull.ToDTO(author));
+            return Result.Success(AuthorDTO.Detailed(author));
         }
 
-        public async Task<Result<AuthorDTOFull>> UpdateAuthor(int id, AuthorRequestBody requestBody)
+        public async Task<Result> UpdateAuthor(int id, AuthorCreateRequestBody requestBody)
         {
             var author = await _repo.FindOne(id);
             if (author == null)
             {
-                return Result<AuthorDTOFull>.Fail("No author with the Id '" + id + "' was found");
+                return Result.Fail("No author with the Id '" + id + "' was found");
             }
 
             author.Name = requestBody.Name;
 
             await _repo.CommitChanges();
 
-            return Result<AuthorDTOFull>.Success(AuthorDTOFull.ToDTO(author));
+            return Result.Success(AuthorDTO.Simple(author));
         }
 
-        public async Task<Result<AuthorDTOFull>> DeleteAuthor(int id)
+        public async Task<Result> DeleteAuthor(int id)
         {
             var author = await _repo.FindOne(id);
             if (author == null)
             {
-                return Result<AuthorDTOFull>.Fail("No author with the Id '" + id + "' was found");
+                return Result.Fail("No author with the Id '" + id + "' was found");
             }
 
             await _repo.Delete(author);
 
-            return Result<AuthorDTOFull>.Success(AuthorDTOFull.ToDTO(author));
+            return Result.Success(AuthorDTO.Simple(author));
         }
     }
 }

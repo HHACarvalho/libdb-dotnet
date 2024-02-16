@@ -17,12 +17,12 @@ namespace libdb_dotnet.Services
             _bookRepo = repo;
         }
 
-        public async Task<Result<BookDTOFull>> CreateBook(BookRequestBody requestBody)
+        public async Task<Result> CreateBook(BookRequestBody requestBody)
         {
             var author = await _authorRepo.FindOne(requestBody.AuthorId);
             if (author == null)
             {
-                return Result<BookDTOFull>.Fail("Author not found");
+                return Result.Fail("Author not found");
             }
 
             var newBook = new Book
@@ -33,68 +33,68 @@ namespace libdb_dotnet.Services
 
             newBook = await _bookRepo.Create(newBook);
 
-            return Result<BookDTOFull>.Success(BookDTOFull.ToDTO(newBook));
+            return Result.Success(BookDTOFull.ToDTO(newBook));
         }
 
-        public async Task<Result<List<BookDTOFull>>> FindAllBooks(int pageNumber, int pageSize)
+        public async Task<Result> FindAllBooks(int pageNumber, int pageSize)
         {
             var bookList = pageNumber > 0 && pageSize > 0 ? await _bookRepo.FindAll(pageNumber, pageSize) : await _bookRepo.FindAll();
             if (bookList.Count == 0)
             {
-                return Result<List<BookDTOFull>>.Fail("There are no books");
+                return Result.Fail("There are no books");
             }
 
-            return Result<List<BookDTOFull>>.Success(bookList.ConvertAll(BookDTOFull.ToDTO));
+            return Result.Success(bookList.ConvertAll(BookDTOFull.ToDTO));
         }
 
-        public async Task<Result<List<BookDTOFull>>> FindBooks(string title)
+        public async Task<Result> FindBooks(string title)
         {
             var bookList = await _bookRepo.Find(title);
             if (bookList.Count == 0)
             {
-                return Result<List<BookDTOFull>>.Fail("No books with a title containing '" + title + "' were found");
+                return Result.Fail("No books with a title containing '" + title + "' were found");
             }
 
-            return Result<List<BookDTOFull>>.Success(bookList.ConvertAll(BookDTOFull.ToDTO));
+            return Result.Success(bookList.ConvertAll(BookDTOFull.ToDTO));
         }
 
-        public async Task<Result<BookDTOFull>> FindOneBook(int id)
+        public async Task<Result> FindOneBook(int id)
         {
             var book = await _bookRepo.FindOne(id);
             if (book == null)
             {
-                return Result<BookDTOFull>.Fail("No book with the Id '" + id + "' was found");
+                return Result.Fail("No book with the Id '" + id + "' was found");
             }
 
-            return Result<BookDTOFull>.Success(BookDTOFull.ToDTO(book));
+            return Result.Success(BookDTOFull.ToDTO(book));
         }
 
-        public async Task<Result<BookDTOFull>> UpdateBook(int id, BookRequestBody requestBody)
+        public async Task<Result> UpdateBook(int id, BookRequestBody requestBody)
         {
             var book = await _bookRepo.FindOne(id);
             if (book == null)
             {
-                return Result<BookDTOFull>.Fail("No book with the Id '" + id + "' was found");
+                return Result.Fail("No book with the Id '" + id + "' was found");
             }
 
             book.Title = requestBody.Title;
 
             await _bookRepo.CommitChanges();
 
-            return Result<BookDTOFull>.Success(BookDTOFull.ToDTO(book));
+            return Result.Success(BookDTOFull.ToDTO(book));
         }
 
-        public async Task<Result<BookDTOFull>> DeleteBook(int id)
+        public async Task<Result> DeleteBook(int id)
         {
             var book = await _bookRepo.FindOne(id);
             if (book == null)
             {
-                return Result<BookDTOFull>.Fail("No book with the Id '" + id + "' was found");
+                return Result.Fail("No book with the Id '" + id + "' was found");
             }
 
             await _bookRepo.Delete(book);
 
-            return Result<BookDTOFull>.Success(BookDTOFull.ToDTO(book));
+            return Result.Success(BookDTOFull.ToDTO(book));
         }
     }
 }
