@@ -11,9 +11,9 @@ namespace libdb_dotnet.DTOs
         [Range(1, int.MaxValue)]
         public int MemberId { get; set; }
 
-        public DateOnly BorrowDate { get; set; }
+        public string BorrowDate { get; set; }
 
-        public DateOnly DueDate { get; set; }
+        public string DueDate { get; set; }
     }
 
     public class BorrowUpdateBody
@@ -21,7 +21,7 @@ namespace libdb_dotnet.DTOs
         [Range(1, int.MaxValue)]
         public int Id { get; set; }
 
-        public DateOnly ReturnDate { get; set; }
+        public string ReturnDate { get; set; }
 
         [Range(0, float.MaxValue)]
         public float Fine { get; set; }
@@ -36,9 +36,9 @@ namespace libdb_dotnet.DTOs
                 borrow.Id,
                 BookTitle = borrow.Book.Title,
                 MemberName = borrow.Member.Name,
-                BorrowDate = borrow.BorrowDate.ToString(),
-                DueDate = borrow.DueDate.ToString(),
-                ReturnDate = borrow.ReturnDate?.ToString() ?? "",
+                BorrowDate = borrow.BorrowDate.ToString("dd-MM-yyyy"),
+                DueDate = borrow.DueDate.ToString("dd-MM-yyyy"),
+                ReturnDate = borrow.ReturnDate?.ToString("dd-MM-yyyy") ?? "",
                 borrow.Fine
             };
         }

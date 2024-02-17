@@ -37,8 +37,8 @@ namespace libdb_dotnet.Services
             {
                 Book = book,
                 Member = member,
-                BorrowDate = requestBody.BorrowDate,
-                DueDate = requestBody.DueDate,
+                BorrowDate = DateOnly.ParseExact(requestBody.BorrowDate, "dd-MM-yyyy"),
+                DueDate = DateOnly.ParseExact(requestBody.DueDate, "dd-MM-yyyy"),
             };
 
             newBorrow = await _borrowRepo.Create(newBorrow);
@@ -76,7 +76,7 @@ namespace libdb_dotnet.Services
                 return Result.Fail("No borrow with the Id '" + requestBody.Id + "' was found");
             }
 
-            borrow.ReturnDate = requestBody.ReturnDate;
+            borrow.ReturnDate = DateOnly.ParseExact(requestBody.ReturnDate, "dd-MM-yyyy");
             borrow.Fine = requestBody.Fine;
 
             await _borrowRepo.CommitChanges();

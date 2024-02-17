@@ -11,7 +11,7 @@ namespace libdb_dotnet.Repos
 
         public async Task<List<Member>> Find(string name)
         {
-            return await _dbs.Where(x => x.Name.Equals(name)).ToListAsync();
+            return await _dbs.Where(x => x.Name.Contains(name)).ToListAsync();
         }
 
         public async Task<Member?> FindOne(int id)
