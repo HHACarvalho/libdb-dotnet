@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace libdb_dotnet.DTOs
 {
-    public struct BookRequestBody
+    public struct BookCreateBody
     {
         [MaxLength(96)]
         public string Title { get; set; }
@@ -12,18 +12,23 @@ namespace libdb_dotnet.DTOs
         public int AuthorId { get; set; }
     }
 
-    public class BookDTOFull
+    public struct BookUpdateBody
     {
+        [Range(1, int.MaxValue)]
         public int Id { get; set; }
-        public string Title { get; set; }
-        public string Author { get; set; }
 
-        public static BookDTOFull ToDTO(Book book)
+        [MaxLength(96)]
+        public string Title { get; set; }
+    }
+
+    public class BookDTO
+    {
+        public static object Simple(Book book)
         {
-            return new BookDTOFull
+            return new
             {
-                Id = book.Id,
-                Title = book.Title,
+                book.Id,
+                book.Title,
                 Author = book.Author.Name
             };
         }

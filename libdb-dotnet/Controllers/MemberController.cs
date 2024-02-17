@@ -11,7 +11,7 @@ namespace libdb_dotnet.Controllers
         private readonly IMemberService _service = service;
 
         [HttpPost]
-        public async Task<IActionResult> CreateMember(MemberRequestBody requestBody)
+        public async Task<IActionResult> CreateMember(MemberCreateBody requestBody)
         {
             return await HandleServiceCall(async () => await _service.CreateMember(requestBody));
         }
@@ -35,9 +35,9 @@ namespace libdb_dotnet.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateMember(int id, MemberRequestBody requestBody)
+        public async Task<IActionResult> UpdateMember(MemberUpdateBody requestBody)
         {
-            return await HandleServiceCall(async () => await _service.UpdateMember(id, requestBody));
+            return await HandleServiceCall(async () => await _service.UpdateMember(requestBody));
         }
 
         [HttpDelete]

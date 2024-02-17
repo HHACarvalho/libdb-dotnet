@@ -5,10 +5,10 @@ namespace libdb_dotnet.Services.IServices
 {
     public interface IBorrowService
     {
-        Task<Result> CreateBorrow(BorrowRequestBody requestBody);
+        Task<Result> CreateBorrow(BorrowCreateBody requestBody);
         Task<Result> FindAllBorrows(int pageNumber, int pageSize);
         Task<Result> FindOneBorrow(int id);
-        Task<Result> UpdateBorrow(int id, BorrowRequestBody requestBody);
+        Task<Result> UpdateBorrow(BorrowUpdateBody requestBody);
         Task<Result> DeleteBorrow(int id);
     }
 }

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace libdb_dotnet.DTOs
 {
-    public class BookEntryRequestBody
+    public class BookEntryCreateBody
     {
         [MaxLength(13)]
         public string Isbn { get; set; }
@@ -12,17 +12,23 @@ namespace libdb_dotnet.DTOs
         public int BookId { get; set; }
     }
 
-    public class BookEntryDTOFull
+    public class BookEntryUpdateBody
     {
+        [Range(1, int.MaxValue)]
         public int Id { get; set; }
-        public string Isbn { get; set; }
 
-        public static BookEntryDTOFull ToDTO(BookEntry bookEntry)
+        [MaxLength(13)]
+        public string Isbn { get; set; }
+    }
+
+    public class BookEntryDTO
+    {
+        public static object Simple(BookEntry bookEntry)
         {
-            return new BookEntryDTOFull
+            return new
             {
-                Id = bookEntry.Id,
-                Isbn = bookEntry.Isbn,
+                bookEntry.Id,
+                bookEntry.Isbn,
             };
         }
     }

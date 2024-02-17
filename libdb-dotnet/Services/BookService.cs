@@ -17,7 +17,7 @@ namespace libdb_dotnet.Services
             _bookRepo = repo;
         }
 
-        public async Task<Result> CreateBook(BookRequestBody requestBody)
+        public async Task<Result> CreateBook(BookCreateBody requestBody)
         {
             var author = await _authorRepo.FindOne(requestBody.AuthorId);
             if (author == null)
@@ -33,7 +33,7 @@ namespace libdb_dotnet.Services
 
             newBook = await _bookRepo.Create(newBook);
 
-            return Result.Success(BookDTOFull.ToDTO(newBook));
+            return Result.Success(BookDTO.Simple(newBook));
         }
 
         public async Task<Result> FindAllBooks(int pageNumber, int pageSize)
@@ -44,7 +44,7 @@ namespace libdb_dotnet.Services
                 return Result.Fail("There are no books");
             }
 
-            return Result.Success(bookList.ConvertAll(BookDTOFull.ToDTO));
+            return Result.Success(bookList.ConvertAll(BookDTO.Simple));
         }
 
         public async Task<Result> FindBooks(string title)
@@ -55,7 +55,7 @@ namespace libdb_dotnet.Services
                 return Result.Fail("No books with a title containing '" + title + "' were found");
             }
 
-            return Result.Success(bookList.ConvertAll(BookDTOFull.ToDTO));
+            return Result.Success(bookList.ConvertAll(BookDTO.Simple));
         }
 
         public async Task<Result> FindOneBook(int id)
@@ -66,22 +66,22 @@ namespace libdb_dotnet.Services
                 return Result.Fail("No book with the Id '" + id + "' was found");
             }
 
-            return Result.Success(BookDTOFull.ToDTO(book));
+            return Result.Success(BookDTO.Simple(book));
         }
 
-        public async Task<Result> UpdateBook(int id, BookRequestBody requestBody)
+        public async Task<Result> UpdateBook(BookUpdateBody requestBody)
         {
-            var book = await _bookRepo.FindOne(id);
+            var book = await _bookRepo.FindOne(requestBody.Id);
             if (book == null)
             {
-                return Result.Fail("No book with the Id '" + id + "' was found");
+                return Result.Fail("No book with the Id '" + requestBody.Id + "' was found");
             }
 
             book.Title = requestBody.Title;
 
             await _bookRepo.CommitChanges();
 
-            return Result.Success(BookDTOFull.ToDTO(book));
+            return Result.Success(BookDTO.Simple(book));
         }
 
         public async Task<Result> DeleteBook(int id)
@@ -94,7 +94,7 @@ namespace libdb_dotnet.Services
 
             await _bookRepo.Delete(book);
 
-            return Result.Success(BookDTOFull.ToDTO(book));
+            return Result.Success(BookDTO.Simple(book));
         }
     }
 }

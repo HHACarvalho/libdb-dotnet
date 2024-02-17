@@ -15,7 +15,7 @@ namespace libdb_dotnet.Services
             _repo = repo;
         }
 
-        public async Task<Result> CreateAuthor(AuthorCreateRequestBody requestBody)
+        public async Task<Result> CreateAuthor(AuthorCreateBody requestBody)
         {
             var newAuthor = new Author
             {
@@ -60,12 +60,12 @@ namespace libdb_dotnet.Services
             return Result.Success(AuthorDTO.Detailed(author));
         }
 
-        public async Task<Result> UpdateAuthor(int id, AuthorCreateRequestBody requestBody)
+        public async Task<Result> UpdateAuthor(AuthorUpdateBody requestBody)
         {
-            var author = await _repo.FindOne(id);
+            var author = await _repo.FindOne(requestBody.Id);
             if (author == null)
             {
-                return Result.Fail("No author with the Id '" + id + "' was found");
+                return Result.Fail("No author with the Id '" + requestBody.Id + "' was found");
             }
 
             author.Name = requestBody.Name;

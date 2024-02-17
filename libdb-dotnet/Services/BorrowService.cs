@@ -19,7 +19,7 @@ namespace libdb_dotnet.Services
             _memberRepo = memberRepo;
         }
 
-        public async Task<Result> CreateBorrow(BorrowRequestBody requestBody)
+        public async Task<Result> CreateBorrow(BorrowCreateBody requestBody)
         {
             var book = await _bookRepo.FindOne(requestBody.BookId);
             if (book == null)
@@ -43,7 +43,7 @@ namespace libdb_dotnet.Services
 
             newBorrow = await _borrowRepo.Create(newBorrow);
 
-            return Result.Success(BorrowDTOFull.ToDTO(newBorrow));
+            return Result.Success(BorrowDTO.Simple(newBorrow));
         }
 
         public async Task<Result> FindAllBorrows(int pageNumber, int pageSize)
@@ -54,7 +54,7 @@ namespace libdb_dotnet.Services
                 return Result.Fail("There are no borrows");
             }
 
-            return Result.Success(borrowList.ConvertAll(BorrowDTOFull.ToDTO));
+            return Result.Success(borrowList.ConvertAll(BorrowDTO.Simple));
         }
 
         public async Task<Result> FindOneBorrow(int id)
@@ -65,15 +65,15 @@ namespace libdb_dotnet.Services
                 return Result.Fail("No borrow with the Id '" + id + "' was found");
             }
 
-            return Result.Success(BorrowDTOFull.ToDTO(borrow));
+            return Result.Success(BorrowDTO.Simple(borrow));
         }
 
-        public async Task<Result> UpdateBorrow(int id, BorrowRequestBody requestBody)
+        public async Task<Result> UpdateBorrow(BorrowUpdateBody requestBody)
         {
-            var borrow = await _borrowRepo.FindOne(id);
+            var borrow = await _borrowRepo.FindOne(requestBody.Id);
             if (borrow == null)
             {
-                return Result.Fail("No borrow with the Id '" + id + "' was found");
+                return Result.Fail("No borrow with the Id '" + requestBody.Id + "' was found");
             }
 
             borrow.ReturnDate = requestBody.ReturnDate;
@@ -81,7 +81,7 @@ namespace libdb_dotnet.Services
 
             await _borrowRepo.CommitChanges();
 
-            return Result.Success(BorrowDTOFull.ToDTO(borrow));
+            return Result.Success(BorrowDTO.Simple(borrow));
         }
 
         public async Task<Result> DeleteBorrow(int id)
@@ -94,7 +94,7 @@ namespace libdb_dotnet.Services
 
             await _borrowRepo.Delete(borrow);
 
-            return Result.Success(BorrowDTOFull.ToDTO(borrow));
+            return Result.Success(BorrowDTO.Simple(borrow));
         }
     }
 }

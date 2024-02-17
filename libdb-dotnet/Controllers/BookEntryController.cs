@@ -11,7 +11,7 @@ namespace libdb_dotnet.Controllers
         private readonly IBookEntryService _service = service;
 
         [HttpPost]
-        public async Task<IActionResult> CreateBookEntry(BookEntryRequestBody requestBody)
+        public async Task<IActionResult> CreateBookEntry(BookEntryCreateBody requestBody)
         {
             return await HandleServiceCall(async () => await _service.CreateBookEntry(requestBody));
         }
@@ -29,9 +29,9 @@ namespace libdb_dotnet.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateBookEntry(int id, BookEntryRequestBody requestBody)
+        public async Task<IActionResult> UpdateBookEntry(BookEntryUpdateBody requestBody)
         {
-            return await HandleServiceCall(async () => await _service.UpdateBookEntry(id, requestBody));
+            return await HandleServiceCall(async () => await _service.UpdateBookEntry(requestBody));
         }
 
         [HttpDelete]

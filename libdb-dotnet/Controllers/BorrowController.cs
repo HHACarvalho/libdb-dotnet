@@ -11,7 +11,7 @@ namespace libdb_dotnet.Controllers
         private readonly IBorrowService _service = service;
 
         [HttpPost]
-        public async Task<IActionResult> CreateBorrow(BorrowRequestBody requestBody)
+        public async Task<IActionResult> CreateBorrow(BorrowCreateBody requestBody)
         {
             return await HandleServiceCall(async () => await _service.CreateBorrow(requestBody));
         }
@@ -29,9 +29,9 @@ namespace libdb_dotnet.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateBorrow(int id, BorrowRequestBody requestBody)
+        public async Task<IActionResult> UpdateBorrow(BorrowUpdateBody requestBody)
         {
-            return await HandleServiceCall(async () => await _service.UpdateBorrow(id, requestBody));
+            return await HandleServiceCall(async () => await _service.UpdateBorrow(requestBody));
         }
 
         [HttpDelete]

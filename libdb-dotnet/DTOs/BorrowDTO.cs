@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace libdb_dotnet.DTOs
 {
-    public class BorrowRequestBody
+    public class BorrowCreateBody
     {
         [Range(1, int.MaxValue)]
         public int BookId { get; set; }
@@ -14,6 +14,12 @@ namespace libdb_dotnet.DTOs
         public DateOnly BorrowDate { get; set; }
 
         public DateOnly DueDate { get; set; }
+    }
+
+    public class BorrowUpdateBody
+    {
+        [Range(1, int.MaxValue)]
+        public int Id { get; set; }
 
         public DateOnly ReturnDate { get; set; }
 
@@ -21,27 +27,19 @@ namespace libdb_dotnet.DTOs
         public float Fine { get; set; }
     }
 
-    public class BorrowDTOFull
+    public class BorrowDTO
     {
-        public int Id { get; set; }
-        public string BookTitle { get; set; }
-        public string MemberName { get; set; }
-        public string BorrowDate { get; set; }
-        public string DueDate { get; set; }
-        public string ReturnDate { get; set; }
-        public float Fine { get; set; }
-
-        public static BorrowDTOFull ToDTO(Borrow borrow)
+        public static object Simple(Borrow borrow)
         {
-            return new BorrowDTOFull
+            return new
             {
-                Id = borrow.Id,
+                borrow.Id,
                 BookTitle = borrow.Book.Title,
                 MemberName = borrow.Member.Name,
                 BorrowDate = borrow.BorrowDate.ToString(),
                 DueDate = borrow.DueDate.ToString(),
                 ReturnDate = borrow.ReturnDate?.ToString() ?? "",
-                Fine = borrow.Fine
+                borrow.Fine
             };
         }
     }

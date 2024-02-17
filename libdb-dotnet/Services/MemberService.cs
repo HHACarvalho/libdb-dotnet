@@ -15,7 +15,7 @@ namespace libdb_dotnet.Services
             _memberRepo = memberRepo;
         }
 
-        public async Task<Result> CreateMember(MemberRequestBody requestBody)
+        public async Task<Result> CreateMember(MemberCreateBody requestBody)
         {
             var newMember = new Member
             {
@@ -27,7 +27,7 @@ namespace libdb_dotnet.Services
 
             newMember = await _memberRepo.Create(newMember);
 
-            return Result.Success(MemberDTOFull.ToDTO(newMember));
+            return Result.Success(MemberDTO.Simple(newMember));
         }
 
         public async Task<Result> FindAllMembers(int pageNumber, int pageSize)
@@ -38,7 +38,7 @@ namespace libdb_dotnet.Services
                 return Result.Fail("There are no members");
             }
 
-            return Result.Success(memberList.ConvertAll(MemberDTOFull.ToDTO));
+            return Result.Success(memberList.ConvertAll(MemberDTO.Simple));
         }
 
         public async Task<Result> FindMembers(string name)
@@ -49,7 +49,7 @@ namespace libdb_dotnet.Services
                 return Result.Fail("No members with a name containing '" + name + "' were found");
             }
 
-            return Result.Success(memberList.ConvertAll(MemberDTOFull.ToDTO));
+            return Result.Success(memberList.ConvertAll(MemberDTO.Simple));
         }
 
         public async Task<Result> FindOneMember(int id)
@@ -60,15 +60,15 @@ namespace libdb_dotnet.Services
                 return Result.Fail("No member with the Id '" + id + "' was found");
             }
 
-            return Result.Success(MemberDTOFull.ToDTO(member));
+            return Result.Success(MemberDTO.Simple(member));
         }
 
-        public async Task<Result> UpdateMember(int id, MemberRequestBody requestBody)
+        public async Task<Result> UpdateMember(MemberUpdateBody requestBody)
         {
-            var member = await _memberRepo.FindOne(id);
+            var member = await _memberRepo.FindOne(requestBody.Id);
             if (member == null)
             {
-                return Result.Fail("No member with the Id '" + id + "' was found");
+                return Result.Fail("No member with the Id '" + requestBody.Id + "' was found");
             }
 
             member.Name = requestBody.Name;
@@ -78,7 +78,7 @@ namespace libdb_dotnet.Services
 
             await _memberRepo.CommitChanges();
 
-            return Result.Success(MemberDTOFull.ToDTO(member));
+            return Result.Success(MemberDTO.Simple(member));
         }
 
         public async Task<Result> DeleteMember(int id)
@@ -91,7 +91,7 @@ namespace libdb_dotnet.Services
 
             await _memberRepo.Delete(member);
 
-            return Result.Success(MemberDTOFull.ToDTO(member));
+            return Result.Success(MemberDTO.Simple(member));
         }
     }
 }

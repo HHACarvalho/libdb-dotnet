@@ -11,7 +11,7 @@ namespace libdb_dotnet.Controllers
         private readonly IAuthorService _service = service;
 
         [HttpPost]
-        public async Task<IActionResult> CreateAuthor(AuthorRequestBody requestBody)
+        public async Task<IActionResult> CreateAuthor(AuthorCreateBody requestBody)
         {
             return await HandleServiceCall(async () => await _service.CreateAuthor(requestBody));
         }
@@ -35,9 +35,9 @@ namespace libdb_dotnet.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateAuthor(int id, AuthorRequestBody requestBody)
+        public async Task<IActionResult> UpdateAuthor(AuthorUpdateBody requestBody)
         {
-            return await HandleServiceCall(async () => await _service.UpdateAuthor(id, requestBody));
+            return await HandleServiceCall(async () => await _service.UpdateAuthor(requestBody));
         }
 
         [HttpDelete]

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace libdb_dotnet.DTOs
 {
-    public class MemberRequestBody
+    public class MemberCreateBody
     {
         [MaxLength(48)]
         public string Name { get; set; }
@@ -18,23 +18,35 @@ namespace libdb_dotnet.DTOs
         public string PhoneNumber { get; set; }
     }
 
-    public class MemberDTOFull
+    public class MemberUpdateBody
     {
+        [Range(1, int.MaxValue)]
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string Address { get; set; }
-        public string PhoneNumber { get; set; }
 
-        public static MemberDTOFull ToDTO(Member member)
+        [MaxLength(48)]
+        public string Name { get; set; }
+
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [MaxLength(128)]
+        public string Address { get; set; }
+
+        [Phone]
+        public string PhoneNumber { get; set; }
+    }
+
+    public class MemberDTO
+    {
+        public static object Simple(Member member)
         {
-            return new MemberDTOFull
+            return new
             {
-                Id = member.Id,
-                Name = member.Name,
-                Email = member.Email,
-                Address = member.Address,
-                PhoneNumber = member.PhoneNumber
+                member.Id,
+                member.Name,
+                member.Email,
+                member.Address,
+                member.PhoneNumber
             };
         }
     }

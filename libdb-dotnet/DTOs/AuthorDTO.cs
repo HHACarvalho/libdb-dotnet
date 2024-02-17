@@ -3,23 +3,43 @@ using System.ComponentModel.DataAnnotations;
 
 namespace libdb_dotnet.DTOs
 {
-    public struct AuthorRequestBody
+    public struct AuthorCreateBody
     {
         [MaxLength(48)]
         public string Name { get; set; }
     }
 
-    public class AuthorDTOFull
+    public struct AuthorUpdateBody
     {
+        [Range(1, int.MaxValue)]
         public int Id { get; set; }
-        public string Name { get; set; }
 
-        public static AuthorDTOFull ToDTO(Author author)
+        [MaxLength(48)]
+        public string Name { get; set; }
+    }
+
+    public class AuthorDTO
+    {
+        public static object Simple(Author author)
         {
-            return new AuthorDTOFull
+            return new
             {
-                Id = author.Id,
-                Name = author.Name
+                author.Id,
+                author.Name,
+            };
+        }
+
+        public static object Detailed(Author author)
+        {
+            return new
+            {
+                author.Id,
+                author.Name,
+                Books = author.Books.Select(book => new
+                {
+                    book.Id,
+                    book.Title
+                }).ToArray()
             };
         }
     }

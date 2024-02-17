@@ -17,7 +17,7 @@ namespace libdb_dotnet.Services
             _bookEntryRepo = bookEntryRepo;
         }
 
-        public async Task<Result> CreateBookEntry(BookEntryRequestBody requestBody)
+        public async Task<Result> CreateBookEntry(BookEntryCreateBody requestBody)
         {
             var book = await _bookRepo.FindOne(requestBody.BookId);
             if (book == null)
@@ -33,7 +33,7 @@ namespace libdb_dotnet.Services
 
             newBookEntry = await _bookEntryRepo.Create(newBookEntry);
 
-            return Result.Success(BookEntryDTOFull.ToDTO(newBookEntry));
+            return Result.Success(BookEntryDTO.Simple(newBookEntry));
         }
 
         public async Task<Result> FindAllBookEntries(int pageNumber, int pageSize)
@@ -44,7 +44,7 @@ namespace libdb_dotnet.Services
                 return Result.Fail("There are no book entries");
             }
 
-            return Result.Success(bookEntryList.ConvertAll(BookEntryDTOFull.ToDTO));
+            return Result.Success(bookEntryList.ConvertAll(BookEntryDTO.Simple));
         }
 
         public async Task<Result> FindOneBookEntry(int id)
@@ -55,22 +55,22 @@ namespace libdb_dotnet.Services
                 return Result.Fail("No book entry with the Id '" + id + "' was found");
             }
 
-            return Result.Success(BookEntryDTOFull.ToDTO(bookEntry));
+            return Result.Success(BookEntryDTO.Simple(bookEntry));
         }
 
-        public async Task<Result> UpdateBookEntry(int id, BookEntryRequestBody requestBody)
+        public async Task<Result> UpdateBookEntry(BookEntryUpdateBody requestBody)
         {
-            var bookEntry = await _bookEntryRepo.FindOne(id);
+            var bookEntry = await _bookEntryRepo.FindOne(requestBody.Id);
             if (bookEntry == null)
             {
-                return Result.Fail("No book entry with the Id '" + id + "' was found");
+                return Result.Fail("No book entry with the Id '" + requestBody.Id + "' was found");
             }
 
             bookEntry.Isbn = requestBody.Isbn;
 
             await _bookEntryRepo.CommitChanges();
 
-            return Result.Success(BookEntryDTOFull.ToDTO(bookEntry));
+            return Result.Success(BookEntryDTO.Simple(bookEntry));
         }
 
         public async Task<Result> DeleteBookEntry(int id)
@@ -83,7 +83,7 @@ namespace libdb_dotnet.Services
 
             await _bookEntryRepo.Delete(bookEntry);
 
-            return Result.Success(BookEntryDTOFull.ToDTO(bookEntry));
+            return Result.Success(BookEntryDTO.Simple(bookEntry));
         }
     }
 }
