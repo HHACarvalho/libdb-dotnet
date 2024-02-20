@@ -22,7 +22,7 @@ namespace libdb_dotnet.Services
             var author = await _authorRepo.FindOne(requestBody.AuthorId);
             if (author == null)
             {
-                return Result.Fail("Author not found");
+                return Result.Fail("Author not found", 400);
             }
 
             var newBook = new Book
@@ -33,7 +33,7 @@ namespace libdb_dotnet.Services
 
             newBook = await _bookRepo.Create(newBook);
 
-            return Result.Success(BookDTO.Simple(newBook));
+            return Result.Success(BookDTO.Simple(newBook), 201);
         }
 
         public async Task<Result> FindAllBooks(int pageNumber, int pageSize)

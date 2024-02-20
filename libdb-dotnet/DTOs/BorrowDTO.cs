@@ -6,7 +6,7 @@ namespace libdb_dotnet.DTOs
     public class BorrowCreateBody
     {
         [Range(1, int.MaxValue)]
-        public int BookId { get; set; }
+        public int BookEntryId { get; set; }
 
         [Range(1, int.MaxValue)]
         public int MemberId { get; set; }
@@ -34,7 +34,7 @@ namespace libdb_dotnet.DTOs
             return new
             {
                 borrow.Id,
-                BookTitle = borrow.Book.Title,
+                BookTitle = borrow.BookEntry.Book.Title,
                 MemberName = borrow.Member.Name,
                 BorrowDate = borrow.BorrowDate.ToString("dd-MM-yyyy"),
                 DueDate = borrow.DueDate.ToString("dd-MM-yyyy"),

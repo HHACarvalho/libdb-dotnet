@@ -22,7 +22,7 @@ namespace libdb_dotnet.Services
             var book = await _bookRepo.FindOne(requestBody.BookId);
             if (book == null)
             {
-                return Result.Fail("Book not found");
+                return Result.Fail("Book not found", 400);
             }
 
             var newBookEntry = new BookEntry
@@ -33,7 +33,7 @@ namespace libdb_dotnet.Services
 
             newBookEntry = await _bookEntryRepo.Create(newBookEntry);
 
-            return Result.Success(BookEntryDTO.Simple(newBookEntry));
+            return Result.Success(BookEntryDTO.Simple(newBookEntry), 201);
         }
 
         public async Task<Result> FindAllBookEntries(int pageNumber, int pageSize)

@@ -27,7 +27,7 @@ namespace libdb_dotnet.Services
 
             newMember = await _memberRepo.Create(newMember);
 
-            return Result.Success(MemberDTO.Simple(newMember));
+            return Result.Success(MemberDTO.Simple(newMember), 201);
         }
 
         public async Task<Result> FindAllMembers(int pageNumber, int pageSize)

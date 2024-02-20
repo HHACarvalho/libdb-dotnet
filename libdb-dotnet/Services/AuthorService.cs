@@ -24,7 +24,7 @@ namespace libdb_dotnet.Services
 
             newAuthor = await _repo.Create(newAuthor);
 
-            return Result.Success(AuthorDTO.Simple(newAuthor));
+            return Result.Success(AuthorDTO.Simple(newAuthor), 201);
         }
 
         public async Task<Result> FindAllAuthors(int pageNumber, int pageSize)

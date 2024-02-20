@@ -12,10 +12,10 @@ namespace libdb_dotnet.Controllers
                 var result = await serviceMethod();
                 if (!result.IsSuccess)
                 {
-                    return StatusCode(StatusCodes.Status400BadRequest, new { error = result.Error });
+                    return StatusCode(result.StatusCode, new { error = result.Error });
                 }
 
-                return StatusCode(StatusCodes.Status200OK, result.Value);
+                return StatusCode(result.StatusCode, result.Value);
 
             }
             catch (Exception ex)
