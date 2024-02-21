@@ -3,9 +3,9 @@
     public readonly struct Result
     {
         public bool IsSuccess { get; }
+        public int StatusCode { get; }
         public string? Error { get; }
         public object? Value { get; }
-        public int StatusCode { get; }
 
         private Result(bool isSuccess, string? error, object? value, int statusCode)
         {
