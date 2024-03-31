@@ -28,6 +28,7 @@ namespace libdb_dotnet.Services
             var newBook = new Book
             {
                 Title = requestBody.Title,
+                ImageUrl = requestBody.ImageUrl,
                 Author = author
             };
 
@@ -78,6 +79,7 @@ namespace libdb_dotnet.Services
             }
 
             book.Title = requestBody.Title;
+            book.ImageUrl = requestBody.ImageUrl;
 
             await _bookRepo.CommitChanges();
 

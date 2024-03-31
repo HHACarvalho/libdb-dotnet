@@ -12,6 +12,9 @@ namespace libdb_dotnet.Domain
         [MaxLength(48)]
         public string Name { get; set; }
 
+        [Url]
+        public string ImageUrl { get; set; }
+
         public ICollection<Book> Books { get; set; }
     }
 }

@@ -7,6 +7,9 @@ namespace libdb_dotnet.DTOs
     {
         [MaxLength(48)]
         public string Name { get; set; }
+
+        [Url]
+        public string ImageUrl { get; set; }
     }
 
     public struct AuthorUpdateBody
@@ -16,6 +19,9 @@ namespace libdb_dotnet.DTOs
 
         [MaxLength(48)]
         public string Name { get; set; }
+
+        [Url]
+        public string ImageUrl { get; set; }
     }
 
     public class AuthorDTO
@@ -26,6 +32,7 @@ namespace libdb_dotnet.DTOs
             {
                 author.Id,
                 author.Name,
+                author.ImageUrl
             };
         }
 
@@ -35,6 +42,7 @@ namespace libdb_dotnet.DTOs
             {
                 author.Id,
                 author.Name,
+                author.ImageUrl,
                 Books = author.Books.Select(book => new
                 {
                     book.Id,

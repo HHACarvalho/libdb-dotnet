@@ -19,7 +19,8 @@ namespace libdb_dotnet.Services
         {
             var newAuthor = new Author
             {
-                Name = requestBody.Name
+                Name = requestBody.Name,
+                ImageUrl = requestBody.ImageUrl
             };
 
             newAuthor = await _repo.Create(newAuthor);
@@ -69,6 +70,7 @@ namespace libdb_dotnet.Services
             }
 
             author.Name = requestBody.Name;
+            author.ImageUrl = requestBody.ImageUrl;
 
             await _repo.CommitChanges();
 

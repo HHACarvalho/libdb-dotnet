@@ -8,6 +8,9 @@ namespace libdb_dotnet.DTOs
         [MaxLength(96)]
         public string Title { get; set; }
 
+        [Url]
+        public string ImageUrl { get; set; }
+
         [Range(1, int.MaxValue)]
         public int AuthorId { get; set; }
     }
@@ -19,6 +22,9 @@ namespace libdb_dotnet.DTOs
 
         [MaxLength(96)]
         public string Title { get; set; }
+
+        [Url]
+        public string ImageUrl { get; set; }
     }
 
     public class BookDTO
@@ -29,6 +35,7 @@ namespace libdb_dotnet.DTOs
             {
                 book.Id,
                 book.Title,
+                book.ImageUrl,
                 Author = book.Author.Name
             };
         }
