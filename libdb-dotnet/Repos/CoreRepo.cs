@@ -29,7 +29,10 @@ namespace libdb_dotnet.Repos
 
         public virtual async Task<List<T>> FindAll(int pageNumber, int pageSize)
         {
-            return await _dbs.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+            return await _dbs
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
         }
 
         public virtual async Task Delete(T entity)

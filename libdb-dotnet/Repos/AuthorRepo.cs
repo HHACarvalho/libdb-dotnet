@@ -11,12 +11,17 @@ namespace libdb_dotnet.Repos
 
         public async Task<List<Author>> Find(string name)
         {
-            return await _dbs.Where(x => x.Name.Contains(name)).ToListAsync();
+            return await _dbs
+                .Where(x => x.Name.Contains(name))
+                .ToListAsync();
         }
 
         public async Task<Author?> FindOne(int id)
         {
-            return await _dbs.Where(x => x.Id.Equals(id)).Include(x => x.Books).FirstOrDefaultAsync();
+            return await _dbs
+                .Where(x => x.Id.Equals(id))
+                .Include(x => x.Books)
+                .FirstOrDefaultAsync();
         }
     }
 }

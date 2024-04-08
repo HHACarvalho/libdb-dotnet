@@ -11,7 +11,10 @@ namespace libdb_dotnet.Repos
 
         public async Task<BookEntry?> FindOne(int id)
         {
-            return await _dbs.Where(x => x.Id.Equals(id)).Include(x => x.Book).FirstOrDefaultAsync();
+            return await _dbs
+                .Where(x => x.Id.Equals(id))
+                .Include(x => x.Book)
+                .FirstOrDefaultAsync();
         }
     }
 }

@@ -20,5 +20,7 @@ namespace libdb_dotnet.Domain
 
         [Phone]
         public string PhoneNumber { get; set; }
+
+        public ICollection<BookEntry> Borrows { get; set; }
     }
 }
