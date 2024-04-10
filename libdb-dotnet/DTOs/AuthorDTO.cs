@@ -46,7 +46,8 @@ namespace libdb_dotnet.DTOs
                 Books = author.Books.Select(book => new
                 {
                     book.Id,
-                    book.Title
+                    book.Title,
+                    book.ImageUrl
                 }).ToArray()
             };
         }
