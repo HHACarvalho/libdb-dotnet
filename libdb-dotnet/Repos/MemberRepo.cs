@@ -9,10 +9,22 @@ namespace libdb_dotnet.Repos
     {
         public MemberRepo(AppDBContext dbc) : base(dbc, dbc.Members) { }
 
-        public async Task<List<Member>> Find(string name)
+        public async Task<List<Member>> FindAll(int pageNumber = 1, int pageSize = 20)
+        {
+            return await _dbs
+                .OrderBy(x => x.Id)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+        }
+
+        public async Task<List<Member>> Find(string name, int pageNumber = 1, int pageSize = 20)
         {
             return await _dbs
                 .Where(x => x.Name.Contains(name))
+                .OrderBy(x => x.Id)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
                 .ToListAsync();
         }
 
