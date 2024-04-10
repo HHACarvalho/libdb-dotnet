@@ -60,7 +60,7 @@ namespace libdb_dotnet.Services
                 return Result.Fail("No member with the Id '" + id + "' was found");
             }
 
-            return Result.Success(MemberDTO.Simple(member));
+            return Result.Success(MemberDTO.Detailed(member));
         }
 
         public async Task<Result> UpdateMember(MemberUpdateBody requestBody)

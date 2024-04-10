@@ -49,5 +49,24 @@ namespace libdb_dotnet.DTOs
                 member.PhoneNumber
             };
         }
+
+        public static object Detailed(Member member)
+        {
+            return new
+            {
+                member.Id,
+                member.Name,
+                member.Email,
+                member.Address,
+                member.PhoneNumber,
+                Borrows = member.Borrows.Select(borrow => new
+                {
+                    borrow.Id,
+                    borrow.BookEntry.Book.Title,
+                    borrow.BorrowDate,
+                    borrow.ReturnDate
+                }).ToArray()
+            };
+        }
     }
 }

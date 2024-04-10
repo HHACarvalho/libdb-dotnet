@@ -21,6 +21,8 @@ namespace libdb_dotnet.Repos
             return await _dbs
                 .Where(x => x.Id.Equals(id))
                 .Include(x => x.Borrows)
+                .ThenInclude(x => x.BookEntry)
+                .ThenInclude(x => x.Book)
                 .FirstOrDefaultAsync();
         }
     }
