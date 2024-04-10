@@ -8,6 +8,12 @@ namespace libdb_dotnet.DTOs
         [MaxLength(96)]
         public string Title { get; set; }
 
+        [Range(0, int.MaxValue)]
+        public int Year { get; set; }
+
+        [MaxLength(32)]
+        public string Genre { get; set; }
+
         [Url]
         public string ImageUrl { get; set; }
 
@@ -23,6 +29,12 @@ namespace libdb_dotnet.DTOs
         [MaxLength(96)]
         public string Title { get; set; }
 
+        [Range(0, int.MaxValue)]
+        public int Year { get; set; }
+
+        [MaxLength(32)]
+        public string Genre { get; set; }
+
         [Url]
         public string ImageUrl { get; set; }
     }
@@ -37,6 +49,21 @@ namespace libdb_dotnet.DTOs
                 book.Title,
                 book.ImageUrl,
                 Author = book.Author.Name
+            };
+        }
+
+        public static object Detailed(Book book)
+        {
+            return new
+            {
+                book.Id,
+                book.Title,
+                book.ImageUrl,
+                Author = new
+                {
+                    book.Author.Id,
+                    book.Author.Name
+                }
             };
         }
     }

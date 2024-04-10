@@ -28,6 +28,8 @@ namespace libdb_dotnet.Services
             var newBook = new Book
             {
                 Title = requestBody.Title,
+                Year = requestBody.Year,
+                Genre = requestBody.Genre,
                 ImageUrl = requestBody.ImageUrl,
                 Author = author
             };
@@ -67,7 +69,7 @@ namespace libdb_dotnet.Services
                 return Result.Fail("No book with the Id '" + id + "' was found");
             }
 
-            return Result.Success(BookDTO.Simple(book));
+            return Result.Success(BookDTO.Detailed(book));
         }
 
         public async Task<Result> UpdateBook(BookUpdateBody requestBody)
@@ -79,6 +81,8 @@ namespace libdb_dotnet.Services
             }
 
             book.Title = requestBody.Title;
+            book.Year = requestBody.Year;
+            book.Genre = requestBody.Genre;
             book.ImageUrl = requestBody.ImageUrl;
 
             await _bookRepo.CommitChanges();
