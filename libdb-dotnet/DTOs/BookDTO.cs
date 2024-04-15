@@ -58,6 +58,8 @@ namespace libdb_dotnet.DTOs
             {
                 book.Id,
                 book.Title,
+                book.Year,
+                book.Genre,
                 book.ImageUrl,
                 Author = new
                 {

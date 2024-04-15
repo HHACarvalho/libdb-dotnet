@@ -9,11 +9,21 @@ Adds a new author to the database.
 ```json
 {
     "name": "J.R.R. Tolkien",
-    "imageUrl": "https://images.gr-assets.com/photos/1307887634p8/282972.jpg"
+    "imageUrl": "https://image.jpg"
 }
 ```
 
-**Returns:** If successful, the code 201 and a copy of the created author. Otherwise, the code 400 and an error message.
+**Returns:** If successful, the code 201 and a copy of the created author.
+
+```json
+{
+    "id": 1007,
+    "name": "J.R.R. Tolkien",
+    "imageUrl": "https://image.jpg"
+}
+```
+
+Otherwise, the code 400 and an error message.
 
 ---
 
@@ -28,7 +38,28 @@ Retrieves a list of the lastest authors.
 | pageNumber | Number | 1             |
 | pageSize   | Number | 20            |
 
-**Returns:** If successful, the code 200 and a list of authors. Otherwise, the code 404 and an error message.
+**Returns:** If successful, the code 200, the total number of authors and a list of authors.
+
+```json
+{
+    "totalCount": 3,
+    "list": [
+        {
+            "id": 1,
+            "name": "J.R.R. Tolkien",
+            "imageUrl": "https://image.jpg"
+        },
+        {
+            "id": 2,
+            "name": "J.K. Rowling",
+            "imageUrl": "https://image.jpg"
+        },
+        ...
+    ]
+}
+```
+
+Otherwise, the code 404 and an error message.
 
 ---
 
@@ -45,7 +76,28 @@ Retrieves a list of authors matching the specified criteria.
 | id         | Number | 0             |
 | authorName | String | null          |
 
-**Return:** If successful, the code 200 and a list of authors. Otherwise, the code 404 and an error message.
+**Return:** If successful, the code 200, the total number of authors that meet the criteria and a list of authors.
+
+```json
+{
+    "totalCount": 3,
+    "list": [
+        {
+            "id": 1,
+            "name": "J.R.R. Tolkien",
+            "imageUrl": "https://image.jpg"
+        },
+        {
+            "id": 2,
+            "name": "J.K. Rowling",
+            "imageUrl": "https://image.jpg"
+        },
+        ...
+    ]
+}
+```
+
+Otherwise, the code 404 and an error message.
 
 ---
 
@@ -59,7 +111,30 @@ Retrieves a single author by its ID.
 |:-----------|:-------|:--------------|
 | id         | Number | 0             |
 
-**Returns:** If successful, the code 200 and a single author. Otherwise, the code 404 and an error message.
+**Returns:** If successful, the code 200 and a single author.
+
+```json
+{
+    "id": 1,
+    "name": "J.R.R. Tolkien",
+    "imageUrl": "https://image.jpg",
+    "books": [
+        {
+            "id": 1,
+            "title": "The Lord of the Rings: The Fellowship of the Ring",
+            "imageUrl": "https://m.media-amazon.com/images/I/71Ep7UNeTtL._SY466_.jpg"
+        },
+        {
+            "id": 2,
+            "title": "The Lord of the Rings: The Two Towers",
+            "imageUrl": "https://m.media-amazon.com/images/I/71FXalNQFtL._SY466_.jpg"
+        },
+        ...
+    ]
+}
+```
+
+Otherwise, the code 404 and an error message.
 
 ---
 
@@ -73,11 +148,11 @@ Updates an existing author.
 {
     "id": 1,
     "name": "J.R.R. Tolkien",
-    "imageUrl": "https://images.gr-assets.com/photos/1307887634p8/282972.jpg"
+    "imageUrl": "https://image.jpg"
 }
 ```
 
-**Returns:** If successful, the code 200 and a copy of the updated author. Otherwise, the code 404 and an error message.
+**Returns:** If successful, the code 200. Otherwise, the code 404 and an error message.
 
 ---
 
@@ -91,6 +166,6 @@ Deletes a author from the database.
 |:-----------|:-------|:--------------|
 | id         | Number | 0             |
 
-**Returns:** If successful, the code 200 and a copy of the deleted author. Otherwise, the code 404 and an error message.
+**Returns:** If successful, the code 200. Otherwise, the code 404 and an error message.
 
 ---
