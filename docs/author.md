@@ -1,6 +1,6 @@
 # Author
 
-### Create author - POST /author
+### Create author - [POST]() /author
 
 Adds a new author to the database.
 
@@ -17,7 +17,7 @@ Adds a new author to the database.
 
 ---
 
-### Find all authors - GET /author/all?*pageNumber*&*pageSize*
+### Find all authors - [GET]() /author/all?*pageNumber*&*pageSize*
 
 Retrieves a list of the lastest authors.
 
@@ -32,7 +32,7 @@ Retrieves a list of the lastest authors.
 
 ---
 
-### Find authors - GET /author/search?*pageNumber*&*pageSize*&*id*&*authorName*
+### Find authors - [GET]() /author/search?*pageNumber*&*pageSize*&*id*&*authorName*
 
 Retrieves a list of authors matching the specified criteria.
 
@@ -49,7 +49,7 @@ Retrieves a list of authors matching the specified criteria.
 
 ---
 
-### Find one author - GET /author?id
+### Find one author - [GET]() /author?id
 
 Retrieves a single author by its ID.
 
@@ -63,7 +63,7 @@ Retrieves a single author by its ID.
 
 ---
 
-### Update author -  PUT /author
+### Update author - [PUT]() /author
 
 Updates an existing author.
 
@@ -81,7 +81,7 @@ Updates an existing author.
 
 ---
 
-### Delete author - DELETE /author?id
+### Delete author - [DELETE]() /author?id
 
 Deletes a author from the database.
 
