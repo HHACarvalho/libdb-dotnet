@@ -91,7 +91,7 @@ namespace libdb_dotnet.Services
 
             await _borrowRepo.CommitChanges();
 
-            return Result.Success(BorrowDTO.Simple(borrow));
+            return Result.Success(null);
         }
 
         public async Task<Result> DeleteBorrow(int id)
@@ -104,7 +104,7 @@ namespace libdb_dotnet.Services
 
             await _borrowRepo.Delete(borrow);
 
-            return Result.Success(BorrowDTO.Simple(borrow));
+            return Result.Success(null);
         }
     }
 }

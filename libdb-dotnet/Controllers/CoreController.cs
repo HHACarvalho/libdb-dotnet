@@ -15,6 +15,11 @@ namespace libdb_dotnet.Controllers
                     return StatusCode(result.StatusCode, new { error = result.Error });
                 }
 
+                if (result.Value == null)
+                {
+                    return StatusCode(result.StatusCode);
+                }
+
                 return StatusCode(result.StatusCode, result.Value);
 
             }

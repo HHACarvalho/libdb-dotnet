@@ -80,7 +80,7 @@ namespace libdb_dotnet.Services
 
             await _bookEntryRepo.CommitChanges();
 
-            return Result.Success(BookEntryDTO.Simple(bookEntry));
+            return Result.Success(null);
         }
 
         public async Task<Result> DeleteBookEntry(int id)
@@ -93,7 +93,7 @@ namespace libdb_dotnet.Services
 
             await _bookEntryRepo.Delete(bookEntry);
 
-            return Result.Success(BookEntryDTO.Simple(bookEntry));
+            return Result.Success(null);
         }
     }
 }

@@ -98,7 +98,7 @@ namespace libdb_dotnet.Services
 
             await _memberRepo.CommitChanges();
 
-            return Result.Success(MemberDTO.Simple(member));
+            return Result.Success(null);
         }
 
         public async Task<Result> DeleteMember(int id)
@@ -111,7 +111,7 @@ namespace libdb_dotnet.Services
 
             await _memberRepo.Delete(member);
 
-            return Result.Success(MemberDTO.Simple(member));
+            return Result.Success(null);
         }
     }
 }

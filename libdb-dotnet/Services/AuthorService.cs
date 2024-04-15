@@ -94,7 +94,7 @@ namespace libdb_dotnet.Services
 
             await _repo.CommitChanges();
 
-            return Result.Success(AuthorDTO.Simple(author));
+            return Result.Success(null);
         }
 
         public async Task<Result> DeleteAuthor(int id)
@@ -107,7 +107,7 @@ namespace libdb_dotnet.Services
 
             await _repo.Delete(author);
 
-            return Result.Success(AuthorDTO.Simple(author));
+            return Result.Success(null);
         }
     }
 }

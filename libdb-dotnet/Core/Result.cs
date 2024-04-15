@@ -15,7 +15,7 @@
             StatusCode = statusCode;
         }
 
-        public static Result Success(object value, int statusCode = 200)
+        public static Result Success(object? value, int statusCode = 200)
         {
             return new Result(true, null, value, statusCode);
         }

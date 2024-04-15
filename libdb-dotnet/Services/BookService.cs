@@ -107,7 +107,7 @@ namespace libdb_dotnet.Services
 
             await _bookRepo.CommitChanges();
 
-            return Result.Success(BookDTO.Simple(book));
+            return Result.Success(null);
         }
 
         public async Task<Result> DeleteBook(int id)
@@ -120,7 +120,7 @@ namespace libdb_dotnet.Services
 
             await _bookRepo.Delete(book);
 
-            return Result.Success(BookDTO.Simple(book));
+            return Result.Success(null);
         }
     }
 }
