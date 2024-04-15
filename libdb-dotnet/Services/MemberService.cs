@@ -32,24 +32,44 @@ namespace libdb_dotnet.Services
 
         public async Task<Result> FindAllMembers(int pageNumber, int pageSize)
         {
-            var memberList = pageNumber > 0 && pageSize > 0 ? await _memberRepo.FindAll(pageNumber, pageSize) : await _memberRepo.FindAll();
-            if (memberList.Count == 0)
+            if (pageNumber < 1 || pageNumber < 1)
+            {
+                pageNumber = 1;
+                pageSize = 20;
+            }
+
+            var queryOutput = await _memberRepo.FindAll(pageNumber, pageSize);
+            if (queryOutput.Array.Length == 0)
             {
                 return Result.Fail("There are no members");
             }
 
-            return Result.Success(memberList.ConvertAll(MemberDTO.Simple));
+            return Result.Success(new
+            {
+                totalCount = queryOutput.TotalCount,
+                list = Array.ConvertAll(queryOutput.Array, MemberDTO.Simple)
+            });
         }
 
-        public async Task<Result> FindMembers(string name)
+        public async Task<Result> FindMembers(int pageNumber, int pageSize, int id, string? memberName, string? email, string? address, string? phoneNumber)
         {
-            var memberList = await _memberRepo.Find(name);
-            if (memberList.Count == 0)
+            if (pageNumber < 1 || pageNumber < 1)
             {
-                return Result.Fail("No members with a name containing '" + name + "' were found");
+                pageNumber = 1;
+                pageSize = 20;
             }
 
-            return Result.Success(memberList.ConvertAll(MemberDTO.Simple));
+            var queryOutput = await _memberRepo.Find(pageNumber, pageSize, id, memberName, email, address, phoneNumber);
+            if (queryOutput.Array.Length == 0)
+            {
+                return Result.Fail("No members matching the criteria were found");
+            }
+
+            return Result.Success(new
+            {
+                totalCount = queryOutput.TotalCount,
+                list = Array.ConvertAll(queryOutput.Array, MemberDTO.Simple)
+            });
         }
 
         public async Task<Result> FindOneMember(int id)

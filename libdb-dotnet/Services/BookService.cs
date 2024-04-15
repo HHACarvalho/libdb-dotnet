@@ -41,24 +41,44 @@ namespace libdb_dotnet.Services
 
         public async Task<Result> FindAllBooks(int pageNumber, int pageSize)
         {
-            var bookList = pageNumber > 0 && pageSize > 0 ? await _bookRepo.FindAll(pageNumber, pageSize) : await _bookRepo.FindAll();
-            if (bookList.Count == 0)
+            if (pageNumber < 1 || pageNumber < 1)
+            {
+                pageNumber = 1;
+                pageSize = 20;
+            }
+
+            var queryOutput = await _bookRepo.FindAll(pageNumber, pageSize);
+            if (queryOutput.Array.Length == 0)
             {
                 return Result.Fail("There are no books");
             }
 
-            return Result.Success(bookList.ConvertAll(BookDTO.Simple));
+            return Result.Success(new
+            {
+                totalCount = queryOutput.TotalCount,
+                list = Array.ConvertAll(queryOutput.Array, BookDTO.Simple)
+            });
         }
 
-        public async Task<Result> FindBooks(string title)
+        public async Task<Result> FindBooks(int pageNumber, int pageSize, int id, string? title, int year, string? genre, string? authorName)
         {
-            var bookList = await _bookRepo.Find(title);
-            if (bookList.Count == 0)
+            if (pageNumber < 1 || pageNumber < 1)
             {
-                return Result.Fail("No books with a title containing '" + title + "' were found");
+                pageNumber = 1;
+                pageSize = 20;
             }
 
-            return Result.Success(bookList.ConvertAll(BookDTO.Simple));
+            var queryOutput = await _bookRepo.Find(pageNumber, pageSize, id, title, year, genre, authorName);
+            if (queryOutput.Array.Length == 0)
+            {
+                return Result.Fail("No books matching the criteria were found");
+            }
+
+            return Result.Success(new
+            {
+                totalCount = queryOutput.TotalCount,
+                list = Array.ConvertAll(queryOutput.Array, BookDTO.Simple)
+            });
         }
 
         public async Task<Result> FindOneBook(int id)

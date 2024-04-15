@@ -38,13 +38,23 @@ namespace libdb_dotnet.Services
 
         public async Task<Result> FindAllBookEntries(int pageNumber, int pageSize)
         {
-            var bookEntryList = pageNumber > 0 && pageSize > 0 ? await _bookEntryRepo.FindAll(pageNumber, pageSize) : await _bookEntryRepo.FindAll();
-            if (bookEntryList.Count == 0)
+            if (pageNumber < 1 || pageNumber < 1)
+            {
+                pageNumber = 1;
+                pageSize = 20;
+            }
+
+            var queryOutput = await _bookEntryRepo.FindAll(pageNumber, pageSize);
+            if (queryOutput.Array.Length == 0)
             {
                 return Result.Fail("There are no book entries");
             }
 
-            return Result.Success(bookEntryList.ConvertAll(BookEntryDTO.Simple));
+            return Result.Success(new
+            {
+                totalCount = queryOutput.TotalCount,
+                list = Array.ConvertAll(queryOutput.Array, BookEntryDTO.Simple)
+            });
         }
 
         public async Task<Result> FindOneBookEntry(int id)

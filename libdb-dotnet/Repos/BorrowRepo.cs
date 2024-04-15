@@ -9,16 +9,21 @@ namespace libdb_dotnet.Repos
     {
         public BorrowRepo(AppDBContext dbc) : base(dbc, dbc.Borrows) { }
 
-        public async Task<List<Borrow>> FindAll(int pageNumber = 1, int pageSize = 20)
+        public async Task<QueryOutput<Borrow>> FindAll(int pageNumber, int pageSize)
         {
-            return await _dbs
-                .OrderBy(x => x.Id)
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .Include(x => x.BookEntry)
-                .ThenInclude(x => x.Book)
-                .Include(x => x.Member)
-                .ToListAsync();
+            var output = new QueryOutput<Borrow>(
+                await _dbs.CountAsync(),
+                await _dbs
+                    .OrderBy(x => x.Id)
+                    .Skip((pageNumber - 1) * pageSize)
+                    .Take(pageSize)
+                    .Include(x => x.BookEntry)
+                    .ThenInclude(x => x.Book)
+                    .Include(x => x.Member)
+                    .ToArrayAsync()
+            );
+
+            return output;
         }
 
         public async Task<Borrow?> FindOne(int id)

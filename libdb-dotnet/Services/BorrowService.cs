@@ -48,13 +48,23 @@ namespace libdb_dotnet.Services
 
         public async Task<Result> FindAllBorrows(int pageNumber, int pageSize)
         {
-            var borrowList = pageNumber > 0 && pageSize > 0 ? await _borrowRepo.FindAll(pageNumber, pageSize) : await _borrowRepo.FindAll();
-            if (borrowList.Count == 0)
+            if (pageNumber < 1 || pageNumber < 1)
+            {
+                pageNumber = 1;
+                pageSize = 20;
+            }
+
+            var queryOutput = await _borrowRepo.FindAll(pageNumber, pageSize);
+            if (queryOutput.Array.Length == 0)
             {
                 return Result.Fail("There are no borrows");
             }
 
-            return Result.Success(borrowList.ConvertAll(BorrowDTO.Simple));
+            return Result.Success(new
+            {
+                totalCount = queryOutput.TotalCount,
+                list = Array.ConvertAll(queryOutput.Array, BorrowDTO.Simple)
+            });
         }
 
         public async Task<Result> FindOneBorrow(int id)

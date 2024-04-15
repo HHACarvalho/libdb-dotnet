@@ -9,23 +9,59 @@ namespace libdb_dotnet.Repos
     {
         public MemberRepo(AppDBContext dbc) : base(dbc, dbc.Members) { }
 
-        public async Task<List<Member>> FindAll(int pageNumber = 1, int pageSize = 20)
+        public async Task<QueryOutput<Member>> FindAll(int pageNumber, int pageSize)
         {
-            return await _dbs
-                .OrderBy(x => x.Id)
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .ToListAsync();
+            var output = new QueryOutput<Member>(
+                await _dbs.CountAsync(),
+                await _dbs
+                    .OrderBy(x => x.Id)
+                    .Skip((pageNumber - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToArrayAsync()
+            );
+
+            return output;
         }
 
-        public async Task<List<Member>> Find(string name, int pageNumber = 1, int pageSize = 20)
+        public async Task<QueryOutput<Member>> Find(int pageNumber, int pageSize, int id, string? memberName, string? email, string? address, string? phoneNumber)
         {
-            return await _dbs
-                .Where(x => x.Name.Contains(name))
-                .OrderBy(x => x.Id)
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .ToListAsync();
+            IQueryable<Member> subSet = _dbs;
+
+            if (id > 0)
+            {
+                subSet = subSet.Where(x => x.Id.Equals(id));
+            }
+
+            if (!string.IsNullOrEmpty(memberName))
+            {
+                subSet = subSet.Where(x => x.Name.Contains(memberName));
+            }
+
+            if (!string.IsNullOrEmpty(email))
+            {
+                subSet = subSet.Where(x => x.Email.Contains(email));
+            }
+
+            if (!string.IsNullOrEmpty(address))
+            {
+                subSet = subSet.Where(x => x.Address.Contains(address));
+            }
+
+            if (!string.IsNullOrEmpty(phoneNumber))
+            {
+                subSet = subSet.Where(x => x.PhoneNumber.Contains(phoneNumber));
+            }
+
+            var output = new QueryOutput<Member>(
+                await subSet.CountAsync(),
+                await subSet
+                    .OrderBy(x => x.Id)
+                    .Skip((pageNumber - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToArrayAsync()
+            );
+
+            return output;
         }
 
         public async Task<Member?> FindOne(int id)

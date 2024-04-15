@@ -23,9 +23,9 @@ namespace libdb_dotnet.Controllers
         }
 
         [HttpGet("search")]
-        public async Task<IActionResult> FindBooks(string title)
+        public async Task<IActionResult> FindBooks(int pageNumber, int pageSize, int id = 0, string? title = null, int year = 0, string? genre = null, string? authorName = null)
         {
-            return await HandleServiceCall(async () => await _service.FindBooks(title));
+            return await HandleServiceCall(async () => await _service.FindBooks(pageNumber, pageSize, id, title, year, genre, authorName));
         }
 
         [HttpGet]

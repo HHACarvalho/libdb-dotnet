@@ -9,13 +9,18 @@ namespace libdb_dotnet.Repos
     {
         public BookEntryRepo(AppDBContext dbc) : base(dbc, dbc.BookEntries) { }
 
-        public async Task<List<BookEntry>> FindAll(int pageNumber = 1, int pageSize = 20)
+        public async Task<QueryOutput<BookEntry>> FindAll(int pageNumber, int pageSize)
         {
-            return await _dbs
-                .OrderBy(x => x.Id)
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .ToListAsync();
+            var output = new QueryOutput<BookEntry>(
+                await _dbs.CountAsync(),
+                await _dbs
+                    .OrderBy(x => x.Id)
+                    .Skip((pageNumber - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToArrayAsync()
+            );
+
+            return output;
         }
 
         public async Task<BookEntry?> FindOne(int id)

@@ -9,25 +9,62 @@ namespace libdb_dotnet.Repos
     {
         public BookRepo(AppDBContext dbc) : base(dbc, dbc.Books) { }
 
-        public async Task<List<Book>> FindAll(int pageNumber = 1, int pageSize = 20)
+        public async Task<QueryOutput<Book>> FindAll(int pageNumber, int pageSize)
         {
-            return await _dbs
-                .OrderBy(x => x.Id)
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .Include(x => x.Author)
-                .ToListAsync();
+            var output = new QueryOutput<Book>(
+                await _dbs.CountAsync(),
+                await _dbs
+                    .OrderBy(x => x.Id)
+                    .Skip((pageNumber - 1) * pageSize)
+                    .Take(pageSize)
+                    .Include(x => x.Author)
+                    .ToArrayAsync()
+            );
+
+            return output;
         }
 
-        public async Task<List<Book>> Find(string title, int pageNumber = 1, int pageSize = 20)
+        public async Task<QueryOutput<Book>> Find(int pageNumber, int pageSize, int id, string? title, int year, string? genre, string? authorName)
         {
-            return await _dbs
-                .Where(x => x.Title.Contains(title))
-                .OrderBy(x => x.Id)
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .Include(x => x.Author)
-                .ToListAsync();
+            IQueryable<Book> subSet = _dbs;
+
+            if (id > 0)
+            {
+                subSet = subSet.Where(x => x.Id.Equals(id));
+            }
+
+            if (!string.IsNullOrEmpty(title))
+            {
+                subSet = subSet.Where(x => x.Title.Contains(title));
+            }
+
+            if (year > 0)
+            {
+                subSet = subSet.Where(x => x.Year.Equals(year));
+            }
+
+            if (!string.IsNullOrEmpty(genre))
+            {
+                subSet = subSet.Where(x => x.Genre.Contains(genre));
+            }
+
+            subSet = subSet.Include(x => x.Author);
+
+            if (!string.IsNullOrEmpty(authorName))
+            {
+                subSet = subSet.Where(x => x.Author.Name.Contains(authorName));
+            }
+
+            var output = new QueryOutput<Book>(
+                await subSet.CountAsync(),
+                await subSet
+                    .OrderBy(x => x.Id)
+                    .Skip((pageNumber - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToArrayAsync()
+            );
+
+            return output;
         }
 
         public async Task<Book?> FindOne(int id)

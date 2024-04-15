@@ -9,23 +9,44 @@ namespace libdb_dotnet.Repos
     {
         public AuthorRepo(AppDBContext dbc) : base(dbc, dbc.Authors) { }
 
-        public async Task<List<Author>> FindAll(int pageNumber = 1, int pageSize = 20)
+        public async Task<QueryOutput<Author>> FindAll(int pageNumber, int pageSize)
         {
-            return await _dbs
-                .OrderBy(x => x.Id)
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .ToListAsync();
+            var output = new QueryOutput<Author>(
+                await _dbs.CountAsync(),
+                await _dbs
+                    .OrderBy(x => x.Id)
+                    .Skip((pageNumber - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToArrayAsync()
+            );
+
+            return output;
         }
 
-        public async Task<List<Author>> Find(string name, int pageNumber = 1, int pageSize = 20)
+        public async Task<QueryOutput<Author>> Find(int pageNumber, int pageSize, int id, string? authorName)
         {
-            return await _dbs
-                .Where(x => x.Name.Contains(name))
-                .OrderBy(x => x.Id)
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .ToListAsync();
+            IQueryable<Author> subSet = _dbs;
+
+            if (id > 0)
+            {
+                subSet = subSet.Where(x => x.Id.Equals(id));
+            }
+
+            if (!string.IsNullOrEmpty(authorName))
+            {
+                subSet = subSet.Where(x => x.Name.Contains(authorName));
+            }
+
+            var output = new QueryOutput<Author>(
+                await subSet.CountAsync(),
+                await subSet
+                    .OrderBy(x => x.Id)
+                    .Skip((pageNumber - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToArrayAsync()
+            );
+
+            return output;
         }
 
         public async Task<Author?> FindOne(int id)

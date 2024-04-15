@@ -30,24 +30,44 @@ namespace libdb_dotnet.Services
 
         public async Task<Result> FindAllAuthors(int pageNumber, int pageSize)
         {
-            var authorList = pageNumber > 0 && pageSize > 0 ? await _repo.FindAll(pageNumber, pageSize) : await _repo.FindAll();
-            if (authorList.Count == 0)
+            if (pageNumber < 1 || pageNumber < 1)
+            {
+                pageNumber = 1;
+                pageSize = 20;
+            }
+
+            var queryOutput = await _repo.FindAll(pageNumber, pageSize);
+            if (queryOutput.Array.Length == 0)
             {
                 return Result.Fail("There are no authors");
             }
 
-            return Result.Success(authorList.ConvertAll(AuthorDTO.Simple));
+            return Result.Success(new
+            {
+                totalCount = queryOutput.TotalCount,
+                list = Array.ConvertAll(queryOutput.Array, AuthorDTO.Simple)
+            });
         }
 
-        public async Task<Result> FindAuthors(string name)
+        public async Task<Result> FindAuthors(int pageNumber, int pageSize, int id, string? authorName)
         {
-            var authorList = await _repo.Find(name);
-            if (authorList.Count == 0)
+            if (pageNumber < 1 || pageNumber < 1)
             {
-                return Result.Fail("No authors with a name containing '" + name + "' were found");
+                pageNumber = 1;
+                pageSize = 20;
             }
 
-            return Result.Success(authorList.ConvertAll(AuthorDTO.Simple));
+            var queryOutput = await _repo.Find(pageNumber, pageSize, id, authorName);
+            if (queryOutput.Array.Length == 0)
+            {
+                return Result.Fail("No authors matching the criteria were found");
+            }
+
+            return Result.Success(new
+            {
+                totalCount = queryOutput.TotalCount,
+                list = Array.ConvertAll(queryOutput.Array, AuthorDTO.Simple)
+            });
         }
 
         public async Task<Result> FindOneAuthor(int id)
