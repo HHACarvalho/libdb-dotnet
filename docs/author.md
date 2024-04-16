@@ -103,7 +103,7 @@ Otherwise, the code 404 and an error message.
 
 ### Find one author - [GET]() /author?id
 
-Retrieves a single author by its ID.
+Retrieves a single author using its ID.
 
 **Parameters:**
 

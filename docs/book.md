@@ -82,7 +82,10 @@ Retrieves a list of books matching the specified criteria.
 | pageNumber | Number | 1             |
 | pageSize   | Number | 20            |
 | id         | Number | 0             |
-| bookName | String | null          |
+| title      | String | null          |
+| year       | Number | 0             |
+| genre      | Number | null          |
+| authorName | Number | null          |
 
 **Return:** If successful, the code 200, the total number of books that meet the criteria and a list of books.
 
@@ -113,7 +116,7 @@ Otherwise, the code 404 and an error message.
 
 ### Find one book - [GET]() /book?id
 
-Retrieves a single book by its ID.
+Retrieves a single book using its ID.
 
 **Parameters:**
 
