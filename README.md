@@ -34,16 +34,6 @@ dotnet run
 dotnet test
 ```
 
-# Docker Commands
-
-### Create SQL Server Instance
-
-```
-docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Docker@1!" -p 1401:1433 --name sqlserver2022 -d mcr.microsoft.com/mssql/server:2022-latest
-```
-
-Note: [Docker Documentation](https://docs.docker.com/reference/cli/docker/container/run/)
-
 # Entity Framework Core (Tools) Commands
 
 ### Create Database
@@ -63,3 +53,13 @@ Update-Database
 ```
 Remove-Migration
 ```
+
+# Docker Commands
+
+### Create SQL Server Instance
+
+```
+docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Docker@1!" -p 1401:1433 --name sqlserver2022 -d mcr.microsoft.com/mssql/server:2022-latest
+```
+
+[Docker Documentation](https://docs.docker.com/reference/cli/docker/container/run/)

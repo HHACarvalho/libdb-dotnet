@@ -14,7 +14,7 @@ namespace libdb_dotnet.Repos
             var output = new QueryOutput<Borrow>(
                 await _dbs.CountAsync(),
                 await _dbs
-                    .OrderBy(x => x.Id)
+                    .OrderByDescending(x => x.Id)
                     .Skip((pageNumber - 1) * pageSize)
                     .Take(pageSize)
                     .Include(x => x.BookEntry)
