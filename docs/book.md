@@ -48,8 +48,8 @@ Retrieves a list of the lastest books.
 
 ```json
 {
-    "totalCount": 14,
-    "list": [
+    "total": 14,
+    "array": [
         {
             "id": 1,
             "title": "The Lord of the Rings: The Fellowship of the Ring",
@@ -91,8 +91,8 @@ Retrieves a list of books matching the specified criteria.
 
 ```json
 {
-    "totalCount": 14,
-    "list": [
+    "total": 14,
+    "array": [
         {
             "id": 1,
             "title": "The Lord of the Rings: The Fellowship of the Ring",

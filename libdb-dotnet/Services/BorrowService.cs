@@ -62,8 +62,8 @@ namespace libdb_dotnet.Services
 
             return Result.Success(new
             {
-                totalCount = queryOutput.TotalCount,
-                list = Array.ConvertAll(queryOutput.Array, BorrowDTO.Simple)
+                total = queryOutput.TotalCount,
+                array = Array.ConvertAll(queryOutput.Array, BorrowDTO.Simple)
             });
         }
 

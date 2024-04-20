@@ -48,8 +48,8 @@ Retrieves a list of the lastest borrows.
 
 ```json
 {
-    "totalCount": 8,
-    "list": [
+    "total": 8,
+    "array": [
         {
             "id": 1,
             "bookTitle": "The Lord of the Rings: The Fellowship of the Ring",

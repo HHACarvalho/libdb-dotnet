@@ -42,8 +42,8 @@ Retrieves a list of the lastest authors.
 
 ```json
 {
-    "totalCount": 3,
-    "list": [
+    "total": 3,
+    "array": [
         {
             "id": 1,
             "name": "J.R.R. Tolkien",
@@ -80,8 +80,8 @@ Retrieves a list of authors matching the specified criteria.
 
 ```json
 {
-    "totalCount": 3,
-    "list": [
+    "total": 3,
+    "array": [
         {
             "id": 1,
             "name": "J.R.R. Tolkien",
@@ -122,12 +122,12 @@ Retrieves a single author using its ID.
         {
             "id": 1,
             "title": "The Lord of the Rings: The Fellowship of the Ring",
-            "imageUrl": "https://m.media-amazon.com/images/I/71Ep7UNeTtL._SY466_.jpg"
+            "imageUrl": "https://image.jpg"
         },
         {
             "id": 2,
             "title": "The Lord of the Rings: The Two Towers",
-            "imageUrl": "https://m.media-amazon.com/images/I/71FXalNQFtL._SY466_.jpg"
+            "imageUrl": "https://image.jpg"
         },
         ...
     ]

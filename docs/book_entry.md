@@ -41,8 +41,8 @@ Retrieves a list of the lastest book entries.
 
 ```json
 {
-    "totalCount": 17,
-    "list": [
+    "total": 17,
+    "array": [
         {
             "id": 1,
             "isbn": "9780008376123"

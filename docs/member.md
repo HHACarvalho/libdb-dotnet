@@ -46,8 +46,8 @@ Retrieves a list of the lastest members.
 
 ```json
 {
-    "totalCount": 4,
-    "list": [
+    "total": 3,
+    "array": [
         {
             "id": 1,
             "name": "Hugo Carvalho",
@@ -91,8 +91,8 @@ Retrieves a list of members matching the specified criteria.
 
 ```json
 {
-    "totalCount": 4,
-    "list": [
+    "total": 3,
+    "array": [
         {
             "id": 1,
             "name": "Hugo Carvalho",
