@@ -48,7 +48,11 @@ namespace libdb_dotnet.DTOs
                 book.Id,
                 book.Title,
                 book.ImageUrl,
-                Author = book.Author.Name
+                Author = new
+                {
+                    book.Author.Id,
+                    book.Author.Name
+                }
             };
         }
 

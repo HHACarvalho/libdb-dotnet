@@ -54,13 +54,19 @@ Retrieves a list of the lastest books.
             "id": 1,
             "title": "The Lord of the Rings: The Fellowship of the Ring",
             "imageUrl": "https://image.jpg",
-            "author": "J.R.R. Tolkien"
+            "author": {
+                "id": 1,
+                "name": "J.R.R. Tolkien"
+            }
         },
         {
             "id": 2,
             "title": "The Lord of the Rings: The Return of the King",
             "imageUrl": "https://image.jpg",
-            "author": "J.R.R. Tolkien"
+            "author": {
+                "id": 1,
+                "name": "J.R.R. Tolkien"
+            }
         },
         ...
     ]
@@ -97,13 +103,19 @@ Retrieves a list of books matching the specified criteria.
             "id": 1,
             "title": "The Lord of the Rings: The Fellowship of the Ring",
             "imageUrl": "https://image.jpg",
-            "author": "J.R.R. Tolkien"
+            "author": {
+                "id": 1,
+                "name": "J.R.R. Tolkien"
+            }
         },
         {
             "id": 2,
             "title": "The Lord of the Rings: The Return of the King",
             "imageUrl": "https://image.jpg",
-            "author": "J.R.R. Tolkien"
+            "author": {
+                "id": 1,
+                "name": "J.R.R. Tolkien"
+            }
         },
         ...
     ]
