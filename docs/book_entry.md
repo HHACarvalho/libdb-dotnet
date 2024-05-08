@@ -1,4 +1,4 @@
-# Book Entry
+# Book Entry endpoints
 
 ### Create book entry - [POST]() /bookEntry
 

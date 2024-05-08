@@ -1,4 +1,4 @@
-# Borrow
+# Borrow endpoints
 
 ### Create borrow - [POST]() /borrow
 

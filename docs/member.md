@@ -1,4 +1,4 @@
-# Member
+# Member endpoints
 
 ### Create member - [POST]() /member
 

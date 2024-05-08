@@ -1,4 +1,4 @@
-# Author
+# Author endpoints
 
 ### Create author - [POST]() /author
 
@@ -17,7 +17,7 @@ Adds a new author to the database.
 
 ```json
 {
-    "id": 1007,
+    "id": 1,
     "name": "J.R.R. Tolkien",
     "imageUrl": "https://image.jpg"
 }

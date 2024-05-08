@@ -1,4 +1,4 @@
-# Book
+# Book endpoints
 
 ### Create book - [POST]() /book
 
