@@ -49,7 +49,7 @@ namespace libdb_dotnet.Services
             });
         }
 
-        public async Task<Result> FindAuthors(int pageNumber, int pageSize, int id, string? authorName)
+        public async Task<Result> FindAuthors(int pageNumber, int pageSize, int id, string? name)
         {
             if (pageNumber < 1 || pageNumber < 1)
             {
@@ -57,7 +57,7 @@ namespace libdb_dotnet.Services
                 pageSize = 20;
             }
 
-            var queryOutput = await _repo.Find(pageNumber, pageSize, id, authorName);
+            var queryOutput = await _repo.Find(pageNumber, pageSize, id, name);
             if (queryOutput.Array.Length == 0)
             {
                 return Result.Fail("No authors matching the criteria were found");
