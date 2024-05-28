@@ -63,7 +63,7 @@ Otherwise, the code 404 and an error message.
 
 ---
 
-### Find authors - [GET]() /author/search?*pageNumber*&*pageSize*&*id*&*authorName*
+### Find authors - [GET]() /author/search?*pageNumber*&*pageSize*&*id*&*name*
 
 Retrieves a list of authors matching the specified criteria.
 
@@ -74,7 +74,7 @@ Retrieves a list of authors matching the specified criteria.
 | pageNumber | Number | 1             |
 | pageSize   | Number | 20            |
 | id         | Number | 0             |
-| authorName | String | null          |
+| name       | String | null          |
 
 **Return:** If successful, the code 200, the total number of authors that meet the criteria and a list of authors.
 
