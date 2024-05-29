@@ -49,18 +49,18 @@ Retrieves a list of the lastest members.
     "total": 3,
     "array": [
         {
-            "id": 1,
-            "name": "Hugo Carvalho",
-            "email": "hugo.carvalho@mail.com",
-            "address": "Av. Gen. Humberto Delgado 584",
-            "phoneNumber": "+351939393939"
-        },
-        {
             "id": 2,
             "name": "Érica Lopes",
             "email": "erica.lopes@mail.com",
             "address": "Praça de Parada Leitão 65",
             "phoneNumber": "+351919191919"
+        },
+        {
+            "id": 3,
+            "name": "Afonso Esteves",
+            "email": "afonso.esteves@mail.com",
+            "address": "R. Dr. António Bernardino de Almeida 856",
+            "phoneNumber": "+351969696969"
         },
         ...
     ]
@@ -71,7 +71,7 @@ Otherwise, the code 404 and an error message.
 
 ---
 
-### Find members - [GET]() /member/search?*pageNumber*&*pageSize*&*id*&*memberName*
+### Find members - [GET]() /member/search?*pageNumber*&*pageSize*&*id*&*name*&*email*&*address*&*phoneNumber*
 
 Retrieves a list of members matching the specified criteria.
 
@@ -82,7 +82,7 @@ Retrieves a list of members matching the specified criteria.
 | pageNumber  | Number | 1             |
 | pageSize    | Number | 20            |
 | id          | Number | 0             |
-| memberName  | String | null          |
+| name        | String | null          |
 | email       | String | null          |
 | address     | String | null          |
 | phoneNumber | String | null          |
@@ -94,18 +94,18 @@ Retrieves a list of members matching the specified criteria.
     "total": 3,
     "array": [
         {
-            "id": 1,
-            "name": "Hugo Carvalho",
-            "email": "hugo.carvalho@mail.com",
-            "address": "Av. Gen. Humberto Delgado 584",
-            "phoneNumber": "+351939393939"
-        },
-        {
             "id": 2,
             "name": "Érica Lopes",
             "email": "erica.lopes@mail.com",
             "address": "Praça de Parada Leitão 65",
             "phoneNumber": "+351919191919"
+        },
+        {
+            "id": 3,
+            "name": "Afonso Esteves",
+            "email": "afonso.esteves@mail.com",
+            "address": "R. Dr. António Bernardino de Almeida 856",
+            "phoneNumber": "+351969696969"
         },
         ...
     ]
@@ -159,7 +159,7 @@ Otherwise, the code 404 and an error message.
 
 ### Update member - [PUT]() /member
 
-Updates an existing member.
+Updates an existing member. The Id specified in the body is used to find the original entity.
 
 **Body:**
 

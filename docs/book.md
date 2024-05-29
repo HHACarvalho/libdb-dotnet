@@ -77,7 +77,7 @@ Otherwise, the code 404 and an error message.
 
 ---
 
-### Find books - [GET]() /book/search?*pageNumber*&*pageSize*&*id*&*bookName*
+### Find books - [GET]() /book/search?*pageNumber*&*pageSize*&*id*&*title*&*year*&*genre*&*authorName*
 
 Retrieves a list of books matching the specified criteria.
 
@@ -158,7 +158,7 @@ Otherwise, the code 404 and an error message.
 
 ### Update book - [PUT]() /book
 
-Updates an existing book.
+Updates an existing book. The Id specified in the body is used to find the original entity.
 
 **Body:**
 

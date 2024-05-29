@@ -85,7 +85,7 @@ Otherwise, the code 404 and an error message.
 
 ### Update book entry - [PUT]() /bookEntry
 
-Updates an existing book entry.
+Updates an existing book entry. The Id specified in the body is used to find the original entity.
 
 **Body:**
 

@@ -140,7 +140,7 @@ Otherwise, the code 404 and an error message.
 
 ### Update author - [PUT]() /author
 
-Updates an existing author.
+Updates an existing author. The Id specified in the body is used to find the original entity.
 
 **Body:**
 

@@ -107,7 +107,7 @@ Otherwise, the code 404 and an error message.
 
 ### Update borrow - [PUT]() /borrow
 
-Updates an existing borrow.
+Updates an existing borrow. The Id specified in the body is used to find the original entity.
 
 **Body:**
 
