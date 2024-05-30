@@ -23,7 +23,7 @@ namespace libdb_dotnet.Repos
             return output;
         }
 
-        public async Task<QueryOutput<Member>> Find(int pageNumber, int pageSize, int id, string? memberName, string? email, string? address, string? phoneNumber)
+        public async Task<QueryOutput<Member>> Find(int pageNumber, int pageSize, int id, string? name, string? email, string? address, string? phoneNumber)
         {
             IQueryable<Member> subSet = _dbs;
 
@@ -32,9 +32,9 @@ namespace libdb_dotnet.Repos
                 subSet = subSet.Where(x => x.Id.Equals(id));
             }
 
-            if (!string.IsNullOrEmpty(memberName))
+            if (!string.IsNullOrEmpty(name))
             {
-                subSet = subSet.Where(x => x.Name.Contains(memberName));
+                subSet = subSet.Where(x => x.Name.Contains(name));
             }
 
             if (!string.IsNullOrEmpty(email))

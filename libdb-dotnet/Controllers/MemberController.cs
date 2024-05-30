@@ -23,9 +23,9 @@ namespace libdb_dotnet.Controllers
         }
 
         [HttpGet("search")]
-        public async Task<IActionResult> FindMembers(int pageNumber, int pageSize, int id = 0, string? memberName = null, string? email = null, string? address = null, string? phoneNumber = null)
+        public async Task<IActionResult> FindMembers(int pageNumber, int pageSize, int id = 0, string? name = null, string? email = null, string? address = null, string? phoneNumber = null)
         {
-            return await HandleServiceCall(async () => await _service.FindMembers(pageNumber, pageSize, id, memberName, email, address, phoneNumber));
+            return await HandleServiceCall(async () => await _service.FindMembers(pageNumber, pageSize, id, name, email, address, phoneNumber));
         }
 
         [HttpGet]

@@ -51,7 +51,7 @@ namespace libdb_dotnet.Services
             });
         }
 
-        public async Task<Result> FindMembers(int pageNumber, int pageSize, int id, string? memberName, string? email, string? address, string? phoneNumber)
+        public async Task<Result> FindMembers(int pageNumber, int pageSize, int id, string? name, string? email, string? address, string? phoneNumber)
         {
             if (pageNumber < 1 || pageNumber < 1)
             {
@@ -59,7 +59,7 @@ namespace libdb_dotnet.Services
                 pageSize = 20;
             }
 
-            var queryOutput = await _memberRepo.Find(pageNumber, pageSize, id, memberName, email, address, phoneNumber);
+            var queryOutput = await _memberRepo.Find(pageNumber, pageSize, id, name, email, address, phoneNumber);
             if (queryOutput.Array.Length == 0)
             {
                 return Result.Fail("No members matching the criteria were found");
