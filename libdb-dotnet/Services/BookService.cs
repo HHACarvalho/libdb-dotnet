@@ -41,11 +41,8 @@ namespace libdb_dotnet.Services
 
         public async Task<Result> FindAllBooks(int pageNumber, int pageSize)
         {
-            if (pageNumber < 1 || pageNumber < 1)
-            {
-                pageNumber = 1;
-                pageSize = 20;
-            }
+            if (pageNumber < 1) pageNumber = 1;
+            if (pageSize < 1) pageSize = 16;
 
             var queryOutput = await _bookRepo.FindAll(pageNumber, pageSize);
             if (queryOutput.Array.Length == 0)
@@ -62,11 +59,8 @@ namespace libdb_dotnet.Services
 
         public async Task<Result> FindBooks(int pageNumber, int pageSize, int id, string? title, int year, string? genre, string? authorName)
         {
-            if (pageNumber < 1 || pageNumber < 1)
-            {
-                pageNumber = 1;
-                pageSize = 20;
-            }
+            if (pageNumber < 1) pageNumber = 1;
+            if (pageSize < 1) pageSize = 16;
 
             var queryOutput = await _bookRepo.Find(pageNumber, pageSize, id, title, year, genre, authorName);
             if (queryOutput.Array.Length == 0)

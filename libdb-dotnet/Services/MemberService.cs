@@ -32,11 +32,8 @@ namespace libdb_dotnet.Services
 
         public async Task<Result> FindAllMembers(int pageNumber, int pageSize)
         {
-            if (pageNumber < 1 || pageNumber < 1)
-            {
-                pageNumber = 1;
-                pageSize = 20;
-            }
+            if (pageNumber < 1) pageNumber = 1;
+            if (pageSize < 1) pageSize = 16;
 
             var queryOutput = await _memberRepo.FindAll(pageNumber, pageSize);
             if (queryOutput.Array.Length == 0)
@@ -53,11 +50,8 @@ namespace libdb_dotnet.Services
 
         public async Task<Result> FindMembers(int pageNumber, int pageSize, int id, string? name, string? email, string? address, string? phoneNumber)
         {
-            if (pageNumber < 1 || pageNumber < 1)
-            {
-                pageNumber = 1;
-                pageSize = 20;
-            }
+            if (pageNumber < 1) pageNumber = 1;
+            if (pageSize < 1) pageSize = 16;
 
             var queryOutput = await _memberRepo.Find(pageNumber, pageSize, id, name, email, address, phoneNumber);
             if (queryOutput.Array.Length == 0)

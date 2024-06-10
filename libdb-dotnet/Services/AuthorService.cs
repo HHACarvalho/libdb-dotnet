@@ -30,11 +30,8 @@ namespace libdb_dotnet.Services
 
         public async Task<Result> FindAllAuthors(int pageNumber, int pageSize)
         {
-            if (pageNumber < 1 || pageNumber < 1)
-            {
-                pageNumber = 1;
-                pageSize = 20;
-            }
+            if (pageNumber < 1) pageNumber = 1;
+            if (pageSize < 1) pageSize = 16;
 
             var queryOutput = await _repo.FindAll(pageNumber, pageSize);
             if (queryOutput.Array.Length == 0)
@@ -51,11 +48,8 @@ namespace libdb_dotnet.Services
 
         public async Task<Result> FindAuthors(int pageNumber, int pageSize, int id, string? name)
         {
-            if (pageNumber < 1 || pageNumber < 1)
-            {
-                pageNumber = 1;
-                pageSize = 20;
-            }
+            if (pageNumber < 1) pageNumber = 1;
+            if (pageSize < 1) pageSize = 16;
 
             var queryOutput = await _repo.Find(pageNumber, pageSize, id, name);
             if (queryOutput.Array.Length == 0)

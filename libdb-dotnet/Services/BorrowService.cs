@@ -48,11 +48,8 @@ namespace libdb_dotnet.Services
 
         public async Task<Result> FindAllBorrows(int pageNumber, int pageSize)
         {
-            if (pageNumber < 1 || pageNumber < 1)
-            {
-                pageNumber = 1;
-                pageSize = 20;
-            }
+            if (pageNumber < 1) pageNumber = 1;
+            if (pageSize < 1) pageSize = 16;
 
             var queryOutput = await _borrowRepo.FindAll(pageNumber, pageSize);
             if (queryOutput.Array.Length == 0)
