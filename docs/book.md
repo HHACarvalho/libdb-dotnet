@@ -144,11 +144,18 @@ Retrieves a single book using its ID.
     "title": "The Lord of the Rings: The Fellowship of the Ring",
     "year": 1954,
     "genre": "Fantasy",
-    "imageUrl": "https://image.jpg",
+    "imageUrl": "https://m.media-amazon.com/images/I/71Ep7UNeTtL._SY466_.jpg",
     "author": {
         "id": 1,
         "name": "J.R.R. Tolkien"
-    }
+    },
+    "bookEntries": [
+        {
+            "id": 1,
+            "isbn": "9780008376123"
+        },
+        ...
+    ]
 }
 ```
 

@@ -69,7 +69,12 @@ namespace libdb_dotnet.DTOs
                 {
                     book.Author.Id,
                     book.Author.Name
-                }
+                },
+                BookEntries = book.BookEntries.Select(e => new
+                {
+                    e.Id,
+                    e.Isbn
+                })
             };
         }
     }
