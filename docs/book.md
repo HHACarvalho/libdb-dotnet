@@ -154,6 +154,10 @@ Retrieves a single book using its ID.
             "id": 1,
             "isbn": "9780008376123"
         },
+        {
+            "id": 2,
+            "isbn": "9780547928210"
+        },
         ...
     ]
 }
