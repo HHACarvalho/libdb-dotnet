@@ -16,7 +16,7 @@ namespace libdb_dotnet.Controllers
             return await HandleServiceCall(async () => await _service.CreateBook(requestBody));
         }
 
-        [HttpGet("all")]
+        [HttpGet]
         public async Task<IActionResult> FindAllBooks(int pageNumber, int pageSize)
         {
             return await HandleServiceCall(async () => await _service.FindAllBooks(pageNumber, pageSize));
@@ -28,7 +28,7 @@ namespace libdb_dotnet.Controllers
             return await HandleServiceCall(async () => await _service.FindBooks(pageNumber, pageSize, id, title, year, genre, authorName));
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<IActionResult> FindOneBook(int id)
         {
             return await HandleServiceCall(async () => await _service.FindOneBook(id));
@@ -40,7 +40,7 @@ namespace libdb_dotnet.Controllers
             return await HandleServiceCall(async () => await _service.UpdateBook(requestBody));
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBook(int id)
         {
             return await HandleServiceCall(async () => await _service.DeleteBook(id));

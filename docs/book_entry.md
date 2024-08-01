@@ -26,7 +26,7 @@ Otherwise, the code 400 and an error message.
 
 ---
 
-### Find all book entries - [GET]() /bookEntry/all?*pageNumber*&*pageSize*
+### Find all book entries - [GET]() /bookEntry?*pageNumber*&*pageSize*
 
 Retrieves a list of the lastest book entries.
 
@@ -35,7 +35,7 @@ Retrieves a list of the lastest book entries.
 | Parameter  | Type   | Default value |
 |:-----------|:-------|:--------------|
 | pageNumber | Number | 1             |
-| pageSize   | Number | 20            |
+| pageSize   | Number | 16            |
 
 **Returns:** If successful, the code 200, the total number of book entries and a list of books entries.
 
@@ -60,7 +60,7 @@ Otherwise, the code 404 and an error message.
 
 ---
 
-### Find one book entry - [GET]() /bookEntry?id
+### Find one book entry - [GET]() /bookEntry/*id*
 
 Retrieves a single book entry using its ID.
 
@@ -100,7 +100,7 @@ Updates an existing book entry. The Id specified in the body is used to find the
 
 ---
 
-### Delete book entry - [DELETE]() /bookEntry?id
+### Delete book entry - [DELETE]() /bookEntry/*id*
 
 Deletes a book entry from the database.
 

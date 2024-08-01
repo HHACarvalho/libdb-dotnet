@@ -16,7 +16,7 @@ namespace libdb_dotnet.Controllers
             return await HandleServiceCall(async () => await _service.CreateAuthor(requestBody));
         }
 
-        [HttpGet("all")]
+        [HttpGet]
         public async Task<IActionResult> FindAllAuthors(int pageNumber, int pageSize)
         {
             return await HandleServiceCall(async () => await _service.FindAllAuthors(pageNumber, pageSize));
@@ -28,7 +28,7 @@ namespace libdb_dotnet.Controllers
             return await HandleServiceCall(async () => await _service.FindAuthors(pageNumber, pageSize, id, name));
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<IActionResult> FindOneAuthor(int id)
         {
             return await HandleServiceCall(async () => await _service.FindOneAuthor(id));
@@ -40,7 +40,7 @@ namespace libdb_dotnet.Controllers
             return await HandleServiceCall(async () => await _service.UpdateAuthor(requestBody));
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAuthor(int id)
         {
             return await HandleServiceCall(async () => await _service.DeleteAuthor(id));

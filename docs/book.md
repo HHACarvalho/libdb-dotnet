@@ -33,7 +33,7 @@ Otherwise, the code 400 and an error message.
 
 ---
 
-### Find all books - [GET]() /book/all?*pageNumber*&*pageSize*
+### Find all books - [GET]() /book?*pageNumber*&*pageSize*
 
 Retrieves a list of the lastest books.
 
@@ -42,13 +42,13 @@ Retrieves a list of the lastest books.
 | Parameter  | Type   | Default value |
 |:-----------|:-------|:--------------|
 | pageNumber | Number | 1             |
-| pageSize   | Number | 20            |
+| pageSize   | Number | 16            |
 
 **Returns:** If successful, the code 200, the total number of books and a list of books.
 
 ```json
 {
-    "total": 14,
+    "total": 36,
     "array": [
         {
             "id": 1,
@@ -86,7 +86,7 @@ Retrieves a list of books matching the specified criteria.
 | Parameter  | Type   | Default value |
 |:-----------|:-------|:--------------|
 | pageNumber | Number | 1             |
-| pageSize   | Number | 20            |
+| pageSize   | Number | 16            |
 | id         | Number | 0             |
 | title      | String | null          |
 | year       | Number | 0             |
@@ -97,7 +97,7 @@ Retrieves a list of books matching the specified criteria.
 
 ```json
 {
-    "total": 14,
+    "total": 36,
     "array": [
         {
             "id": 1,
@@ -110,7 +110,7 @@ Retrieves a list of books matching the specified criteria.
         },
         {
             "id": 2,
-            "title": "The Lord of the Rings: The Return of the King",
+            "title": "The Lord of the Rings: The Two Towers",
             "imageUrl": "https://image.jpg",
             "author": {
                 "id": 1,
@@ -126,7 +126,7 @@ Otherwise, the code 404 and an error message.
 
 ---
 
-### Find one book - [GET]() /book?id
+### Find one book - [GET]() /book/*id*
 
 Retrieves a single book using its ID.
 
@@ -185,7 +185,7 @@ Updates an existing book. The Id specified in the body is used to find the origi
 
 ---
 
-### Delete book - [DELETE]() /book?id
+### Delete book - [DELETE]() /book/*id*
 
 Deletes a book from the database.
 

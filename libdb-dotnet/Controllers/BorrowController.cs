@@ -16,13 +16,13 @@ namespace libdb_dotnet.Controllers
             return await HandleServiceCall(async () => await _service.CreateBorrow(requestBody));
         }
 
-        [HttpGet("all")]
+        [HttpGet]
         public async Task<IActionResult> FindAllBorrows(int pageNumber, int pageSize)
         {
             return await HandleServiceCall(async () => await _service.FindAllBorrows(pageNumber, pageSize));
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<IActionResult> FindOneBorrow(int id)
         {
             return await HandleServiceCall(async () => await _service.FindOneBorrow(id));
@@ -34,7 +34,7 @@ namespace libdb_dotnet.Controllers
             return await HandleServiceCall(async () => await _service.UpdateBorrow(requestBody));
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBorrow(int id)
         {
             return await HandleServiceCall(async () => await _service.DeleteBorrow(id));

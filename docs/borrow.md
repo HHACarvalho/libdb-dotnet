@@ -33,7 +33,7 @@ Otherwise, the code 400 and an error message.
 
 ---
 
-### Find all borrows - [GET]() /borrow/all?*pageNumber*&*pageSize*
+### Find all borrows - [GET]() /borrow?*pageNumber*&*pageSize*
 
 Retrieves a list of the lastest borrows.
 
@@ -42,7 +42,7 @@ Retrieves a list of the lastest borrows.
 | Parameter  | Type   | Default value |
 |:-----------|:-------|:--------------|
 | pageNumber | Number | 1             |
-| pageSize   | Number | 20            |
+| pageSize   | Number | 16            |
 
 **Returns:** If successful, the code 200, the total number of borrows and a list of borrows.
 
@@ -77,7 +77,7 @@ Otherwise, the code 404 and an error message.
 
 ---
 
-### Find one borrow - [GET]() /borrow?id
+### Find one borrow - [GET]() /borrow/*id*
 
 Retrieves a single borrow using its ID.
 
@@ -123,7 +123,7 @@ Updates an existing borrow. The Id specified in the body is used to find the ori
 
 ---
 
-### Delete borrow - [DELETE]() /borrow?id
+### Delete borrow - [DELETE]() /borrow/*id*
 
 Deletes a borrow from the database.
 

@@ -16,7 +16,7 @@ namespace libdb_dotnet.Controllers
             return await HandleServiceCall(async () => await _service.CreateMember(requestBody));
         }
 
-        [HttpGet("all")]
+        [HttpGet]
         public async Task<IActionResult> FindAllMembers(int pageNumber, int pageSize)
         {
             return await HandleServiceCall(async () => await _service.FindAllMembers(pageNumber, pageSize));
@@ -28,7 +28,7 @@ namespace libdb_dotnet.Controllers
             return await HandleServiceCall(async () => await _service.FindMembers(pageNumber, pageSize, id, name, email, address, phoneNumber));
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<IActionResult> FindOneMember(int id)
         {
             return await HandleServiceCall(async () => await _service.FindOneMember(id));
@@ -40,7 +40,7 @@ namespace libdb_dotnet.Controllers
             return await HandleServiceCall(async () => await _service.UpdateMember(requestBody));
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMember(int id)
         {
             return await HandleServiceCall(async () => await _service.DeleteMember(id));

@@ -31,7 +31,7 @@ Otherwise, the code 400 and an error message.
 
 ---
 
-### Find all members - [GET]() /member/all?*pageNumber*&*pageSize*
+### Find all members - [GET]() /member?*pageNumber*&*pageSize*
 
 Retrieves a list of the lastest members.
 
@@ -40,7 +40,7 @@ Retrieves a list of the lastest members.
 | Parameter  | Type   | Default value |
 |:-----------|:-------|:--------------|
 | pageNumber | Number | 1             |
-| pageSize   | Number | 20            |
+| pageSize   | Number | 16            |
 
 **Returns:** If successful, the code 200, the total number of members and a list of members.
 
@@ -80,7 +80,7 @@ Retrieves a list of members matching the specified criteria.
 | Parameter   | Type   | Default value |
 |:------------|:-------|:--------------|
 | pageNumber  | Number | 1             |
-| pageSize    | Number | 20            |
+| pageSize    | Number | 16            |
 | id          | Number | 0             |
 | name        | String | null          |
 | email       | String | null          |
@@ -116,7 +116,7 @@ Otherwise, the code 404 and an error message.
 
 ---
 
-### Find one member - [GET]() /member?id
+### Find one member - [GET]() /member/*id*
 
 Retrieves a single member using its ID.
 
@@ -177,7 +177,7 @@ Updates an existing member. The Id specified in the body is used to find the ori
 
 ---
 
-### Delete member - [DELETE]() /member?id
+### Delete member - [DELETE]() /member/*id*
 
 Deletes a member from the database.
 

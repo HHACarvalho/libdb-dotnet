@@ -27,7 +27,7 @@ Otherwise, the code 400 and an error message.
 
 ---
 
-### Find all authors - [GET]() /author/all?*pageNumber*&*pageSize*
+### Find all authors - [GET]() /author?*pageNumber*&*pageSize*
 
 Retrieves a list of the lastest authors.
 
@@ -36,7 +36,7 @@ Retrieves a list of the lastest authors.
 | Parameter  | Type   | Default value |
 |:-----------|:-------|:--------------|
 | pageNumber | Number | 1             |
-| pageSize   | Number | 20            |
+| pageSize   | Number | 16            |
 
 **Returns:** If successful, the code 200, the total number of authors and a list of authors.
 
@@ -72,7 +72,7 @@ Retrieves a list of authors matching the specified criteria.
 | Parameter  | Type   | Default value |
 |:-----------|:-------|:--------------|
 | pageNumber | Number | 1             |
-| pageSize   | Number | 20            |
+| pageSize   | Number | 16            |
 | id         | Number | 0             |
 | name       | String | null          |
 
@@ -101,7 +101,7 @@ Otherwise, the code 404 and an error message.
 
 ---
 
-### Find one author - [GET]() /author?id
+### Find one author - [GET]() /author/*id*
 
 Retrieves a single author using its ID.
 
@@ -156,7 +156,7 @@ Updates an existing author. The Id specified in the body is used to find the ori
 
 ---
 
-### Delete author - [DELETE]() /author?id
+### Delete author - [DELETE]() /author/*id*
 
 Deletes a author from the database.
 
