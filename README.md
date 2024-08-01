@@ -1,6 +1,6 @@
-# LibDB ASP.NET Core API
+# LibDB ASP.NET Core business API
 
-RESTful API built with ASP.NET Core
+RESTful API built with ASP.NET Core used for the business logic portion of the project.
 
 # Routes
 
