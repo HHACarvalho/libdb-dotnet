@@ -53,13 +53,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api-url}}/author/all?pageNumber=1&pageSize=20",
+							"raw": "{{api-url}}/author?pageNumber=1&pageSize=16",
 							"host": [
 								"{{api-url}}"
 							],
 							"path": [
-								"author",
-								"all"
+								"author"
 							],
 							"query": [
 								{
@@ -68,7 +67,7 @@
 								},
 								{
 									"key": "pageSize",
-									"value": "20"
+									"value": "16"
 								}
 							]
 						}
@@ -81,7 +80,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api-url}}/author/search?pageNumber=1&pageSize=20",
+							"raw": "{{api-url}}/author/search?pageNumber=1&pageSize=16",
 							"host": [
 								"{{api-url}}"
 							],
@@ -96,7 +95,7 @@
 								},
 								{
 									"key": "pageSize",
-									"value": "20"
+									"value": "16"
 								},
 								{
 									"key": "id",
@@ -104,7 +103,7 @@
 									"disabled": true
 								},
 								{
-									"key": "authorName",
+									"key": "name",
 									"value": "J",
 									"disabled": true
 								}
@@ -119,18 +118,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api-url}}/author?id=1",
+							"raw": "{{api-url}}/author/1",
 							"host": [
 								"{{api-url}}"
 							],
 							"path": [
-								"author"
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": "1"
-								}
+								"author",
+								"1"
 							]
 						}
 					},
@@ -218,174 +212,6 @@
 					"response": []
 				},
 				{
-					"name": "Create bookEntry",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"isbn\": \"9780008376123\",\r\n    \"bookId\": \"1\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{api-url}}/bookEntry",
-							"host": [
-								"{{api-url}}"
-							],
-							"path": [
-								"bookEntry"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Find all bookEntries",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{api-url}}/bookEntry/all?pageNumber=1&pageSize=20",
-							"host": [
-								"{{api-url}}"
-							],
-							"path": [
-								"bookEntry",
-								"all"
-							],
-							"query": [
-								{
-									"key": "pageNumber",
-									"value": "1"
-								},
-								{
-									"key": "pageSize",
-									"value": "20"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Find one bookEntry",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{api-url}}/bookEntry?id=1",
-							"host": [
-								"{{api-url}}"
-							],
-							"path": [
-								"bookEntry"
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update bookEntry",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"isbn\": \"9780008376123\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{api-url}}/bookEntry",
-							"host": [
-								"{{api-url}}"
-							],
-							"path": [
-								"bookEntry"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete bookEntry",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{api-url}}/bookEntry?id=1",
-							"host": [
-								"{{api-url}}"
-							],
-							"path": [
-								"bookEntry"
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Create book",
 					"event": [
 						{
@@ -429,13 +255,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api-url}}/book/all?pageNumber=1&pageSize=20",
+							"raw": "{{api-url}}/book?pageNumber=1&pageSize=16",
 							"host": [
 								"{{api-url}}"
 							],
 							"path": [
-								"book",
-								"all"
+								"book"
 							],
 							"query": [
 								{
@@ -444,7 +269,7 @@
 								},
 								{
 									"key": "pageSize",
-									"value": "20"
+									"value": "16"
 								}
 							]
 						}
@@ -457,7 +282,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api-url}}/book/search?pageNumber=1&pageSize=20",
+							"raw": "{{api-url}}/book/search?pageNumber=1&pageSize=16",
 							"host": [
 								"{{api-url}}"
 							],
@@ -472,7 +297,7 @@
 								},
 								{
 									"key": "pageSize",
-									"value": "20"
+									"value": "16"
 								},
 								{
 									"key": "id",
@@ -510,18 +335,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api-url}}/book?id=1",
+							"raw": "{{api-url}}/book/1",
 							"host": [
 								"{{api-url}}"
 							],
 							"path": [
-								"book"
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": "1"
-								}
+								"book",
+								"1"
 							]
 						}
 					},
@@ -609,6 +429,168 @@
 					"response": []
 				},
 				{
+					"name": "Create bookEntry",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isbn\": \"9780008376123\",\r\n    \"bookId\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/bookEntry",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find all bookEntries",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api-url}}/bookEntry?pageNumber=1&pageSize=16",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry"
+							],
+							"query": [
+								{
+									"key": "pageNumber",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "16"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find one bookEntry",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api-url}}/bookEntry/1",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update bookEntry",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"isbn\": \"9780008376123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/bookEntry",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete bookEntry",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/bookEntry?id=1",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Create borrow",
 					"event": [
 						{
@@ -651,13 +633,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api-url}}/borrow/all?pageNumber=1&pageSize=20",
+							"raw": "{{api-url}}/borrow?pageNumber=1&pageSize=16",
 							"host": [
 								"{{api-url}}"
 							],
 							"path": [
-								"borrow",
-								"all"
+								"borrow"
 							],
 							"query": [
 								{
@@ -666,7 +647,7 @@
 								},
 								{
 									"key": "pageSize",
-									"value": "20"
+									"value": "16"
 								}
 							]
 						}
@@ -679,18 +660,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api-url}}/borrow?id=1",
+							"raw": "{{api-url}}/borrow/1",
 							"host": [
 								"{{api-url}}"
 							],
 							"path": [
-								"borrow"
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": "1"
-								}
+								"borrow",
+								"1"
 							]
 						}
 					},
@@ -819,13 +795,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api-url}}/member/all?pageNumber=1&pageSize=20",
+							"raw": "{{api-url}}/member?pageNumber=1&pageSize=16",
 							"host": [
 								"{{api-url}}"
 							],
 							"path": [
-								"member",
-								"all"
+								"member"
 							],
 							"query": [
 								{
@@ -834,7 +809,7 @@
 								},
 								{
 									"key": "pageSize",
-									"value": "20"
+									"value": "16"
 								}
 							]
 						}
@@ -847,7 +822,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api-url}}/member/search?pageNumber=1&pageSize=20",
+							"raw": "{{api-url}}/member/search?pageNumber=1&pageSize=16",
 							"host": [
 								"{{api-url}}"
 							],
@@ -862,7 +837,7 @@
 								},
 								{
 									"key": "pageSize",
-									"value": "20"
+									"value": "16"
 								},
 								{
 									"key": "id",
@@ -900,18 +875,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api-url}}/member?id=1",
+							"raw": "{{api-url}}/member/1",
 							"host": [
 								"{{api-url}}"
 							],
 							"path": [
-								"member"
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": "1"
-								}
+								"member",
+								"1"
 							]
 						}
 					},
@@ -1096,6 +1066,310 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"name\": \"J.K. Rowling\",\r\n    \"imageUrl\": \"https://images.gr-assets.com/authors/1596216614p8/1077326.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/author",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"author"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Author 4",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Hugh Howey\",\r\n    \"imageUrl\": \"https://m.media-amazon.com/images/S/amzn-author-media-prod/ro08bsma6r4vs3t7g41ro5b1fs._SY600_.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/author",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"author"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Author 5",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Stephen King\",\r\n    \"imageUrl\": \"https://static.dw.com/image/40589795_605.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/author",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"author"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Author 6",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Alan Dean Foster\",\r\n    \"imageUrl\": \"https://www.nocloo.com/wp-content/uploads/2021/08/Foster-2.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/author",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"author"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Author 7",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"George R. R. Martin\",\r\n    \"imageUrl\": \"https://images.gr-assets.com/authors/1649011787p8/346732.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/author",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"author"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Author 8",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Frank Herbert\",\r\n    \"imageUrl\": \"https://www.historylink.org/Content/Media/Photos/Large/Frank-Herbert-September-27-1982.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/author",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"author"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Author 9",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Gillian Flynn\",\r\n    \"imageUrl\": \"https://cdn.britannica.com/75/187875-050-EDF182F9/Gillian-Flynn-American.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/author",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"author"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Author 10",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ayn Rand\",\r\n    \"imageUrl\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Ayn_Rand_%281943_Talbot_portrait%29.jpg/640px-Ayn_Rand_%281943_Talbot_portrait%29.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/author",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"author"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Author 11",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Cormac McCarthy\",\r\n    \"imageUrl\": \"https://static01.nyt.com/images/2023/06/21/opinion/19Sinykin/19Sinykin-articleLarge-v2.jpg\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1628,6 +1902,842 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"title\": \"Harry Potter and the Deathly Hallows\",\r\n    \"year\": 2007,\r\n    \"genre\": \"Fantasy\",\r\n    \"imageUrl\": \"https://upload.wikimedia.org/wikipedia/en/a/a9/Harry_Potter_and_the_Deathly_Hallows.jpg\",\r\n    \"authorId\": \"3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/book",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book 15",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Wool\",\r\n    \"year\": 2012,\r\n    \"genre\": \"Science fiction\",\r\n    \"imageUrl\": \"https://m.media-amazon.com/images/I/81qFq9nLjzL._SY466_.jpg\",\r\n    \"authorId\": \"4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/book",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book 16",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Shift\",\r\n    \"year\": 2013,\r\n    \"genre\": \"Science fiction\",\r\n    \"imageUrl\": \"https://m.media-amazon.com/images/I/71MPxl4EhnL._SY466_.jpg\",\r\n    \"authorId\": \"4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/book",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book 17",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Dust\",\r\n    \"year\": 2013,\r\n    \"genre\": \"Science fiction\",\r\n    \"imageUrl\": \"https://m.media-amazon.com/images/I/81m236n9jVL._SY466_.jpg\",\r\n    \"authorId\": \"4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/book",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book 18",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"It\",\r\n    \"year\": 1986,\r\n    \"genre\": \"Horror\",\r\n    \"imageUrl\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/It_%281986%29_front_cover%2C_first_edition.jpg/800px-It_%281986%29_front_cover%2C_first_edition.jpg\",\r\n    \"authorId\": \"5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/book",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book 19",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"The Mist\",\r\n    \"year\": 1980,\r\n    \"genre\": \"Horror\",\r\n    \"imageUrl\": \"https://m.media-amazon.com/images/I/81o0PGJsADL._SL1500_.jpg\",\r\n    \"authorId\": \"5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/book",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book 20",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"The Green Mile\",\r\n    \"year\": 1996,\r\n    \"genre\": \"Dark fantasy\",\r\n    \"imageUrl\": \"https://cdn.kobo.com/book-images/bc22717a-ad53-4fba-9e04-660bdcc2f50d/1200/1200/False/the-green-mile.jpg\",\r\n    \"authorId\": \"5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/book",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book 21",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Rita Hayworth and Shawshank Redemption\",\r\n    \"year\": 1982,\r\n    \"genre\": \"Crime fiction\",\r\n    \"imageUrl\": \"https://m.media-amazon.com/images/I/71A3CNcPiqL._SL1500_.jpg\",\r\n    \"authorId\": \"5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/book",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book 22",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"The Thing\",\r\n    \"year\": 1981,\r\n    \"genre\": \"Science fiction\",\r\n    \"imageUrl\": \"https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1402379001i/23396.jpg\",\r\n    \"authorId\": \"6\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/book",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book 23",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"A Game of Thrones\",\r\n    \"year\": 1996,\r\n    \"genre\": \"Epic fantasy\",\r\n    \"imageUrl\": \"https://m.media-amazon.com/images/I/81vel6463aL._SL1500_.jpg\",\r\n    \"authorId\": \"7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/book",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book 24",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"A Clash of Kings\",\r\n    \"year\": 1998,\r\n    \"genre\": \"Epic fantasy\",\r\n    \"imageUrl\": \"https://m.media-amazon.com/images/I/81-HH2qXVKL._SL1500_.jpg\",\r\n    \"authorId\": \"7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/book",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book 25",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"A Storm of Swords\",\r\n    \"year\": 2000,\r\n    \"genre\": \"Epic fantasy\",\r\n    \"imageUrl\": \"https://m.media-amazon.com/images/I/819o5XLwuFL._SL1500_.jpg\",\r\n    \"authorId\": \"7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/book",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book 26",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"A Feast for Crows\",\r\n    \"year\": 2005,\r\n    \"genre\": \"Epic fantasy\",\r\n    \"imageUrl\": \"https://m.media-amazon.com/images/I/71wX5JhAkYL._SL1200_.jpg\",\r\n    \"authorId\": \"7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/book",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book 27",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"A Dance with Dragons\",\r\n    \"year\": 2011,\r\n    \"genre\": \"Epic fantasy\",\r\n    \"imageUrl\": \"https://m.media-amazon.com/images/I/71QUe4xT4uL._SL1200_.jpg\",\r\n    \"authorId\": \"7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/book",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book 28",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Dune\",\r\n    \"year\": 1965,\r\n    \"genre\": \"Science fiction\",\r\n    \"imageUrl\": \"https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1632843673-41LmPEurOOL._SL500_.jpg\",\r\n    \"authorId\": \"8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/book",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book 29",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Dune Messiah\",\r\n    \"year\": 1969,\r\n    \"genre\": \"Science fiction\",\r\n    \"imageUrl\": \"https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1634732650-41BVZ25iOGL._SL500_.jpg\",\r\n    \"authorId\": \"8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/book",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book 30",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Children of Dune\",\r\n    \"year\": 1976,\r\n    \"genre\": \"Science fiction\",\r\n    \"imageUrl\": \"https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1634732682-51WbGqQFGCL._SL500_.jpg\",\r\n    \"authorId\": \"8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/book",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book 31",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"God Emperor of Dune\",\r\n    \"year\": 1981,\r\n    \"genre\": \"Science fiction\",\r\n    \"imageUrl\": \"https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1634732710-51h3S1fjPDL._SL500_.jpg\",\r\n    \"authorId\": \"8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/book",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book 32",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Heretics of Dune\",\r\n    \"year\": 1984,\r\n    \"genre\": \"Science fiction\",\r\n    \"imageUrl\": \"https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1634732739-41P-OZ6QBCL._SL500_.jpg\",\r\n    \"authorId\": \"8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/book",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book 33",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Chapterhouse: Dune\",\r\n    \"year\": 1985,\r\n    \"genre\": \"Science fiction\",\r\n    \"imageUrl\": \"https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1634732766-51InTgeKiHL._SL500_.jpg\",\r\n    \"authorId\": \"8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/book",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book 34",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Gone Girl\",\r\n    \"year\": 2012,\r\n    \"genre\": \"Thriller\",\r\n    \"imageUrl\": \"https://upload.wikimedia.org/wikipedia/en/7/7e/Gone_Girl_%28Flynn_novel%29.jpg\",\r\n    \"authorId\": \"9\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/book",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book 35",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"The Fountainhead\",\r\n    \"year\": 1943,\r\n    \"genre\": \"Philosophical fiction\",\r\n    \"imageUrl\": \"https://static.wikia.nocookie.net/the-stone-quarry/images/c/c1/The_Fountainhead_cover.jpg\",\r\n    \"authorId\": \"10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/book",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book 36",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"The Road\",\r\n    \"year\": 2006,\r\n    \"genre\": \"Post-apocalyptic fiction\",\r\n    \"imageUrl\": \"https://dboyle93.wordpress.com/wp-content/uploads/2014/05/nl_theroad.jpg\",\r\n    \"authorId\": \"11\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2257,6 +3367,842 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"isbn\": \"9780747591054\",\r\n    \"bookId\": \"14\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/bookEntry",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookEntry 18",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isbn\": \"9780358447849\",\r\n    \"bookId\": \"15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/bookEntry",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookEntry 19",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isbn\": \"9780544839649\",\r\n    \"bookId\": \"16\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/bookEntry",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookEntry 20",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isbn\": \"9780544838260\",\r\n    \"bookId\": \"17\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/bookEntry",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookEntry 21",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isbn\": \"9781501142970\",\r\n    \"bookId\": \"18\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/bookEntry",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookEntry 22",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isbn\": \"9781982103521\",\r\n    \"bookId\": \"19\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/bookEntry",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookEntry 23",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isbn\": \"9780671041786\",\r\n    \"bookId\": \"20\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/bookEntry",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookEntry 24",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isbn\": \"9781982155759\",\r\n    \"bookId\": \"21\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/bookEntry",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookEntry 25",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isbn\": \"9780553204773\",\r\n    \"bookId\": \"22\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/bookEntry",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookEntry 26",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isbn\": \"9780553381689\",\r\n    \"bookId\": \"23\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/bookEntry",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookEntry 27",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isbn\": \"9780553381696\",\r\n    \"bookId\": \"24\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/bookEntry",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookEntry 28",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isbn\": \"9780553381702\",\r\n    \"bookId\": \"25\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/bookEntry",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookEntry 29",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isbn\": \"9780553582024\",\r\n    \"bookId\": \"26\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/bookEntry",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookEntry 30",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isbn\": \"9780553385953\",\r\n    \"bookId\": \"27\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/bookEntry",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookEntry 31",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isbn\": \"9780441013593\",\r\n    \"bookId\": \"28\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/bookEntry",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookEntry 32",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isbn\": \"9780593098233\",\r\n    \"bookId\": \"29\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/bookEntry",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookEntry 33",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isbn\": \"9780593201749\",\r\n    \"bookId\": \"30\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/bookEntry",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookEntry 34",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isbn\": \"9780593098257\",\r\n    \"bookId\": \"31\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/bookEntry",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookEntry 35",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isbn\": \"9780593098264\",\r\n    \"bookId\": \"32\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/bookEntry",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookEntry 36",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isbn\": \"9780593098271\",\r\n    \"bookId\": \"33\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/bookEntry",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookEntry 37",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isbn\": \"9781780228228\",\r\n    \"bookId\": \"34\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/bookEntry",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookEntry 38",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isbn\": \"9780141188621\",\r\n    \"bookId\": \"35\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-url}}/bookEntry",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"bookEntry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookEntry 39",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isbn\": \"9780307387899\",\r\n    \"bookId\": \"36\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3031,7 +4977,7 @@
 	"variable": [
 		{
 			"key": "api-url",
-			"value": "",
+			"value": "http://localhost:4000",
 			"type": "string"
 		}
 	]
