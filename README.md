@@ -1,65 +1,15 @@
-# LibDB ASP.NET Core business API
+# LibDB ASP.NET Core API
 
 RESTful API built with ASP.NET Core used for the business logic portion of the project.
 
-# Routes
+# Building the application
+ 
+Run the [publish.sh](https://github.com/HHACarvalho/libdb-dotnet/blob/main/publish.sh) script after adding both the development and production database connection strings to the .env file.
 
-Default API url - http://localhost:4000
-
-# Endpoints
+# Endpoint documentation
 
 * [Author](docs/author.md)
 * [Book](docs/book.md)
 * [BookEntry](docs/book_entry_.md)
 * [Borrow](docs/borrow.md)
 * [Member](docs/member.md)
-
-# .NET Commands
-
-### Build the application
-
-```
-dotnet build
-```
-
-### Run the application
-
-```
-dotnet run
-```
-
-### Run the tests
-
-```
-dotnet test
-```
-
-# Entity Framework Core (Tools) Commands
-
-### Create Database
-
-```
-Add-Migration Initial
-```
-
-### Update Database
-
-```
-Update-Database
-```
-
-### Remove Database
-
-```
-Remove-Migration
-```
-
-# Docker Commands
-
-### Create SQL Server Instance
-
-```
-docker run -d -p 1401:1433 --network libdb-network --name libdb-sqlserver -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Docker@1!" mcr.microsoft.com/mssql/server:2022-latest
-```
-
-[Docker Documentation](https://docs.docker.com/reference/cli/docker/container/run/)
