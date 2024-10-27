@@ -4,7 +4,7 @@ RESTful API built with ASP.NET Core used for the business logic portion of the p
 
 # Building the application
  
-Run the [publish.sh](https://github.com/HHACarvalho/libdb-dotnet/blob/main/publish.sh) script after adding both the development and production database connection strings to the .env file.
+Run the [publish.sh](https://github.com/HHACarvalho/libdb-dotnet/blob/main/publish.sh) script after adding both database connection strings to the .env file.
 
 # Endpoint documentation
 
