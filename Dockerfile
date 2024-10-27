@@ -1,12 +1,12 @@
-# Use the ASP.NET Core Runtime image to run the app
+# Use the ASP.NET Core runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
-WORKDIR /app
+WORKDIR /app/
 
 # Copy the published app to the docker image
-COPY libdb-dotnet/bin/Release/net8.0/publish/ .
+COPY libdb-dotnet/bin/Release/net8.0/publish/ ./
 
 # Copy the .env file
-COPY .env .
+COPY .env ./
 
 # Expose the port the app runs on
 EXPOSE 8080

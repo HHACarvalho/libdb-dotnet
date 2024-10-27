@@ -4,7 +4,7 @@
 dotnet publish
 
 # Build the docker image
-docker build -t libdb-dotnet-image:latest .
+docker build -t libdb-dotnet-image:latest ./
 
 # Stop and remove any existing docker container
 docker stop libdb-dotnet-container && docker rm libdb-dotnet-container
@@ -17,4 +17,4 @@ dotnet-ef migrations add Initial --project libdb-dotnet/
 dotnet-ef database update --project libdb-dotnet/
 
 # Delete the local migration files
-rm -r libdb-dotnet/migrations
+rm -r libdb-dotnet/migrations/
