@@ -10,19 +10,19 @@ namespace libdb_dotnet.Domain
         public int Id { get; set; }
 
         [MaxLength(96)]
-        public string Title { get; set; }
+        public required string Title { get; set; }
 
         [Range(0, int.MaxValue)]
         public int Year { get; set; }
 
         [MaxLength(32)]
-        public string Genre { get; set; }
+        public required string Genre { get; set; }
 
         [Url]
-        public string ImageUrl { get; set; }
+        public required string ImageUrl { get; set; }
 
-        public Author Author { get; set; }
+        public required Author Author { get; set; }
 
-        public ICollection<BookEntry> BookEntries { get; set; }
+        public required ICollection<BookEntry> BookEntries { get; set; }
     }
 }

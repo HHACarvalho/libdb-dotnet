@@ -6,7 +6,7 @@ namespace libdb_dotnet.DTOs
     public class BookEntryCreateBody
     {
         [MaxLength(13)]
-        public string Isbn { get; set; }
+        public required string Isbn { get; set; }
 
         [Range(1, int.MaxValue)]
         public int BookId { get; set; }
@@ -18,7 +18,7 @@ namespace libdb_dotnet.DTOs
         public int Id { get; set; }
 
         [MaxLength(13)]
-        public string Isbn { get; set; }
+        public required string Isbn { get; set; }
     }
 
     public class BookEntryDTO

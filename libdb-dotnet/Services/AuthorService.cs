@@ -20,7 +20,8 @@ namespace libdb_dotnet.Services
             var newAuthor = new Author
             {
                 Name = requestBody.Name,
-                ImageUrl = requestBody.ImageUrl
+                ImageUrl = requestBody.ImageUrl,
+                Books = new List<Book>()
             };
 
             newAuthor = await _repo.Create(newAuthor);

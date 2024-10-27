@@ -10,17 +10,17 @@ namespace libdb_dotnet.Domain
         public int Id { get; set; }
 
         [MaxLength(48)]
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
         [EmailAddress]
-        public string Email { get; set; }
+        public required string Email { get; set; }
 
         [MaxLength(128)]
-        public string Address { get; set; }
+        public required string Address { get; set; }
 
         [Phone]
-        public string PhoneNumber { get; set; }
+        public required string PhoneNumber { get; set; }
 
-        public ICollection<Borrow> Borrows { get; set; }
+        public required ICollection<Borrow> Borrows { get; set; }
     }
 }

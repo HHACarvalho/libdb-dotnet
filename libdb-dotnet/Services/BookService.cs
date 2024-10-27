@@ -31,7 +31,8 @@ namespace libdb_dotnet.Services
                 Year = requestBody.Year,
                 Genre = requestBody.Genre,
                 ImageUrl = requestBody.ImageUrl,
-                Author = author
+                Author = author,
+                BookEntries = new List<BookEntry>()
             };
 
             newBook = await _bookRepo.Create(newBook);

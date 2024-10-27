@@ -10,11 +10,11 @@ namespace libdb_dotnet.Domain
         public int Id { get; set; }
 
         [MaxLength(48)]
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
         [Url]
-        public string ImageUrl { get; set; }
+        public required string ImageUrl { get; set; }
 
-        public ICollection<Book> Books { get; set; }
+        public required ICollection<Book> Books { get; set; }
     }
 }

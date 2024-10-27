@@ -9,9 +9,9 @@ namespace libdb_dotnet.Domain
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public BookEntry BookEntry { get; set; }
+        public required BookEntry BookEntry { get; set; }
 
-        public Member Member { get; set; }
+        public required Member Member { get; set; }
 
         public DateOnly BorrowDate { get; set; }
 

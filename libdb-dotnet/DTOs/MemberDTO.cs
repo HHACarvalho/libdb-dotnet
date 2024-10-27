@@ -6,16 +6,16 @@ namespace libdb_dotnet.DTOs
     public class MemberCreateBody
     {
         [MaxLength(48)]
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
         [EmailAddress]
-        public string Email { get; set; }
+        public required string Email { get; set; }
 
         [MaxLength(128)]
-        public string Address { get; set; }
+        public required string Address { get; set; }
 
         [Phone]
-        public string PhoneNumber { get; set; }
+        public required string PhoneNumber { get; set; }
     }
 
     public class MemberUpdateBody
@@ -24,16 +24,16 @@ namespace libdb_dotnet.DTOs
         public int Id { get; set; }
 
         [MaxLength(48)]
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
         [EmailAddress]
-        public string Email { get; set; }
+        public required string Email { get; set; }
 
         [MaxLength(128)]
-        public string Address { get; set; }
+        public required string Address { get; set; }
 
         [Phone]
-        public string PhoneNumber { get; set; }
+        public required string PhoneNumber { get; set; }
     }
 
     public class MemberDTO

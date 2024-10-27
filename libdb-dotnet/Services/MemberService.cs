@@ -22,7 +22,8 @@ namespace libdb_dotnet.Services
                 Name = requestBody.Name,
                 Email = requestBody.Email,
                 Address = requestBody.Address,
-                PhoneNumber = requestBody.PhoneNumber
+                PhoneNumber = requestBody.PhoneNumber,
+                Borrows = new List<Borrow>()
             };
 
             newMember = await _memberRepo.Create(newMember);

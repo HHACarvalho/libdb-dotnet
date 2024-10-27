@@ -11,9 +11,9 @@ namespace libdb_dotnet.DTOs
         [Range(1, int.MaxValue)]
         public int MemberId { get; set; }
 
-        public string BorrowDate { get; set; }
+        public required string BorrowDate { get; set; }
 
-        public string DueDate { get; set; }
+        public required string DueDate { get; set; }
     }
 
     public class BorrowUpdateBody
@@ -21,7 +21,7 @@ namespace libdb_dotnet.DTOs
         [Range(1, int.MaxValue)]
         public int Id { get; set; }
 
-        public string ReturnDate { get; set; }
+        public required string ReturnDate { get; set; }
 
         [Range(0, float.MaxValue)]
         public float Fine { get; set; }

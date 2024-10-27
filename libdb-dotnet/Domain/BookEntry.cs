@@ -10,8 +10,8 @@ namespace libdb_dotnet.Domain
         public int Id { get; set; }
 
         [MaxLength(13)]
-        public string Isbn { get; set; }
+        public required string Isbn { get; set; }
 
-        public Book Book { get; set; }
+        public required Book Book { get; set; }
     }
 }
