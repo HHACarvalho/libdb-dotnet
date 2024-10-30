@@ -2,7 +2,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app/
 
-# Copy the application files
+# Copy the project files
 COPY libdb-dotnet/ ./
 
 # Build the application
@@ -12,10 +12,8 @@ RUN dotnet publish -o /app/publish/
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app/
 
-# Copy the published app to the docker image
+# Copy the published application and the .env file
 COPY --from=build /app/publish/ ./
-
-# Copy the .env file
 COPY .env ./
 
 # Expose the port the app runs on
