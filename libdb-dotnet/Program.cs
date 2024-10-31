@@ -71,6 +71,24 @@ builder.Services.AddControllers();
 
 var app = builder.Build();
 
+// Get an instance of the logger
+
+var logger = app.Services.GetRequiredService<ILogger<Program>>();
+
+// Automatically apply migrations
+
+using (var scope = app.Services.CreateScope())
+{
+    try
+    {
+        scope.ServiceProvider.GetRequiredService<AppDBContext>().Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        logger.LogError(ex, "An error occurred while migrating the database");
+    }
+}
+
 // Configure the HTTP request pipeline
 
 app.UseCors(corsPolicyName);
