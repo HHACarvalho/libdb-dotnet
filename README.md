@@ -4,12 +4,12 @@ RESTful API built with ASP.NET Core used for the business logic portion of the p
 
 # Building the application
 
-Run the [publish.sh](https://github.com/HHACarvalho/libdb-dotnet/blob/main/publish.sh) script after adding missing information in the .env file.
+After installing [Docker](https://www.docker.com/) and filling in the missing information in the .env file, run the [publish.sh](https://github.com/HHACarvalho/libdb-dotnet/blob/main/publish.sh) script.
 
 # Endpoint documentation
 
-* [Author](docs/author.md)
-* [Book](docs/book.md)
-* [BookEntry](docs/book_entry_.md)
-* [Borrow](docs/borrow.md)
-* [Member](docs/member.md)
+- [Author](docs/author.md)
+- [Book](docs/book.md)
+- [BookEntry](docs/book_entry_.md)
+- [Borrow](docs/borrow.md)
+- [Member](docs/member.md)
