@@ -12,7 +12,7 @@ using libdb_dotnet.Core;
 namespace libdb_dotnet.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20241030212515_Main")]
+    [Migration("20241105192539_Main")]
     partial class Main
     {
         /// <inheritdoc />
@@ -92,6 +92,9 @@ namespace libdb_dotnet.Migrations
 
                     b.Property<int>("BookId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsAvailable")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Isbn")
                         .IsRequired()

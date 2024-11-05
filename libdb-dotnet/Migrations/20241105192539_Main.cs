@@ -71,6 +71,7 @@ namespace libdb_dotnet.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Isbn = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
+                    IsAvailable = table.Column<bool>(type: "bit", nullable: false),
                     BookId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

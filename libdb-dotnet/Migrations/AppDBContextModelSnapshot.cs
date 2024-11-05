@@ -90,6 +90,9 @@ namespace libdb_dotnet.Migrations
                     b.Property<int>("BookId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsAvailable")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Isbn")
                         .IsRequired()
                         .HasMaxLength(13)
