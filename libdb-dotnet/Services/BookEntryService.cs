@@ -28,7 +28,8 @@ namespace libdb_dotnet.Services
             var newBookEntry = new BookEntry
             {
                 Isbn = requestBody.Isbn,
-                Book = book
+                Book = book,
+                IsAvailable = true
             };
 
             newBookEntry = await _bookEntryRepo.Create(newBookEntry);
@@ -73,7 +74,7 @@ namespace libdb_dotnet.Services
                 return Result.Fail("No book entry with the Id '" + requestBody.Id + "' was found");
             }
 
-            bookEntry.Isbn = requestBody.Isbn;
+            bookEntry.IsAvailable = requestBody.IsAvailable;
 
             await _bookEntryRepo.CommitChanges();
 

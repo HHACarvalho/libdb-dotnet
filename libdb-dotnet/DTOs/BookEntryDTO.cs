@@ -17,8 +17,7 @@ namespace libdb_dotnet.DTOs
         [Range(1, int.MaxValue)]
         public int Id { get; set; }
 
-        [MaxLength(13)]
-        public required string Isbn { get; set; }
+        public bool IsAvailable { get; set; }
     }
 
     public class BookEntryDTO
@@ -29,6 +28,7 @@ namespace libdb_dotnet.DTOs
             {
                 bookEntry.Id,
                 bookEntry.Isbn,
+                bookEntry.IsAvailable
             };
         }
     }

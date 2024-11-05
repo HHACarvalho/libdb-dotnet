@@ -73,7 +73,8 @@ namespace libdb_dotnet.DTOs
                 BookEntries = book.BookEntries.Select(e => new
                 {
                     e.Id,
-                    e.Isbn
+                    e.Isbn,
+                    e.IsAvailable
                 })
             };
         }

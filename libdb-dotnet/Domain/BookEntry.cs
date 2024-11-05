@@ -12,6 +12,8 @@ namespace libdb_dotnet.Domain
         [MaxLength(13)]
         public required string Isbn { get; set; }
 
+        public bool IsAvailable { get; set; }
+
         public required Book Book { get; set; }
     }
 }
