@@ -62,9 +62,11 @@ namespace libdb_dotnet.DTOs
                 Borrows = member.Borrows.Select(borrow => new
                 {
                     borrow.Id,
-                    borrow.BookEntry.Book.Title,
-                    borrow.BorrowDate,
-                    borrow.ReturnDate
+                    BookTitle = borrow.BookEntry.Book.Title,
+                    BorrowDate = borrow.BorrowDate.ToString("dd-MM-yyyy"),
+                    DueDate = borrow.DueDate.ToString("dd-MM-yyyy"),
+                    ReturnDate = borrow.ReturnDate?.ToString("dd-MM-yyyy") ?? "",
+                    borrow.Fine
                 }).ToArray()
             };
         }
