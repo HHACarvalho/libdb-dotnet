@@ -12,7 +12,7 @@ using libdb_dotnet.Core;
 namespace libdb_dotnet.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20241105192539_Main")]
+    [Migration("20241123005425_Main")]
     partial class Main
     {
         /// <inheritdoc />
@@ -20,7 +20,7 @@ namespace libdb_dotnet.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.10")
+                .HasAnnotation("ProductVersion", "9.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -125,8 +125,9 @@ namespace libdb_dotnet.Migrations
                     b.Property<DateOnly>("DueDate")
                         .HasColumnType("date");
 
-                    b.Property<float>("Fine")
-                        .HasColumnType("real");
+                    b.Property<decimal>("Fine")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("MemberId")
                         .HasColumnType("int");

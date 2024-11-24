@@ -96,7 +96,7 @@ namespace libdb_dotnet.Migrations
                     BorrowDate = table.Column<DateOnly>(type: "date", nullable: false),
                     DueDate = table.Column<DateOnly>(type: "date", nullable: false),
                     ReturnDate = table.Column<DateOnly>(type: "date", nullable: true),
-                    Fine = table.Column<float>(type: "real", nullable: false)
+                    Fine = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false)
                 },
                 constraints: table =>
                 {
