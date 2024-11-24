@@ -17,7 +17,7 @@ namespace libdb_dotnet.Core
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Add custom configurations for entities
+            modelBuilder.Entity<Borrow>().Property(b => b.Fine).HasPrecision(18, 2);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace libdb_dotnet.Domain
 
         public DateOnly? ReturnDate { get; set; }
 
-        [Range(0, float.MaxValue)]
-        public float Fine { get; set; }
+        [Range(0, (double)decimal.MaxValue)]
+        public decimal Fine { get; set; }
     }
 }
