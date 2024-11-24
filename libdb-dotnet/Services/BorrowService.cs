@@ -43,6 +43,9 @@ namespace libdb_dotnet.Services
 
             newBorrow = await _borrowRepo.Create(newBorrow);
 
+            bookEntry.IsAvailable = false;
+            await _bookEntryRepo.CommitChanges();
+
             return Result.Success(BorrowDTO.Simple(newBorrow), 201);
         }
 
@@ -87,6 +90,9 @@ namespace libdb_dotnet.Services
             borrow.Fine = requestBody.Fine;
 
             await _borrowRepo.CommitChanges();
+
+            borrow.BookEntry.IsAvailable = true;
+            await _bookEntryRepo.CommitChanges();
 
             return Result.Success(null);
         }
