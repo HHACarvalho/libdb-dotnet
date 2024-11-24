@@ -1,5 +1,5 @@
-# Use the .NET 8 SDK image
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+# Use the .NET 9 SDK image
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /app/
 
 # Copy the project files
@@ -8,8 +8,8 @@ COPY libdb-dotnet/ ./
 # Build the application
 RUN dotnet publish -o /app/publish/
 
-# Use the ASP.NET Core runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+# Use the ASP.NET Core 9 runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
 WORKDIR /app/
 
 # Copy the published application and the .env file
