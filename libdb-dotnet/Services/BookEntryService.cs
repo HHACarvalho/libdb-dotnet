@@ -89,6 +89,11 @@ namespace libdb_dotnet.Services
                 return Result.Fail("No book entry with the Id '" + id + "' was found");
             }
 
+            if (!bookEntry.IsAvailable)
+            {
+                return Result.Fail("The book entry with the Id '" + id + "' isn't available at the moment");
+            }
+
             await _bookEntryRepo.Delete(bookEntry);
 
             return Result.Success(null);
