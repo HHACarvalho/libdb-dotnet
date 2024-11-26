@@ -1,4 +1,4 @@
-﻿using libdb_dotnet.Core;
+using libdb_dotnet.Core;
 using libdb_dotnet.Domain;
 using libdb_dotnet.DTOs;
 using libdb_dotnet.Repos.IRepos;
@@ -8,6 +8,8 @@ namespace libdb_dotnet.Services
 {
     public class BorrowService : IBorrowService
     {
+        private const decimal FINE_DAILY_PENALTY = 0.2m;
+
         private readonly IBookEntryRepo _bookEntryRepo;
         private readonly IBorrowRepo _borrowRepo;
         private readonly IMemberRepo _memberRepo;
@@ -87,7 +89,10 @@ namespace libdb_dotnet.Services
             }
 
             borrow.ReturnDate = DateOnly.ParseExact(requestBody.ReturnDate, "dd-MM-yyyy");
-            borrow.Fine = requestBody.Fine;
+            if (borrow.ReturnDate > borrow.DueDate)
+            {
+                borrow.Fine = FINE_DAILY_PENALTY * (borrow.ReturnDate.Value.DayNumber - borrow.DueDate.DayNumber);
+            }
 
             await _borrowRepo.CommitChanges();
 

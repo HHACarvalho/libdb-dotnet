@@ -22,9 +22,6 @@ namespace libdb_dotnet.DTOs
         public int Id { get; set; }
 
         public required string ReturnDate { get; set; }
-
-        [Range(0, float.MaxValue)]
-        public float Fine { get; set; }
     }
 
     public class BorrowDTO
