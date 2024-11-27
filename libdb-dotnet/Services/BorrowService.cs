@@ -1,4 +1,4 @@
-using libdb_dotnet.Core;
+﻿using libdb_dotnet.Core;
 using libdb_dotnet.Domain;
 using libdb_dotnet.DTOs;
 using libdb_dotnet.Repos.IRepos;
@@ -27,6 +27,11 @@ namespace libdb_dotnet.Services
             if (bookEntry == null)
             {
                 return Result.Fail("Book not found", 400);
+            }
+
+            if (!bookEntry.IsAvailable)
+            {
+                return Result.Fail("The book isn't available at the moment", 400);
             }
 
             var member = await _memberRepo.FindOne(requestBody.MemberId);
