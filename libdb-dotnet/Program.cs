@@ -44,7 +44,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddDbContext<AppDBContext>(options =>
 {
-    options.UseSqlServer(dbConnectionString);
+    options.UseNpgsql(dbConnectionString);
 });
 
 // Add repositories
