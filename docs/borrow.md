@@ -2,16 +2,16 @@
 
 ### Create borrow - [POST]() /borrow
 
-Adds a new borrow to the database.
+Creates a new borrow.
 
 **Body:**
 
 ```json
 {
-    "bookId": "1",
-    "memberId": "1",
-    "borrowDate": "16-07-2024",
-    "dueDate": "06-08-2024"
+	"bookId": "1",
+	"memberId": "1",
+	"borrowDate": "16-07-2024",
+	"dueDate": "06-08-2024"
 }
 ```
 
@@ -19,13 +19,13 @@ Adds a new borrow to the database.
 
 ```json
 {
-    "id": 1,
-    "bookTitle": "The Lord of the Rings: The Fellowship of the Ring",
-    "memberName": "Hugo Carvalho",
-    "borrowDate": "16-07-2024",
-    "dueDate": "06-08-2024",
-    "returnDate": "17-07-2024",
-    "fine": 0
+	"id": 1,
+	"bookTitle": "The Lord of the Rings: The Fellowship of the Ring",
+	"memberName": "Hugo Carvalho",
+	"borrowDate": "16-07-2024",
+	"dueDate": "06-08-2024",
+	"returnDate": "17-07-2024",
+	"fine": 0
 }
 ```
 
@@ -33,14 +33,14 @@ Otherwise, the code 400 and an error message.
 
 ---
 
-### Find all borrows - [GET]() /borrow?*pageNumber*&*pageSize*
+### Find all borrows - [GET]() /borrow?_pageNumber_&_pageSize_
 
-Retrieves a list of the lastest borrows.
+Retrieves a list of the latest borrows.
 
 **Parameters:**
 
 | Parameter  | Type   | Default value |
-|:-----------|:-------|:--------------|
+| :--------- | :----- | :------------ |
 | pageNumber | Number | 1             |
 | pageSize   | Number | 16            |
 
@@ -77,27 +77,27 @@ Otherwise, the code 404 and an error message.
 
 ---
 
-### Find one borrow - [GET]() /borrow/*id*
+### Find one borrow - [GET]() /borrow/_id_
 
 Retrieves a single borrow using its ID.
 
 **Parameters:**
 
-| Parameter  | Type   | Default value |
-|:-----------|:-------|:--------------|
-| id         | Number | 0             |
+| Parameter | Type   | Default value |
+| :-------- | :----- | :------------ |
+| id        | Number | 0             |
 
 **Returns:** If successful, the code 200 and a single borrow.
 
 ```json
 {
-    "id": 1,
-    "bookTitle": "The Lord of the Rings: The Fellowship of the Ring",
-    "memberName": "Hugo Carvalho",
-    "borrowDate": "16-07-2024",
-    "dueDate": "06-08-2024",
-    "returnDate": "17-07-2024",
-    "fine": 0
+	"id": 1,
+	"bookTitle": "The Lord of the Rings: The Fellowship of the Ring",
+	"memberName": "Hugo Carvalho",
+	"borrowDate": "16-07-2024",
+	"dueDate": "06-08-2024",
+	"returnDate": "17-07-2024",
+	"fine": 0
 }
 ```
 
@@ -107,15 +107,14 @@ Otherwise, the code 404 and an error message.
 
 ### Update borrow - [PUT]() /borrow
 
-Updates an existing borrow. The Id specified in the body is used to find the original entity.
+Updates an existing borrow.
 
 **Body:**
 
 ```json
 {
-    "id": 1,
-    "returnDate": "17-07-2024",
-    "fine": 5.45
+	"id": 1,
+	"returnDate": "17-07-2024"
 }
 ```
 
@@ -123,15 +122,15 @@ Updates an existing borrow. The Id specified in the body is used to find the ori
 
 ---
 
-### Delete borrow - [DELETE]() /borrow/*id*
+### Delete borrow - [DELETE]() /borrow/_id_
 
-Deletes a borrow from the database.
+Deletes an existing borrow.
 
 **Parameters:**
 
-| Parameter  | Type   | Default value |
-|:-----------|:-------|:--------------|
-| id         | Number | 0             |
+| Parameter | Type   | Default value |
+| :-------- | :----- | :------------ |
+| id        | Number | 0             |
 
 **Returns:** If successful, the code 200. Otherwise, the code 404 and an error message.
 

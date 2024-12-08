@@ -2,14 +2,14 @@
 
 ### Create book entry - [POST]() /bookEntry
 
-Adds a new book entry to the database.
+Creates a new book entry.
 
 **Body:**
 
 ```json
 {
-    "isbn": "9780008376123",
-    "bookId": "1"
+	"isbn": "9780008376123",
+	"bookId": "1"
 }
 ```
 
@@ -17,8 +17,8 @@ Adds a new book entry to the database.
 
 ```json
 {
-    "id": 1,
-    "isbn": "9780008376123"
+	"id": 1,
+	"isbn": "9780008376123"
 }
 ```
 
@@ -26,14 +26,14 @@ Otherwise, the code 400 and an error message.
 
 ---
 
-### Find all book entries - [GET]() /bookEntry?*pageNumber*&*pageSize*
+### Find all book entries - [GET]() /bookEntry?_pageNumber_&_pageSize_
 
-Retrieves a list of the lastest book entries.
+Retrieves a list of the latest book entries.
 
 **Parameters:**
 
 | Parameter  | Type   | Default value |
-|:-----------|:-------|:--------------|
+| :--------- | :----- | :------------ |
 | pageNumber | Number | 1             |
 | pageSize   | Number | 16            |
 
@@ -41,7 +41,7 @@ Retrieves a list of the lastest book entries.
 
 ```json
 {
-    "total": 17,
+    "total": 3,
     "array": [
         {
             "id": 1,
@@ -49,7 +49,7 @@ Retrieves a list of the lastest book entries.
         },
         {
             "id": 2,
-            "isbn": "9780547928210"
+            "isbn": "9780008376123"
         },
         ...
     ]
@@ -60,22 +60,22 @@ Otherwise, the code 404 and an error message.
 
 ---
 
-### Find one book entry - [GET]() /bookEntry/*id*
+### Find one book entry - [GET]() /bookEntry/_id_
 
-Retrieves a single book entry using its ID.
+Retrieves a single book entry.
 
 **Parameters:**
 
-| Parameter  | Type   | Default value |
-|:-----------|:-------|:--------------|
-| id         | Number | 0             |
+| Parameter | Type   | Default value |
+| :-------- | :----- | :------------ |
+| id        | Number | 0             |
 
 **Returns:** If successful, the code 200 and a single book entry.
 
 ```json
 {
-    "id": 1,
-    "isbn": "9780008376123"
+	"id": 1,
+	"isbn": "9780008376123"
 }
 ```
 
@@ -85,14 +85,14 @@ Otherwise, the code 404 and an error message.
 
 ### Update book entry - [PUT]() /bookEntry
 
-Updates an existing book entry. The Id specified in the body is used to find the original entity.
+Updates an existing book entry.
 
 **Body:**
 
 ```json
 {
-    "id": 1,
-    "isbn": "9780008376123"
+	"id": 1,
+	"isbn": "9780008376123"
 }
 ```
 
@@ -100,15 +100,15 @@ Updates an existing book entry. The Id specified in the body is used to find the
 
 ---
 
-### Delete book entry - [DELETE]() /bookEntry/*id*
+### Delete book entry - [DELETE]() /bookEntry/_id_
 
-Deletes a book entry from the database.
+Deletes an existing book entry.
 
 **Parameters:**
 
-| Parameter  | Type   | Default value |
-|:-----------|:-------|:--------------|
-| id         | Number | 0             |
+| Parameter | Type   | Default value |
+| :-------- | :----- | :------------ |
+| id        | Number | 0             |
 
 **Returns:** If successful, the code 200. Otherwise, the code 404 and an error message.
 

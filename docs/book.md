@@ -2,17 +2,17 @@
 
 ### Create book - [POST]() /book
 
-Adds a new book to the database.
+Creates a new book.
 
 **Body:**
 
 ```json
 {
-    "title": "The Lord of the Rings: The Fellowship of the Ring",
-    "year": 1954,
-    "genre": "Fantasy",
-    "imageUrl": "https://image.jpg",
-    "authorId": "1"
+	"title": "The Lord of the Rings: The Fellowship of the Ring",
+	"year": 1954,
+	"genre": "Fantasy",
+	"imageUrl": "https://image.jpg",
+	"authorId": "1"
 }
 ```
 
@@ -20,12 +20,12 @@ Adds a new book to the database.
 
 ```json
 {
-    "id": 1,
-    "title": "The Lord of the Rings: The Fellowship of the Ring",
-    "year": 1954,
-    "genre": "Fantasy",
-    "imageUrl": "https://image.jpg",
-    "author": "J.R.R. Tolkien"
+	"id": 1,
+	"title": "The Lord of the Rings: The Fellowship of the Ring",
+	"year": 1954,
+	"genre": "Fantasy",
+	"imageUrl": "https://image.jpg",
+	"author": "J.R.R. Tolkien"
 }
 ```
 
@@ -33,14 +33,14 @@ Otherwise, the code 400 and an error message.
 
 ---
 
-### Find all books - [GET]() /book?*pageNumber*&*pageSize*
+### Find all books - [GET]() /book?_pageNumber_&_pageSize_
 
-Retrieves a list of the lastest books.
+Retrieves a list of the latest books.
 
 **Parameters:**
 
 | Parameter  | Type   | Default value |
-|:-----------|:-------|:--------------|
+| :--------- | :----- | :------------ |
 | pageNumber | Number | 1             |
 | pageSize   | Number | 16            |
 
@@ -77,14 +77,14 @@ Otherwise, the code 404 and an error message.
 
 ---
 
-### Find books - [GET]() /book/search?*pageNumber*&*pageSize*&*id*&*title*&*year*&*genre*&*authorName*
+### Find books - [GET]() /book/search?_pageNumber_&_pageSize_&_id_&_title_&_year_&_genre_&_authorName_
 
 Retrieves a list of books matching the specified criteria.
 
 **Parameters:**
 
 | Parameter  | Type   | Default value |
-|:-----------|:-------|:--------------|
+| :--------- | :----- | :------------ |
 | pageNumber | Number | 1             |
 | pageSize   | Number | 16            |
 | id         | Number | 0             |
@@ -126,15 +126,15 @@ Otherwise, the code 404 and an error message.
 
 ---
 
-### Find one book - [GET]() /book/*id*
+### Find one book - [GET]() /book/_id_
 
 Retrieves a single book using its ID.
 
 **Parameters:**
 
-| Parameter  | Type   | Default value |
-|:-----------|:-------|:--------------|
-| id         | Number | 0             |
+| Parameter | Type   | Default value |
+| :-------- | :----- | :------------ |
+| id        | Number | 0             |
 
 **Returns:** If successful, the code 200 and a single book.
 
@@ -169,15 +169,15 @@ Otherwise, the code 404 and an error message.
 
 ### Update book - [PUT]() /book
 
-Updates an existing book. The Id specified in the body is used to find the original entity.
+Updates an existing book.
 
 **Body:**
 
 ```json
 {
-    "id": 1,
-    "name": "J.R.R. Tolkien",
-    "imageUrl": "https://image.jpg"
+	"id": 1,
+	"name": "J.R.R. Tolkien",
+	"imageUrl": "https://image.jpg"
 }
 ```
 
@@ -185,15 +185,15 @@ Updates an existing book. The Id specified in the body is used to find the origi
 
 ---
 
-### Delete book - [DELETE]() /book/*id*
+### Delete book - [DELETE]() /book/_id_
 
-Deletes a book from the database.
+Deletes an existing book.
 
 **Parameters:**
 
-| Parameter  | Type   | Default value |
-|:-----------|:-------|:--------------|
-| id         | Number | 0             |
+| Parameter | Type   | Default value |
+| :-------- | :----- | :------------ |
+| id        | Number | 0             |
 
 **Returns:** If successful, the code 200. Otherwise, the code 404 and an error message.
 

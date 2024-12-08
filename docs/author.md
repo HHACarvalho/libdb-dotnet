@@ -2,14 +2,14 @@
 
 ### Create author - [POST]() /author
 
-Adds a new author to the database.
+Creates a new author.
 
 **Body:**
 
 ```json
 {
-    "name": "J.R.R. Tolkien",
-    "imageUrl": "https://image.jpg"
+	"name": "J.R.R. Tolkien",
+	"imageUrl": "https://image.jpg"
 }
 ```
 
@@ -17,9 +17,9 @@ Adds a new author to the database.
 
 ```json
 {
-    "id": 1,
-    "name": "J.R.R. Tolkien",
-    "imageUrl": "https://image.jpg"
+	"id": 1,
+	"name": "J.R.R. Tolkien",
+	"imageUrl": "https://image.jpg"
 }
 ```
 
@@ -27,14 +27,14 @@ Otherwise, the code 400 and an error message.
 
 ---
 
-### Find all authors - [GET]() /author?*pageNumber*&*pageSize*
+### Find all authors - [GET]() /author?_pageNumber_&_pageSize_
 
-Retrieves a list of the lastest authors.
+Retrieves a list of the latest authors.
 
 **Parameters:**
 
 | Parameter  | Type   | Default value |
-|:-----------|:-------|:--------------|
+| :--------- | :----- | :------------ |
 | pageNumber | Number | 1             |
 | pageSize   | Number | 16            |
 
@@ -63,14 +63,14 @@ Otherwise, the code 404 and an error message.
 
 ---
 
-### Find authors - [GET]() /author/search?*pageNumber*&*pageSize*&*id*&*name*
+### Find authors - [GET]() /author/search?_pageNumber_&_pageSize_&_id_&_name_
 
 Retrieves a list of authors matching the specified criteria.
 
 **Parameters:**
 
 | Parameter  | Type   | Default value |
-|:-----------|:-------|:--------------|
+| :--------- | :----- | :------------ |
 | pageNumber | Number | 1             |
 | pageSize   | Number | 16            |
 | id         | Number | 0             |
@@ -101,15 +101,15 @@ Otherwise, the code 404 and an error message.
 
 ---
 
-### Find one author - [GET]() /author/*id*
+### Find one author - [GET]() /author/_id_
 
-Retrieves a single author using its ID.
+Retrieves a single author.
 
 **Parameters:**
 
-| Parameter  | Type   | Default value |
-|:-----------|:-------|:--------------|
-| id         | Number | 0             |
+| Parameter | Type   | Default value |
+| :-------- | :----- | :------------ |
+| id        | Number | 0             |
 
 **Returns:** If successful, the code 200 and a single author.
 
@@ -140,15 +140,15 @@ Otherwise, the code 404 and an error message.
 
 ### Update author - [PUT]() /author
 
-Updates an existing author. The Id specified in the body is used to find the original entity.
+Updates an existing author.
 
 **Body:**
 
 ```json
 {
-    "id": 1,
-    "name": "J.R.R. Tolkien",
-    "imageUrl": "https://image.jpg"
+	"id": 1,
+	"name": "J.R.R. Tolkien",
+	"imageUrl": "https://image.jpg"
 }
 ```
 
@@ -156,16 +156,14 @@ Updates an existing author. The Id specified in the body is used to find the ori
 
 ---
 
-### Delete author - [DELETE]() /author/*id*
+### Delete author - [DELETE]() /author/_id_
 
-Deletes a author from the database.
+Deletes an existing author.
 
 **Parameters:**
 
-| Parameter  | Type   | Default value |
-|:-----------|:-------|:--------------|
-| id         | Number | 0             |
+| Parameter | Type   | Default value |
+| :-------- | :----- | :------------ |
+| id        | Number | 0             |
 
 **Returns:** If successful, the code 200. Otherwise, the code 404 and an error message.
-
----

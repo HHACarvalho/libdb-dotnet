@@ -2,16 +2,16 @@
 
 ### Create member - [POST]() /member
 
-Adds a new member to the database.
+Creates a new member.
 
 **Body:**
 
 ```json
 {
-    "name": "Hugo Carvalho",
-    "email": "hugo.carvalho@mail.com",
-    "address": "Av. Gen. Humberto Delgado 584",
-    "phoneNumber": "+351939393939"
+	"name": "Hugo Carvalho",
+	"email": "hugo.carvalho@mail.com",
+	"address": "Av. Gen. Humberto Delgado 584",
+	"phoneNumber": "+351939393939"
 }
 ```
 
@@ -19,11 +19,11 @@ Adds a new member to the database.
 
 ```json
 {
-    "id": 1,
-    "name": "Hugo Carvalho",
-    "email": "hugo.carvalho@mail.com",
-    "address": "Av. Gen. Humberto Delgado 584",
-    "phoneNumber": "+351939393939"
+	"id": 1,
+	"name": "Hugo Carvalho",
+	"email": "hugo.carvalho@mail.com",
+	"address": "Av. Gen. Humberto Delgado 584",
+	"phoneNumber": "+351939393939"
 }
 ```
 
@@ -31,14 +31,14 @@ Otherwise, the code 400 and an error message.
 
 ---
 
-### Find all members - [GET]() /member?*pageNumber*&*pageSize*
+### Find all members - [GET]() /member?_pageNumber_&_pageSize_
 
-Retrieves a list of the lastest members.
+Retrieves a list of the latest members.
 
 **Parameters:**
 
 | Parameter  | Type   | Default value |
-|:-----------|:-------|:--------------|
+| :--------- | :----- | :------------ |
 | pageNumber | Number | 1             |
 | pageSize   | Number | 16            |
 
@@ -46,21 +46,21 @@ Retrieves a list of the lastest members.
 
 ```json
 {
-    "total": 3,
+    "total": 5,
     "array": [
         {
             "id": 2,
-            "name": "…rica Lopes",
-            "email": "erica.lopes@mail.com",
-            "address": "PraÁa de Parada Leit„o 65",
-            "phoneNumber": "+351919191919"
+            "name": "Afonso Esteves",
+            "email": "afonso.esteves@mail.com",
+            "address": "R. Dr. Ant√≥nio Bernardino de Almeida 856",
+            "phoneNumber": "+351969696969"
         },
         {
             "id": 3,
-            "name": "Afonso Esteves",
-            "email": "afonso.esteves@mail.com",
-            "address": "R. Dr. AntÛnio Bernardino de Almeida 856",
-            "phoneNumber": "+351969696969"
+            "name": "√ârica Lopes",
+            "email": "erica.lopes@mail.com",
+            "address": "Pra√ßa de Parada Leit√£o 65",
+            "phoneNumber": "+351919191919"
         },
         ...
     ]
@@ -71,14 +71,14 @@ Otherwise, the code 404 and an error message.
 
 ---
 
-### Find members - [GET]() /member/search?*pageNumber*&*pageSize*&*id*&*name*&*email*&*address*&*phoneNumber*
+### Find members - [GET]() /member/search?_pageNumber_&_pageSize_&_id_&_name_&_email_&_address_&_phoneNumber_
 
 Retrieves a list of members matching the specified criteria.
 
 **Parameters:**
 
 | Parameter   | Type   | Default value |
-|:------------|:-------|:--------------|
+| :---------- | :----- | :------------ |
 | pageNumber  | Number | 1             |
 | pageSize    | Number | 16            |
 | id          | Number | 0             |
@@ -91,21 +91,21 @@ Retrieves a list of members matching the specified criteria.
 
 ```json
 {
-    "total": 3,
+    "total": 5,
     "array": [
         {
             "id": 2,
-            "name": "…rica Lopes",
-            "email": "erica.lopes@mail.com",
-            "address": "PraÁa de Parada Leit„o 65",
-            "phoneNumber": "+351919191919"
+            "name": "Afonso Esteves",
+            "email": "afonso.esteves@mail.com",
+            "address": "R. Dr. Ant√≥nio Bernardino de Almeida 856",
+            "phoneNumber": "+351969696969"
         },
         {
             "id": 3,
-            "name": "Afonso Esteves",
-            "email": "afonso.esteves@mail.com",
-            "address": "R. Dr. AntÛnio Bernardino de Almeida 856",
-            "phoneNumber": "+351969696969"
+            "name": "√ârica Lopes",
+            "email": "erica.lopes@mail.com",
+            "address": "Pra√ßa de Parada Leit√£o 65",
+            "phoneNumber": "+351919191919"
         },
         ...
     ]
@@ -116,15 +116,15 @@ Otherwise, the code 404 and an error message.
 
 ---
 
-### Find one member - [GET]() /member/*id*
+### Find one member - [GET]() /member/_id_
 
-Retrieves a single member using its ID.
+Retrieves a single member.
 
 **Parameters:**
 
-| Parameter  | Type   | Default value |
-|:-----------|:-------|:--------------|
-| id         | Number | 0             |
+| Parameter | Type   | Default value |
+| :-------- | :----- | :------------ |
+| id        | Number | 0             |
 
 **Returns:** If successful, the code 200 and a single member.
 
@@ -138,15 +138,19 @@ Retrieves a single member using its ID.
     "borrows": [
         {
             "id": 1,
-            "title": "The Lord of the Rings: The Fellowship of the Ring",
-            "borrowDate": "2024-07-16",
-            "returnDate": "2024-07-17"
+            "bookTitle": "The Lord of the Rings: The Fellowship of the Ring",
+            "borrowDate": "16-07-2024",
+            "dueDate": "06-08-2024",
+            "returnDate": "17-07-2024",
+            "fine": 0.00
         },
         {
             "id": 2,
-            "title": "The Lord of the Rings: The Two Towers",
-            "borrowDate": "2024-07-17",
-            "returnDate": "2024-07-21"
+            "bookTitle": "The Lord of the Rings: The Two Towers",
+            "borrowDate": "17-07-2024",
+            "dueDate": "07-08-2024",
+            "returnDate": "21-07-2024",
+            "fine": 0.00
         },
         ...
     ]
@@ -159,17 +163,17 @@ Otherwise, the code 404 and an error message.
 
 ### Update member - [PUT]() /member
 
-Updates an existing member. The Id specified in the body is used to find the original entity.
+Updates an existing member.
 
 **Body:**
 
 ```json
 {
-    "id": 1,
-    "name": "Hugo Henrique",
-    "email": "hugo.carvalho@mail.com",
-    "address": "Av. Gen. Humberto Delgado 584",
-    "phoneNumber": "+351939393939"
+	"id": 1,
+	"name": "Hugo Carvalho",
+	"email": "hugo.carvalho@mail.com",
+	"address": "Av. Gen. Humberto Delgado 584",
+	"phoneNumber": "+351939393939"
 }
 ```
 
@@ -177,15 +181,15 @@ Updates an existing member. The Id specified in the body is used to find the ori
 
 ---
 
-### Delete member - [DELETE]() /member/*id*
+### Delete member - [DELETE]() /member/_id_
 
-Deletes a member from the database.
+Deletes an existing member.
 
 **Parameters:**
 
-| Parameter  | Type   | Default value |
-|:-----------|:-------|:--------------|
-| id         | Number | 0             |
+| Parameter | Type   | Default value |
+| :-------- | :----- | :------------ |
+| id        | Number | 0             |
 
 **Returns:** If successful, the code 200. Otherwise, the code 404 and an error message.
 
