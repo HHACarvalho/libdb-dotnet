@@ -12,6 +12,9 @@ RUN dotnet publish -o /app/publish/
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
 WORKDIR /app/
 
+# Update package lists and install wget
+RUN apt-get update && apt-get install -y wget
+
 # Copy the published application and the .env file
 COPY --from=build /app/publish/ ./
 COPY .env ./

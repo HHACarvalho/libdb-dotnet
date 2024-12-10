@@ -89,6 +89,10 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
+// Health endpoint
+
+app.MapGet("/health", () => Results.Ok());
+
 // Configure the HTTP request pipeline
 
 app.UseCors(corsPolicyName);
